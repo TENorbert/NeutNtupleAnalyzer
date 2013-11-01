@@ -1,0 +1,57 @@
+
+#This is the data card for the input of M2M3 analysis and TopMassFitter 
+# Auther : SCKao - UMN
+#
+
+# root files directory
+RootFiles =
+
+# Folder to store results
+Path = Results/
+
+# plot type : png / gif / eps / jpg / pdf 
+PlotType = png
+#Data
+# Files , '+' is the flag for TChain,  
+#TheData =(SinglePhoton_Run2012B_C_Prompt_Reco-v123_Feb_12_2013_With_HE_Halo_Tag_Ntuple)
+#TheData   = (SinglePhoton_Run2012B_C_Prompt_Reco-v123_Feb_21_2013_With_HE_Halo_Tag_Ntuple)
+
+#Data I'm Using
+#TheData = (../Analysis2HistFactFiles/INPUTFILES/New_Ntuples_2012C_D)
+TheData = (/local/cms/user/norbert/data/SiglePhoton2012/Sept_26_2013_Single_Photon_Data_Ntuples_C_and_D)
+#MC
+#TheData =(gmsb180_250)
+#TheData =(gmsb180_6000)
+#TheData = (../Analysis2HistFactFiles/INPUTFILES/gmsb180_6000)
+##TheData = (../Analysis2HistFactFiles/INPUTFILES/gmsb180_250)
+
+#TheData =(GMSB_Lambda_140_ctau_2000mm_MediumS_Spike_Cleaning_Ntuple_Sept01)
+#TheData =(GMSB_Lambda_140_CTau-2000_TuneZ2star_8TeV-pythia6_Summer2012_Ntuple_Medium_Spike_Kill)
+#dataChain = ( genscan1k, genscan2k )
+
+# -1 : all of events
+ProcessEvents = -1
+
+#Photon Cuts  Pt,   MaxPt,  eta, sMajMax, sMinorMin, sMinorMax, Num,t_low,t_hi
+#seedSwissX
+photonCuts = (30.0,  65.0,  3.5,  999.0,  0.15,  0.30,   1,    -2.5,      2.5, 0.95)
+
+#           Pt, nJetMin, nJetMax             JetCuts = ( 25.0,   0.0,    99.0 )
+JetCuts = ( 25.0,   0.0,    99.0 )
+#TrigCut = ( 0,2)  
+#TrigCut = (0) # for MC 
+TrigCut = (2) # for DP data 
+
+#Met cuts
+MetCuts  = ( 25.0)
+
+##HaloCuts  #SmajorEB, CSCdPhi
+HaloCuts = ( 0.0786, 0.035)   # 0.035 =~ 2.00 deg while 0.07 ~= 4.010 deg
+
+#HaloCuts  #SmajorEB, CSCdPhi
+#HaloCuts = ( 0.786, 0.0315, 0.812)
+#PhotonIso Cuts
+photonIso = (  )
+
+#JetID Cuts
+JetIdCuts = ( ) 
