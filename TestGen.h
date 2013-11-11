@@ -193,6 +193,10 @@ TH1D *EEP_Untag_Halo_pho_time,*EEP_Untag_Halo_pho_eta, *EEP_Untag_Halo_pho_phi, 
 *EEP_Untag_Halo_pho_ncrys;
 
 TH2D *EEP_Untag_Halo_pho_metVstime;
+// Jet Timing properties
+TH1* Jseedtime1, *Jseedtime2, *JseedE, *JEcalEmEr;
+TH2D* Jseedtime2VsEta, *Jseedtime2VsPhi;
+
 };
 
 struct Halogamma {
@@ -262,7 +266,9 @@ private:
    float vtxDx[MAXVTX],vtxDy[MAXVTX],vtxDz[MAXVTX];
   
    int   jetCM[MAXJET], jetNDau[MAXJET];
-   float jetCEF[MAXJET], jetNHF[MAXJET], jetCHEF[MAXJET], jetEta[MAXJET]; 
+   float jetCEF[MAXJET], jetNHF[MAXJET], jetCHEF[MAXJET], jetEta[MAXJET];
+   float jseedtime2[MAXJET], jseedtime1[MAXJET], jgammaE[MAXJET], jseedE[MAXJET];
+
 // HE Tagging stuff
    float HERho[MAXPHO], HETime[MAXPHO],HEGPhi[MAXPHO],HERadius[MAXPHO],HEEnergy[MAXPHO],HEdphi[MAXPHO];
      

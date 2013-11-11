@@ -14,7 +14,7 @@ std::string hname1[32];
 std::string hname2[32];
 //TFile *f = new TFile("TodayPhoton_Eta_Studies_DP_Trig_NoJetID.root","recreate");
 //TFile *f = new TFile("gmsb_180_DP_gammaTriggger.root","recreate");
-TFile *f = new TFile("Analysis_DPTrigger_Displaced_Photon_outputfile.root","recreate");
+TFile *f = new TFile("JetTiming_DPTrigger_Displaced_Photon_outputfile.root","recreate");
 
 TestGen::TestGen( string datacardfile ){
 
@@ -491,6 +491,14 @@ my.EEM_Untag_Halo_pho_metVstime = new TH2D("my.EEM_Untag_Halo_pho_metVstime","ME
 my.EEP_Untag_Halo_pho_metVstime = new TH2D("my.EEP_Untag_Halo_pho_metVstime","MET Vs Time, EE+, Untagable Halo",100, 0.0, 700, 500, -25.0, 50.0);
 
 
+//Jet Timing
+my.Jseedtime1= new TH1D("my.Jseedtime1", "Jet Time Error Check", 200, -50.0, 50.0);
+my.Jseedtime2= new TH1D("my.Jseedtime2", "Jet Time", 200, -50.0, 50.0);
+my.JseedE= new TH1D("my.JseedE", "Jet Seed Xtal in ECAL Energy", 200, -0.0, 500.0);
+my.JEcalEmEr= new TH1D("my.JEcalEmEr", "Jet Em Eenrgy", 200, -0.0, 500.0);
+
+my.Jseedtime2VsPhi = new TH2D("my.seedtime2VsPhi", "#phi_{PFJet} Vs Time(ns)",100, -3.5, 3.5, 500, -50.0, 50.0);
+my.Jseedtime2VsEta = new TH2D("my.seedtime2VsEta", "#eta_{PFJet} Vs Time(ns)",100, -3.5, 3.5, 500, -50.0, 50.0);
 } // End of Init Hist fuction
 
 
@@ -1771,9 +1779,36 @@ my.EEP_CSC_dphi_NIn_1ns->GetYaxis()->SetTitle("Event Number");
 my.EEP_CSC_dphi_NIn_1ns->Draw();
 my.EEP_CSC_dphi_NIn_1ns->Write();
 
+//Jet info
+my.Jseedtime1->GetXaxis()->SetTitle("Time(ns)");
+my.Jseedtime1->GetYaxis()->SetTitle("Event Number");
+my.Jseedtime1->Draw();
+my.Jseedtime1->Write();
 
+my.Jseedtime2->GetXaxis()->SetTitle("Time(ns)");
+my.Jseedtime2->GetYaxis()->SetTitle("Event Number");
+my.Jseedtime2->Draw();
+my.Jseedtime2->Write();
 
+my.JseedE->GetXaxis()->SetTitle("Energy(GeV)");
+my.JseedE->GetYaxis()->SetTitle("Event Number");
+my.JseedE->Draw();
+my.JseedE->Write();
 
+my.JEcalEmEr->GetXaxis()->SetTitle("Energy(GeV)");
+my.JEcalEmEr->GetYaxis()->SetTitle("Event Number");
+my.JEcalEmEr->Draw();
+my.JEcalEmEr->Write();
+
+my.Jseedtime2VsEta->GetXaxis()->SetTitle("#eta");
+my.Jseedtime2VsEta->GetYaxis()->SetTitle("Time(ns)");
+my.Jseedtime2VsEta->Draw();
+my.Jseedtime2VsEta->Write();
+
+my.Jseedtime2VsPhi->GetXaxis()->SetTitle("#phi");
+my.Jseedtime2VsPhi->GetYaxis()->SetTitle("Time(ns)");
+my.Jseedtime2VsPhi->Draw();
+my.Jseedtime2VsPhi->Write();
 
 
 my.phoTimeNegPhi_3WinEB->GetXaxis()->SetTitle("Time(ns)");
@@ -2712,6 +2747,13 @@ void TestGen::ReadTree( string dataName ) {
    tr->SetBranchAddress("cscdPhi",     cscdPhi); 
 //   tr->SetBranchAddress("nTrksSmallBeta",   &nTrksSmallBeta); 
 //   tr->SetBranchAddress("nHaloSegs",     &nHaloSegs ); 
+ 
+
+   tr->SetBranchAddress("jseedtime1",    jseedtime1 );
+   tr->SetBranchAddress("jseedtime2",    jseedtime2 );
+   tr->SetBranchAddress("juseedE",    jseedE );
+   tr->SetBranchAddress("jgammaE",    jgammaE );
+
    tr->SetBranchAddress("haloPhi",     &haloPhi);
    tr->SetBranchAddress("haloRho",     &haloRho );
    tr->SetBranchAddress("IscscHaloSeg_Tag",     &IscscHaloSeg_Tag);
@@ -2772,6 +2814,8 @@ void TestGen::ReadTree( string dataName ) {
         double max_gPt  = 0 ;
         int kmax = -1 ;
         int n_pho = 0; 
+         
+        int jmax  = -1 ; 
         
 	// Get Leading Jet Kinematics 
         double max_jPt = 0;
@@ -2800,9 +2844,9 @@ void TestGen::ReadTree( string dataName ) {
        // Aply  cut on sMin on max Pt Photon
        //if( sMinPho[kmax] < photonCuts[4]  ||  sMinPho[kmax] > photonCuts[5] ) continue ;
 
-       if ( max_gPt < photonCuts[1] ) continue ;
+     if ( max_gPt < photonCuts[1] ) continue ;
 
-       for ( int j = 0; j < nJets; j++){
+     for ( int j = 0; j < nJets; j++){
      TLorentzVector jp4_ = TLorentzVector(jetPx[j], jetPy[j], jetPz[j], jetE[j] ); 
        if( jp4_.Pt() < jetCuts[0] ) continue ; 
        // JetID Cuts
@@ -2812,6 +2856,7 @@ void TestGen::ReadTree( string dataName ) {
        if (jp4_.Pt() > max_jPt) {
          max_jPt = jp4_.Pt();
          j1p4    = jp4_;
+          jmax   =  j ; 
         }       
 
    } // End of Loop Over Njets                     
@@ -2883,6 +2928,17 @@ my.sMinorVsPU->Fill(totalNVtx,sMinPho[kmax]);
 my.phoCSCtime->Fill(cscTime[kmax]);
 my.pho_CSCdphi->Fill(cscdPhi[kmax]);
 my.phonBC->Fill(nBC[kmax]);
+
+
+
+// Jet timing
+my.Jseedtime1->Fill(jseedtime1[jmax]) ;
+my.Jseedtime2->Fill(jseedtime2[jmax]) ;
+my.JseedE->Fill(jseedE[jmax]) ;
+my.JEcalEmEr->Fill(jgammaE[jmax]) ;
+my.Jseedtime2VsEta->Fill(j1p4.Eta() , jseedtime2[jmax]) ;
+my.Jseedtime2VsPhi->Fill(j1p4.Phi() , jseedtime2[jmax]) ;
+
 
 // 2D Maps
 //EB and EE plots
