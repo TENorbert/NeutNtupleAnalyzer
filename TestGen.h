@@ -194,8 +194,12 @@ TH1D *EEP_Untag_Halo_pho_time,*EEP_Untag_Halo_pho_eta, *EEP_Untag_Halo_pho_phi, 
 
 TH2D *EEP_Untag_Halo_pho_metVstime;
 // Jet Timing properties
-TH1* Jseedtime1, *Jseedtime2, *JseedE, *JEcalEmEr;
-TH2D* Jseedtime2VsEta, *Jseedtime2VsPhi;
+TH1* Jseedtime1, *Jseedtime2, *JseedE, *JEcalEmEr, *JSClusdR, *JseedBCtime, *JWaveBCtime, *JnCrys, *Jnspike;
+TH2D* Jseedtime2VsEta, *Jseedtime2VsPhi, *JseedtimeVsEnergy;
+
+TH1D *JseedOOtChi2, *JseedtimeChi2;
+
+
 
 };
 
@@ -267,7 +271,9 @@ private:
   
    int   jetCM[MAXJET], jetNDau[MAXJET];
    float jetCEF[MAXJET], jetNHF[MAXJET], jetCHEF[MAXJET], jetEta[MAXJET];
-   float jseedtime2[MAXJET], jseedtime1[MAXJET], jgammaE[MAXJET], jseedE[MAXJET];
+   float jseedtime2[MAXJET], jseedtime1[MAXJET], jgammaE[MAXJET], jseedE[MAXJET], jdR[MAXJET], jseedBCtime[MAXJET], jWavetime[MAXJET];
+    int  jnXtals[MAXJET],jnspikes[MAXJET];
+   float  jtChi2[MAXJET], jseedOOtChi2[MAXJET],jseedChi2[MAXJET];
 
 // HE Tagging stuff
    float HERho[MAXPHO], HETime[MAXPHO],HEGPhi[MAXPHO],HERadius[MAXPHO],HEEnergy[MAXPHO],HEdphi[MAXPHO];

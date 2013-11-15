@@ -492,13 +492,22 @@ my.EEP_Untag_Halo_pho_metVstime = new TH2D("my.EEP_Untag_Halo_pho_metVstime","ME
 
 
 //Jet Timing
-my.Jseedtime1= new TH1D("my.Jseedtime1", "Jet Time Error Check", 200, -50.0, 50.0);
-my.Jseedtime2= new TH1D("my.Jseedtime2", "Jet Time", 200, -50.0, 50.0);
+my.Jseedtime1= new TH1D("my.Jseedtime1", "Jet SeedTime Cleaned", 200, -50.0, 50.0);
+my.Jseedtime2= new TH1D("my.Jseedtime2", "Jet SeedTime Extract", 200, -50.0, 50.0);
 my.JseedE= new TH1D("my.JseedE", "Jet Seed Xtal in ECAL Energy", 200, -0.0, 500.0);
 my.JEcalEmEr= new TH1D("my.JEcalEmEr", "Jet Em Eenrgy", 200, -0.0, 500.0);
 
 my.Jseedtime2VsPhi = new TH2D("my.seedtime2VsPhi", "#phi_{PFJet} Vs Time(ns)",100, -3.5, 3.5, 500, -50.0, 50.0);
 my.Jseedtime2VsEta = new TH2D("my.seedtime2VsEta", "#eta_{PFJet} Vs Time(ns)",100, -3.5, 3.5, 500, -50.0, 50.0);
+my.JSClusdR= new TH1D("my.JSClusdR", "JetSClus Matching #delta R", 200, 0.0, 10.0);
+my.JseedBCtime = new TH1D("my.JseedBCtime", "Error W. Ave.Time Seed BC", 200, -50.0, 50.0);
+my.JWaveBCtime = new TH1D("my.JWaveBCtime", "Error W. Ave.Time Seed BC I", 200, -50.0, 50.0);
+my.JnCrys = new TH1D("my.JnCrys", "NCrys in Seed BC", 50, 0.0, 50.0);
+my.Jnspike = new TH1D("my.Jnspike", "NCrys with SwissX > 0.98", 50, 0.0, 50.0);
+my.JseedtimeVsEnergy= new TH2D("my.JseedtimeVsEnergy", "Seed Time Vs Energy", 200, -50.0, 50.0, 200, 0.0, 1000.0);
+
+my.JseedOOtChi2= new TH1D("my.JseedOOChi2", "Seed Out-Of time Chi2", 200, -50.0, 50.0);
+my.JseedtimeChi2= new TH1D("my.JseedtimeChi2", "Seed time Chi2", 200, -50.0, 50.0);
 } // End of Init Hist fuction
 
 
@@ -1547,8 +1556,77 @@ my.EEM_Untag_Halo_pho_metVstime->GetYaxis()->SetTitle("Seed Time(ns)");
 my.EEM_Untag_Halo_pho_metVstime->Draw();
 my.EEM_Untag_Halo_pho_metVstime->Write();
 
+//Jet info
+my.Jseedtime1->GetXaxis()->SetTitle("Time(ns)");
+my.Jseedtime1->GetYaxis()->SetTitle("Event Number");
+my.Jseedtime1->Draw();
+my.Jseedtime1->Write();
+
+my.Jseedtime2->GetXaxis()->SetTitle("Time(ns)");
+my.Jseedtime2->GetYaxis()->SetTitle("Event Number");
+my.Jseedtime2->Draw();
+my.Jseedtime2->Write();
+
+my.JseedE->GetXaxis()->SetTitle("Energy(GeV)");
+my.JseedE->GetYaxis()->SetTitle("Event Number");
+my.JseedE->Draw();
+my.JseedE->Write();
+
+my.JSClusdR->GetXaxis()->SetTitle("#delta R");
+my.JSClusdR->GetYaxis()->SetTitle("Event Number");
+my.JSClusdR->Draw();
+my.JSClusdR->Write();
+
+my.JseedBCtime->GetXaxis()->SetTitle("Time[ns]");
+my.JseedBCtime->GetYaxis()->SetTitle("Event Number");
+my.JseedBCtime->Draw();
+my.JseedBCtime->Write();
+
+my.JWaveBCtime->GetXaxis()->SetTitle("Wave. Time[ns]");
+my.JWaveBCtime->GetYaxis()->SetTitle("Event Number");
+my.JWaveBCtime->Draw();
+my.JWaveBCtime->Write();
+
+my.JnCrys->GetXaxis()->SetTitle("NCrys");
+my.JnCrys->GetYaxis()->SetTitle("Event Number");
+my.JnCrys->Draw();
+my.JnCrys->Write();
+
+my.Jnspike->GetXaxis()->SetTitle("# Spikes");
+my.Jnspike->GetYaxis()->SetTitle("Event Number");
+my.Jnspike->Draw();
+my.Jnspike->Write();
 
 
+my.JEcalEmEr->GetXaxis()->SetTitle("Energy(GeV)");
+my.JEcalEmEr->GetYaxis()->SetTitle("Event Number");
+my.JEcalEmEr->Draw();
+my.JEcalEmEr->Write();
+
+my.Jseedtime2VsEta->GetXaxis()->SetTitle("#eta");
+my.Jseedtime2VsEta->GetYaxis()->SetTitle("Time(ns)");
+my.Jseedtime2VsEta->Draw();
+my.Jseedtime2VsEta->Write();
+
+my.Jseedtime2VsPhi->GetXaxis()->SetTitle("#phi");
+my.Jseedtime2VsPhi->GetYaxis()->SetTitle("Time(ns)");
+my.Jseedtime2VsPhi->Draw();
+my.Jseedtime2VsPhi->Write();
+
+my.JseedtimeVsEnergy->GetYaxis()->SetTitle("Seed Energy(GeV)");
+my.JseedtimeVsEnergy->GetXaxis()->SetTitle("Seed Time(ns)");
+my.JseedtimeVsEnergy->Draw();
+my.JseedtimeVsEnergy->Write();
+
+my.JseedtimeChi2->GetXaxis()->SetTitle("Seed Time {#chi}^{2}");
+my.JseedtimeChi2->GetYaxis()->SetTitle("Event Number");
+my.JseedtimeChi2->Draw();
+my.JseedtimeChi2->Write();
+
+my.JseedOOtChi2->GetXaxis()->SetTitle("Seed OO Time {#chi}^{2}");
+my.JseedOOtChi2->GetYaxis()->SetTitle("Event Number");
+my.JseedOOtChi2->Draw();
+my.JseedOOtChi2->Write();
 
 Dphoton = f->mkdir("BkgEst");
 Dphoton->cd();
@@ -1757,8 +1835,6 @@ my.EEP_pho_ncrys_In_Halo_Win->GetYaxis()->SetTitle("Event Number");
 my.EEP_pho_ncrys_In_Halo_Win->Draw();
 my.EEP_pho_ncrys_In_Halo_Win->Write();
 
-
-
 my.EEM_CSC_dphi_In_1ns->GetXaxis()->SetTitle("#delta#phi(CSC Seg,#gamma");
 my.EEM_CSC_dphi_In_1ns->GetYaxis()->SetTitle("Event Number");
 my.EEM_CSC_dphi_In_1ns->Draw();
@@ -1779,36 +1855,8 @@ my.EEP_CSC_dphi_NIn_1ns->GetYaxis()->SetTitle("Event Number");
 my.EEP_CSC_dphi_NIn_1ns->Draw();
 my.EEP_CSC_dphi_NIn_1ns->Write();
 
-//Jet info
-my.Jseedtime1->GetXaxis()->SetTitle("Time(ns)");
-my.Jseedtime1->GetYaxis()->SetTitle("Event Number");
-my.Jseedtime1->Draw();
-my.Jseedtime1->Write();
 
-my.Jseedtime2->GetXaxis()->SetTitle("Time(ns)");
-my.Jseedtime2->GetYaxis()->SetTitle("Event Number");
-my.Jseedtime2->Draw();
-my.Jseedtime2->Write();
 
-my.JseedE->GetXaxis()->SetTitle("Energy(GeV)");
-my.JseedE->GetYaxis()->SetTitle("Event Number");
-my.JseedE->Draw();
-my.JseedE->Write();
-
-my.JEcalEmEr->GetXaxis()->SetTitle("Energy(GeV)");
-my.JEcalEmEr->GetYaxis()->SetTitle("Event Number");
-my.JEcalEmEr->Draw();
-my.JEcalEmEr->Write();
-
-my.Jseedtime2VsEta->GetXaxis()->SetTitle("#eta");
-my.Jseedtime2VsEta->GetYaxis()->SetTitle("Time(ns)");
-my.Jseedtime2VsEta->Draw();
-my.Jseedtime2VsEta->Write();
-
-my.Jseedtime2VsPhi->GetXaxis()->SetTitle("#phi");
-my.Jseedtime2VsPhi->GetYaxis()->SetTitle("Time(ns)");
-my.Jseedtime2VsPhi->Draw();
-my.Jseedtime2VsPhi->Write();
 
 
 my.phoTimeNegPhi_3WinEB->GetXaxis()->SetTitle("Time(ns)");
@@ -2704,16 +2752,18 @@ void TestGen::ReadTree( string dataName ) {
 //   tr->SetBranchAddress("jetCHEF",  jetCHEF);
 //   tr->SetBranchAddress("jetEta",  jetEta);
      
-     /* HE stuff */
+/*     
+ ///// HE stuff ////
    tr->SetBranchAddress("HERho",   HERho);
    tr->SetBranchAddress("HETime",  HETime);
    tr->SetBranchAddress("HEGPhi",  HEGPhi);
    tr->SetBranchAddress("HERadius",  HERadius);
    tr->SetBranchAddress("HEEnergy",   HEEnergy);
-   tr->SetBranchAddress("HEdphi",  HEdphi);
+   tr->SetBranchAddress("HEdphi",  HEdphi); 
 // tr->SetBranchAddress("HcalIso",    HcalIso);
 // tr->SetBranchAddress("phoEta",     phoEta );
 // tr->SetBranchAddress("phoPhi",      phoPhi );
+*/
    tr->SetBranchAddress("sMinPho",       sMinPho );
    tr->SetBranchAddress("sMajPho",       sMajPho );
    tr->SetBranchAddress("jetE",           jetE );
@@ -2751,8 +2801,13 @@ void TestGen::ReadTree( string dataName ) {
 
    tr->SetBranchAddress("jseedtime1",    jseedtime1 );
    tr->SetBranchAddress("jseedtime2",    jseedtime2 );
-   tr->SetBranchAddress("juseedE",    jseedE );
+   tr->SetBranchAddress("jseedE",    jseedE );
    tr->SetBranchAddress("jgammaE",    jgammaE );
+   tr->SetBranchAddress("jdR",        jdR );
+   tr->SetBranchAddress("jseedBCtime",        jseedBCtime);
+   tr->SetBranchAddress("jWavetime",        jWavetime);
+   tr->SetBranchAddress("jnXtals",        jnXtals);
+   tr->SetBranchAddress("jnspikes",        jnspikes);
 
    tr->SetBranchAddress("haloPhi",     &haloPhi);
    tr->SetBranchAddress("haloRho",     &haloRho );
@@ -2774,57 +2829,57 @@ void TestGen::ReadTree( string dataName ) {
    tr->SetBranchAddress("pdgId",       pdgId );
    tr->SetBranchAddress("momId",       momId );
 
-// Initialise Histograms
-   InitHist();
+	// Initialise Histograms
+     	InitHist();
 
-// Get Events
-   int totalN = tr->GetEntries();
-   cout<<" from  "<< dataName <<" total entries = "<< totalN <<" Process "<< ProcessEvents <<endl;
+    	// Get Events
+  	 int totalN = tr->GetEntries();
+   	cout<<" from  "<< dataName <<" total entries = "<< totalN <<" Process "<< ProcessEvents <<endl;
 
-   int nEvt = 0 ;
-   cout << "Event processing Starts" << endl;
+   	int nEvt = 0 ;
+  	 cout << "Event processing Starts" << endl;
 // Loop  over events
-    for ( int i=0; i< totalN ; i++ ) {
+for ( int i=0; i< totalN ; i++ ) {
 
-    if ( ProcessEvents > 0 && i > ( ProcessEvents - 1 ) ) break;
+ 	   if ( ProcessEvents > 0 && i > ( ProcessEvents - 1 ) ) break;
                 tr->GetEntry( i );
  
 
-          // Select only DisplacedPhO Triggered Events
-    bool passTrig = false  ;
-    for ( size_t j = 0 ; j< trigCut.size(); j++ ) {
-        if ( triggered == trigCut[j]) passTrig = true ;
-    }
+        	  // Select only DisplacedPhO Triggered Events
+ 		bool passTrig = false  ;
+    		for ( size_t j = 0 ; j< trigCut.size(); j++ ) {
+   		     if ( triggered == trigCut[j]) passTrig = true ;
+   		 }		
      
-        if ( !passTrig ) continue ; 
+        	     if ( !passTrig ) continue ; 
 
-         // Apply MET Selection
-        if (met < metCut[0]) continue ;
-        nEvt++;
-        double metratio = (metPy ? metPx/metPy : 0);
-        //   if(metPx == 0){ metratio = 0;} else { metratio = metPy ? metPx/metPy : 0 ;} 
-        double thetamet = TMath::ATan(metratio); // Gravitino direction for MET Vector!
-        double thetapho = 0;  // Photon angle
-        double phoeta = 0;    // Photon eta
-        double pho_gravtheta = 0; // dxn of Grav wrt to photon
-        float  massNt = 0;  // Neutralino  transverse Mass 
+        		 // Apply MET Selection
+     		     if (met < metCut[0]) continue ;
+       		     nEvt++;
+                     double metratio = (metPy ? metPx/metPy : 0);
+       		     // if(metPx == 0){ metratio = 0;} else { metratio = metPy ? metPx/metPy : 0 ;} 
+      		     double thetamet = TMath::ATan(metratio); // Gravitino direction for MET Vector!
+        	     double thetapho = 0;  // Photon angle
+                     double phoeta = 0;    // Photon eta
+        	     double pho_gravtheta = 0; // dxn of Grav wrt to photon
+        	     float  massNt = 0;  // Neutralino  transverse Mass 
 
-        //def photon/jet/halo 4-Vectors
-        TLorentzVector g1P4(0,0,0,0),  j1p4(0,0,0,0), gHP4(0,0,0,0);  
-        double max_gPt  = 0 ;
-        int kmax = -1 ;
-        int n_pho = 0; 
-         
-        int jmax  = -1 ; 
+       		    //def photon/jet/halo 4-Vectors
+        	    TLorentzVector g1P4(0,0,0,0),  j1p4(0,0,0,0), gHP4(0,0,0,0);  
+                    double max_gPt  = 0 ;
+        	    int kmax = -1 ;
+                    int n_pho = 0; 
+                    int jmax  = -1 ; 
         
-	// Get Leading Jet Kinematics 
-        double max_jPt = 0;
-        int    n_jets = 0 ;
-        // Loop and select Max Pt Photon
-        for ( int k=0; k< nPhotons; k++) {
-     TLorentzVector gP4_ = TLorentzVector( phoPx[k], phoPy[k], phoPz[k], phoE[k] ) ;
+           	    // Get Leading Jet Kinematics 
+        	    double max_jPt = 0;
+                    int    n_jets = 0 ;
+   
+  	 // Loop and select Max Pt Photon
+   	for ( int k=0; k< nPhotons; k++) {
+     	TLorentzVector gP4_ = TLorentzVector( phoPx[k], phoPy[k], phoPz[k], phoE[k] ) ;
         if ( gP4_.Pt() < photonCuts[0] ) continue ;
-        if ( fabs(gP4_.Eta()) > photonCuts[1] ) continue ;
+        if ( fabs(gP4_.Eta()) > photonCuts[2] ) continue ;
 
         // Include PhotonIso here!
         
@@ -2844,215 +2899,222 @@ void TestGen::ReadTree( string dataName ) {
        // Aply  cut on sMin on max Pt Photon
        //if( sMinPho[kmax] < photonCuts[4]  ||  sMinPho[kmax] > photonCuts[5] ) continue ;
 
-     if ( max_gPt < photonCuts[1] ) continue ;
+        if ( max_gPt < photonCuts[1] ) continue ;
 
-     for ( int j = 0; j < nJets; j++){
-     TLorentzVector jp4_ = TLorentzVector(jetPx[j], jetPy[j], jetPz[j], jetE[j] ); 
-       if( jp4_.Pt() < jetCuts[0] ) continue ; 
-       // JetID Cuts
+     	// Loop on Jets
+     	for ( int j = 0; j < nJets; j++){
+    	 TLorentzVector jp4_ = TLorentzVector(jetPx[j], jetPy[j], jetPz[j], jetE[j] ); 
+      		 if( jp4_.Pt() < jetCuts[0] ) continue ; 
+      		 // JetID Cuts
  
-       n_jets++ ;
-       // apply Jet Pt cuts
-       if (jp4_.Pt() > max_jPt) {
-         max_jPt = jp4_.Pt();
-         j1p4    = jp4_;
-          jmax   =  j ; 
-        }       
+	       	 n_jets++ ;
+       		// apply Jet Pt cuts
+       		if (jp4_.Pt() > max_jPt) {
+         	    max_jPt = jp4_.Pt();
+         	    j1p4    = jp4_;
+          	    jmax   =  j ; 
+                 }       
 
-   } // End of Loop Over Njets                     
-        cout << " Number of Jets " << n_jets << endl;
+  	     } // End of Loop Over Njets                     
+            
+             cout << " Number of Jets " << n_jets << endl;
        
-       if ( ( n_jets < jetCuts[1] ) ||  ( n_jets > jetCuts[2] ) ) continue ;
+            if ( ( n_jets < jetCuts[1] ) ||  ( n_jets > jetCuts[2] ) ) continue ;
           
-       // Halo Rejection here!
-       // if (( sMajPho[kmax] > HaloCuts[0]) && ( cscdPhi[kmax] < HaloCuts[1] )) continue;
+      	 	 // Halo Rejection here!
+       		// if (( sMajPho[kmax] > HaloCuts[0]) && ( cscdPhi[kmax] < HaloCuts[1] )) continue;
+	
+       		//if ( cscdPhi[kmax] < HaloCuts[1] ) continue;     /* If using only csc for tagging */
 
-       //if ( cscdPhi[kmax] < HaloCuts[1] ) continue;     /* If using only csc for tagging */
+       		double tratio =( (HETime[kmax]== 0) ? 0 : fabs(seedTime[kmax]/HETime[kmax]) );
+       		//if ( tratio > HaloCuts[2] ) continue; /* Using HE Time for Tagging Halo */
+       		//  if ( fabs(HETime[kmax]) > HaloCuts[2] ) continue; /* Using HE Time for Tagging Halo */
+     		//  double dRzpV=TMath::Sqrt(vtxDx[kmax]*vtxDx[kmax] + vtxDy[kmax]*vtxDy[kmax] + vtxDz[kmax]*vtxDz[kmax]);
+       		double dRzpV=TMath::Sqrt(vtxX[kmax]*vtxX[kmax] + vtxY[kmax]*vtxY[kmax] + vtxZ[kmax]*vtxZ[kmax]);
+ 		  //    double dRhopV=TMath::Sqrt(vtxDx[kmax]*vtxDx[kmax] + vtxDy[kmax]*vtxDy[kmax]);
+       		double dRhopV=TMath::Sqrt(vtxX[kmax]*vtxX[kmax] + vtxY[kmax]*vtxY[kmax]);
 
-       double tratio =( (HETime[kmax]== 0) ? 0 : fabs(seedTime[kmax]/HETime[kmax]) );
-       //if ( tratio > HaloCuts[2] ) continue; /* Using HE Time for Tagging Halo */
-       //  if ( fabs(HETime[kmax]) > HaloCuts[2] ) continue; /* Using HE Time for Tagging Halo */
-     //  double dRzpV=TMath::Sqrt(vtxDx[kmax]*vtxDx[kmax] + vtxDy[kmax]*vtxDy[kmax] + vtxDz[kmax]*vtxDz[kmax]);
-       double dRzpV=TMath::Sqrt(vtxX[kmax]*vtxX[kmax] + vtxY[kmax]*vtxY[kmax] + vtxZ[kmax]*vtxZ[kmax]);
-   //    double dRhopV=TMath::Sqrt(vtxDx[kmax]*vtxDx[kmax] + vtxDy[kmax]*vtxDy[kmax]);
-       double dRhopV=TMath::Sqrt(vtxX[kmax]*vtxX[kmax] + vtxY[kmax]*vtxY[kmax]);
-
-       // Bug checking
-       if( n_jets == 0) { cout << "le 0-Jets Events a de Photon variables " << g1P4.Pt() << " Eta " << g1P4.Eta() 
+      		 // Bug checking
+      	        if( n_jets == 0) { cout << "le 0-Jets Events a de Photon variables " << g1P4.Pt() << " Eta " << g1P4.Eta() 
 << " Phi " << g1P4.Phi() << " Energy " << g1P4.E() << " Numb of Photons = " << n_pho <<  endl; }
 
-// Apply Crystals Selection
-//
-//if( (nXtals[kmax] < 6) || (nXtals[kmax] > 22) ) continue ;
-//if ( seedSwissX[kmax] > photonCuts[9] ) continue ;   // Apply SwissX cuts
-//Begin Filling hists
-my.photimeVsPU->Fill(totalNVtx,seedTime[kmax]);
-my.h_Time->Fill( seedTime[kmax] );
-my.WAveSeedBCphotime->Fill( aveTime1[kmax] );
-my.AveSCphotime->Fill( aveTime[kmax] );
-my.ph_smin->Fill(sMinPho[kmax] );
-my.ph_smaj ->Fill(sMajPho[kmax] );
-my.ph_HoverE ->Fill(phoHoverE[kmax]);
-//Eta Dependence studies
-my.phoTimeVsEta->Fill( g1P4.Eta(),seedTime[kmax] );  
-my.phoTimeVsE->Fill ( g1P4.E(), seedTime[kmax] ) ;
-my.phoTimeVsPhi->Fill( g1P4.Phi(), seedTime[kmax] ) ; 
-my.phoetaVsphi->Fill(g1P4.Eta(), g1P4.Phi());  // gamma eta vs phi
-my.h_g1Pt->Fill( max_gPt );
-my.ph_e ->Fill( g1P4.E() );
-my.ph_z ->Fill( g1P4.Z());
-phoeta = g1P4.Eta();
-my.ph_eta->Fill(g1P4.Eta());
-my.ph_phi->Fill(g1P4.Phi());
-thetapho = 2*TMath::ATan(TMath::Exp(-phoeta));  // Photon Angle
-pho_gravtheta = thetapho - thetamet;
-my.phomet_thetadiff->Fill( (g1P4.Eta()-(-TMath::Log(TMath::Tan(thetamet/2))))); 
-massNt = TMath::Sqrt(2*max_gPt*met*(1 - TMath::Cos(pho_gravtheta)) );
-my.phomet_thetadiff->Fill(pho_gravtheta);
-my.npho ->Fill(n_pho); 
-my.pho_angle ->Fill(thetapho);
-my.pu_vtx->Fill(totalNVtx);
-// Isolation Variabs          
-my.pho_EcalIso->Fill(phoEcalIso[kmax]);
-my.pho_HcalIso->Fill(phoHcalIso[kmax]);
-// my.hcal_Iso->Fill(HcalIso[kmax]);
-my.pho_TrkIso->Fill(phoTrkIso[kmax]);
+  		// Apply Crystals Selection
+		//if( (nXtals[kmax] < 6) || (nXtals[kmax] > 22) ) continue ;
+		//if ( seedSwissX[kmax] > photonCuts[9] ) continue ;   // Apply SwissX cuts
+		//Begin Filling hists
+		my.photimeVsPU->Fill(totalNVtx,seedTime[kmax]);
+		my.h_Time->Fill( seedTime[kmax] );
+		my.WAveSeedBCphotime->Fill( aveTime1[kmax] );
+		my.AveSCphotime->Fill( aveTime[kmax] );
+		my.ph_smin->Fill(sMinPho[kmax] );
+		my.ph_smaj ->Fill(sMajPho[kmax] );
+		my.ph_HoverE ->Fill(phoHoverE[kmax]);
+		//Eta Dependence studies
+		my.phoTimeVsEta->Fill( g1P4.Eta(),seedTime[kmax] );  
+		my.phoTimeVsE->Fill ( g1P4.E(), seedTime[kmax] ) ;
+		my.phoTimeVsPhi->Fill( g1P4.Phi(), seedTime[kmax] ) ; 
+		my.phoetaVsphi->Fill(g1P4.Eta(), g1P4.Phi());  // gamma eta vs phi
+		my.h_g1Pt->Fill( max_gPt );
+		my.ph_e ->Fill( g1P4.E() );
+		my.ph_z ->Fill( g1P4.Z());
+		phoeta = g1P4.Eta();
+		my.ph_eta->Fill(g1P4.Eta());
+		my.ph_phi->Fill(g1P4.Phi());
+		thetapho = 2*TMath::ATan(TMath::Exp(-phoeta));  // Photon Angle
+		pho_gravtheta = thetapho - thetamet;
+		my.phomet_thetadiff->Fill( (g1P4.Eta()-(-TMath::Log(TMath::Tan(thetamet/2))))); 
+		massNt = TMath::Sqrt(2*max_gPt*met*(1 - TMath::Cos(pho_gravtheta)) );
+		my.phomet_thetadiff->Fill(pho_gravtheta);
+		my.npho ->Fill(n_pho); 
+		my.pho_angle ->Fill(thetapho);
+		my.pu_vtx->Fill(totalNVtx);
+		// Isolation Variabs          
+		my.pho_EcalIso->Fill(phoEcalIso[kmax]);
+		my.pho_HcalIso->Fill(phoHcalIso[kmax]);
+		// my.hcal_Iso->Fill(HcalIso[kmax]);
+		my.pho_TrkIso->Fill(phoTrkIso[kmax]);
+		my.pho_Ecal_IsoVsPU->Fill(totalNVtx,phoEcalIso[kmax]);
+		my.pho_Trk_IsoVsPU->Fill(totalNVtx,phoTrkIso[kmax]);
+		my.pho_Hcal_IsoVsPU->Fill(totalNVtx, phoHcalIso[kmax]);
+		// my.Hcal_IsoVsPU->Fill(totalNVtx,HcalIso[kmax]);
+		my.sMinorVsPU->Fill(totalNVtx,sMinPho[kmax]);
 
-my.pho_Ecal_IsoVsPU->Fill(totalNVtx,phoEcalIso[kmax]);
-my.pho_Trk_IsoVsPU->Fill(totalNVtx,phoTrkIso[kmax]);
-my.pho_Hcal_IsoVsPU->Fill(totalNVtx, phoHcalIso[kmax]);
-// my.Hcal_IsoVsPU->Fill(totalNVtx,HcalIso[kmax]);
-my.sMinorVsPU->Fill(totalNVtx,sMinPho[kmax]);
-
-// Fill Photon CSC related Infors
-my.phoCSCtime->Fill(cscTime[kmax]);
-my.pho_CSCdphi->Fill(cscdPhi[kmax]);
-my.phonBC->Fill(nBC[kmax]);
+		// Fill Photon CSC related Infors
+		my.phoCSCtime->Fill(cscTime[kmax]);
+		my.pho_CSCdphi->Fill(cscdPhi[kmax]);
+		my.phonBC->Fill(nBC[kmax]);
 
 
 
-// Jet timing
-my.Jseedtime1->Fill(jseedtime1[jmax]) ;
-my.Jseedtime2->Fill(jseedtime2[jmax]) ;
-my.JseedE->Fill(jseedE[jmax]) ;
-my.JEcalEmEr->Fill(jgammaE[jmax]) ;
-my.Jseedtime2VsEta->Fill(j1p4.Eta() , jseedtime2[jmax]) ;
-my.Jseedtime2VsPhi->Fill(j1p4.Phi() , jseedtime2[jmax]) ;
+		// Jet timing
+		my.Jseedtime1->Fill(jseedtime1[jmax]) ;
+		my.Jseedtime2->Fill(jseedtime2[jmax]) ;
+		my.JseedE->Fill(jseedE[jmax]) ;
+		my.JSClusdR->Fill(jdR[jmax]) ;
+		my.JseedBCtime->Fill(jseedBCtime[jmax]) ;
+		my.JWaveBCtime->Fill(jWavetime[jmax]) ;
+		my.JnCrys->Fill(jnXtals[jmax]) ;
+		my.Jnspike->Fill(jnspikes[jmax]) ;
+		my.JEcalEmEr->Fill(jgammaE[jmax]) ;
+		my.Jseedtime2VsEta->Fill(j1p4.Eta() , jseedtime2[jmax]) ;
+		my.Jseedtime2VsPhi->Fill(j1p4.Phi() , jseedtime2[jmax]) ;
+		my.JseedtimeVsEnergy->Fill( jseedtime2[jmax],jseedE[jmax] ) ;                my.JseedtimeChi2->Fill( jseedChi2[jmax] ) ;
+                my.JseedOOtChi2->Fill ( jseedOOtChi2[jmax] ) ;
 
 
-// 2D Maps
-//EB and EE plots
-if( fabs(g1P4.Eta()) < 1.479 ) {
+		// 2D Maps
+		//EB and EE plots
+		if( fabs(g1P4.Eta()) < 1.479 ) {
 
-//Check different Phi windows For any Phi Assym
-if( fabs(g1P4.Phi()) < 0.5 ) {
-my.phoTimePhi_ZeroWinEB->Fill(seedTime[kmax]); }
+		//Check different Phi windows For any Phi Assym
+		if( fabs(g1P4.Phi()) < 0.5 ) {
+		my.phoTimePhi_ZeroWinEB->Fill(seedTime[kmax]); }
 
-if( (g1P4.Phi() < -2.0 ) && (g1P4.Phi() > -3.0) ) {
-my.phoTimeNegPhi_3WinEB->Fill(seedTime[kmax]); }
+		if( (g1P4.Phi() < -2.0 ) && (g1P4.Phi() > -3.0) ) {
+		my.phoTimeNegPhi_3WinEB->Fill(seedTime[kmax]); }
 
-if( (g1P4.Phi() > 2.0 ) && (g1P4.Phi() < 3.0) ) {
-my.phoTimePosPhi_3WinEB->Fill(seedTime[kmax]); }
-
-
-//if( fabs(g1P4.Eta()) < 3.0 ) {
-
-//Slice in Time study////
-
-for( int ii=0; ii<32; ii++) {
-
-   if((seedTime[kmax] >= Time_Array[ii]) && (seedTime[kmax] < Time_Array[ii+1]) ){ 
-    my.cscdphiInTimeSlice[ii]->Fill(cscdPhi[kmax]);
-    my.NCrysInTimeSlice[ii]->Fill(nXtals[kmax]);
-    }
-     cout <<"Time slice\t" << Time_Array[ii] << "  has CSCdPhi \t" << cscdPhi[kmax] << "  and NCrys\t" << nXtals[kmax] << endl;
-}   
-     if ( n_jets >= jetCuts[1] ){ // Temporal remove n number of jet events
-         my.pho_timeVsCSCdphi->Fill(cscdPhi[kmax], seedTime[kmax]);
-         my.phoEtaVsCSCdphi->Fill(cscdPhi[kmax], g1P4.Eta());
-         my.phoPhiVsCSCdphi->Fill(cscdPhi[kmax], g1P4.Phi());
-         my.MetVsCSCdphi->Fill(cscdPhi[kmax], met);
-         my.phoPtVsCSCdphi->Fill(cscdPhi[kmax], max_gPt);
-         my.pho_ptVscscdphiEB->Fill(cscdPhi[kmax], max_gPt);
-         my.phoEtaVsNCrys->Fill( nXtals[kmax], g1P4.Eta());
-         my.phoPhiVsNCrys->Fill( nXtals[kmax], g1P4.Phi());
-         my.MetVsNCrys->Fill( nXtals[kmax], met);
-         my.phoPtVsNCrys->Fill( nXtals[kmax], max_gPt);
-
-         my.phoTimeVsNCrys->Fill(nXtals[kmax], seedTime[kmax]);
-         my.phoTimeVsPt->Fill(max_gPt, seedTime[kmax]);
-         my.phoTimeVsMet->Fill(met, seedTime[kmax]);
-         my.phoPtVsMet->Fill( met, max_gPt);
-         my.NCrysVsCSCdphi->Fill(cscdPhi[kmax], nXtals[kmax]);
-       }
+		if( (g1P4.Phi() > 2.0 ) && (g1P4.Phi() < 3.0) ) {
+		my.phoTimePosPhi_3WinEB->Fill(seedTime[kmax]); }
 
 
-         // EB Bkg ALL gamma variables
-         my.eta_gVstimeEB->Fill(g1P4.Eta(), seedTime[kmax]);
-         my.n_gEB->Fill(n_pho);
-         my.n_jEB->Fill(n_jets);
-         my.g_nCrysEB->Fill( nXtals[kmax]);
-         my.g_timeEB->Fill(seedTime[kmax]);
-         my.g_cscdphiEB->Fill(cscdPhi[kmax]);
-         my.g_ptEB->Fill(max_gPt);
-         my.g_metEB->Fill(met);
+		//if( fabs(g1P4.Eta()) < 3.0 ) {
 
-         // Spike & Halo regs
-        if( ((seedTime[kmax] >= -15.1)  && (seedTime[kmax] <= -7.1)) && ( (fabs(g1P4.Phi()) >= 0.45) && (fabs(g1P4.Phi()) <= 2.6 ) ) ) {  
-//           if( cscdPhi[kmax] < 0.035) continue;
-           my.eta_spkVstimeEB->Fill(g1P4.Eta(), seedTime[kmax]);
-           my.n_spkEB->Fill(n_pho);
-           my.n_jspkEB->Fill(n_jets);
-           my.spk_nCrysEB->Fill(nXtals[kmax]);
-           my.spk_timeEB->Fill(seedTime[kmax]);
-           my.spk_cscdphiEB->Fill(cscdPhi[kmax]);
-           my.spk_ptEB->Fill(max_gPt);
-           my.spk_metEB->Fill(met);
+		//Slice in Time study////
 
-          } 
-          // pure Halo Reg
-//	if( ( (fabs(g1P4.Phi()) <= 3.0 ) && (fabs(g1P4.Phi()) >= 2.6) ) || (fabs(g1P4.Phi()) <= 0.43 )  ){
-	if( ( ((fabs(g1P4.Phi()) <= 3.0 ) && (fabs(g1P4.Phi()) >= 2.6) ) && ( (seedTime[kmax] >= -9.1) && (seedTime[kmax] <= -2.1) )) ||
-	( ((fabs(g1P4.Phi()) <= 3.0 ) && (fabs(g1P4.Phi()) >= 2.6) ) && ( (seedTime[kmax] >= 2.9) && (seedTime[kmax] <= 23.0) ))  || 
-	( ((fabs(g1P4.Phi()) <= 3.0 ) && (fabs(g1P4.Phi()) >= 2.6) ) && ( (seedTime[kmax] >= -9.1) && (seedTime[kmax] <= -2.1) )) ||
-	( ((fabs(g1P4.Phi()) <= 0.43 )) && ( (seedTime[kmax] >= -9.1) && (seedTime[kmax] <= -2.1) )) ||
-	( ((fabs(g1P4.Phi()) <= 0.43) ) && ( (seedTime[kmax] >= 2.9) && (seedTime[kmax] <= 23.0)) ) 	
-	){
+	for( int ii=0; ii<32; ii++) {
 
-           my.eta_hVstimeEB->Fill(g1P4.Eta(), seedTime[kmax]);
-           my.n_hEB->Fill(n_pho);
-           my.n_jhEB->Fill(n_jets);
-           my.h_nCrysEB->Fill(nXtals[kmax]);
-           my.h_timeEB->Fill(seedTime[kmax]);
-           my.h_cscdphiEB->Fill(cscdPhi[kmax]);
-           my.h_ptEB->Fill(max_gPt);
-           my.h_metEB->Fill(met);
-          } 
+  		 if((seedTime[kmax] >= Time_Array[ii]) && (seedTime[kmax] < Time_Array[ii+1]) ){ 
+    		 my.cscdphiInTimeSlice[ii]->Fill(cscdPhi[kmax]);
+	         my.NCrysInTimeSlice[ii]->Fill(nXtals[kmax]);
+                 }
+     		cout <<"Time slice\t" << Time_Array[ii] << "  has CSCdPhi \t" << cscdPhi[kmax] << "  and NCrys\t" << nXtals[kmax] << endl;
+           }   
+     	
+    		if ( n_jets >= jetCuts[1] ){ // Temporal remove n number of jet events
+         	my.pho_timeVsCSCdphi->Fill(cscdPhi[kmax], seedTime[kmax]);
+         	my.phoEtaVsCSCdphi->Fill(cscdPhi[kmax], g1P4.Eta());
+         	my.phoPhiVsCSCdphi->Fill(cscdPhi[kmax], g1P4.Phi());
+                my.MetVsCSCdphi->Fill(cscdPhi[kmax], met);
+                my.phoPtVsCSCdphi->Fill(cscdPhi[kmax], max_gPt);
+                my.pho_ptVscscdphiEB->Fill(cscdPhi[kmax], max_gPt);
+                my.phoEtaVsNCrys->Fill( nXtals[kmax], g1P4.Eta());
+                my.phoPhiVsNCrys->Fill( nXtals[kmax], g1P4.Phi());
+                my.MetVsNCrys->Fill( nXtals[kmax], met);
+                my.phoPtVsNCrys->Fill( nXtals[kmax], max_gPt);
+                my.phoTimeVsNCrys->Fill(nXtals[kmax], seedTime[kmax]);
+                my.phoTimeVsPt->Fill(max_gPt, seedTime[kmax]);
+                my.phoTimeVsMet->Fill(met, seedTime[kmax]);
+                my.phoPtVsMet->Fill( met, max_gPt);
+                my.NCrysVsCSCdphi->Fill(cscdPhi[kmax], nXtals[kmax]);
+                }
 
-//Estimate of Spike in Photon Region
-//
-        if( (fabs(seedTime[kmax]) < 1.9) && ( (fabs(g1P4.Phi()) >= 0.5) && (fabs(g1P4.Phi()) <= 2.6 ) ) ) {  
-           my.eta_spkInphoVstimeEB->Fill(g1P4.Eta(), seedTime[kmax]);
-           my.n_spkInphoEB->Fill(n_pho);
-           my.n_jspkInphoEB->Fill(n_jets);
-           my.spkInpho_nCrysEB->Fill(nXtals[kmax]);
-           my.spkInpho_timeEB->Fill(seedTime[kmax]);
-           my.spkInpho_cscdphiEB->Fill(cscdPhi[kmax]);
-           my.spkInpho_ptEB->Fill(max_gPt);
-           my.spkInpho_metEB->Fill(met);
-          } 
+
+               	// EB Bkg ALL gamma variables
+         	my.eta_gVstimeEB->Fill(g1P4.Eta(), seedTime[kmax]);
+        	my.n_gEB->Fill(n_pho);
+        	my.n_jEB->Fill(n_jets);
+                my.g_nCrysEB->Fill( nXtals[kmax]);
+                my.g_timeEB->Fill(seedTime[kmax]);
+                my.g_cscdphiEB->Fill(cscdPhi[kmax]);
+                my.g_ptEB->Fill(max_gPt);
+                my.g_metEB->Fill(met);
+
+       		  // Spike & Halo regs
+        	if( ((seedTime[kmax] >= -15.1)  && (seedTime[kmax] <= -7.1)) && ( (fabs(g1P4.Phi()) >= 0.45) && (fabs(g1P4.Phi()) <= 2.6 ) ) ) {  
+//           	if( cscdPhi[kmax] < 0.035) continue;
+         	  my.eta_spkVstimeEB->Fill(g1P4.Eta(), seedTime[kmax]);
+        	  my.n_spkEB->Fill(n_pho);
+          	  my.n_jspkEB->Fill(n_jets);
+                  my.spk_nCrysEB->Fill(nXtals[kmax]);
+                  my.spk_timeEB->Fill(seedTime[kmax]);
+                  my.spk_cscdphiEB->Fill(cscdPhi[kmax]);
+                  my.spk_ptEB->Fill(max_gPt);
+                  my.spk_metEB->Fill(met);
+
+                 } 
+         	// pure Halo Reg
+	//	if( ( (fabs(g1P4.Phi()) <= 3.0 ) && (fabs(g1P4.Phi()) >= 2.6) ) || (fabs(g1P4.Phi()) <= 0.43 )  ){
+		if( ( ((fabs(g1P4.Phi()) <= 3.0 ) && (fabs(g1P4.Phi()) >= 2.6) ) && ( (seedTime[kmax] >= -9.1) && (seedTime[kmax] <= -2.1) )) ||
+		( ((fabs(g1P4.Phi()) <= 3.0 ) && (fabs(g1P4.Phi()) >= 2.6) ) && ( (seedTime[kmax] >= 2.9) && (seedTime[kmax] <= 23.0) ))  || 
+		( ((fabs(g1P4.Phi()) <= 3.0 ) && (fabs(g1P4.Phi()) >= 2.6) ) && ( (seedTime[kmax] >= -9.1) && (seedTime[kmax] <= -2.1) )) ||
+		( ((fabs(g1P4.Phi()) <= 0.43 )) && ( (seedTime[kmax] >= -9.1) && (seedTime[kmax] <= -2.1) )) ||
+		( ((fabs(g1P4.Phi()) <= 0.43) ) && ( (seedTime[kmax] >= 2.9) && (seedTime[kmax] <= 23.0)) ) 	
+	)	{
+
+           	my.eta_hVstimeEB->Fill(g1P4.Eta(), seedTime[kmax]);
+          	my.n_hEB->Fill(n_pho);
+           	my.n_jhEB->Fill(n_jets);
+          	my.h_nCrysEB->Fill(nXtals[kmax]);
+           	my.h_timeEB->Fill(seedTime[kmax]);
+           	my.h_cscdphiEB->Fill(cscdPhi[kmax]);
+           	my.h_ptEB->Fill(max_gPt);
+          	my.h_metEB->Fill(met);
+         	}	 
+
+		//Estimate of Spike in Photon Region
+
+	        if( (fabs(seedTime[kmax]) < 1.9) && ( (fabs(g1P4.Phi()) >= 0.5) && (fabs(g1P4.Phi()) <= 2.6 ) ) ) {  
+        	   my.eta_spkInphoVstimeEB->Fill(g1P4.Eta(), seedTime[kmax]);
+         	   my.n_spkInphoEB->Fill(n_pho);
+           	   my.n_jspkInphoEB->Fill(n_jets);
+         	   my.spkInpho_nCrysEB->Fill(nXtals[kmax]);
+           	   my.spkInpho_timeEB->Fill(seedTime[kmax]);
+                   my.spkInpho_cscdphiEB->Fill(cscdPhi[kmax]);
+                   my.spkInpho_ptEB->Fill(max_gPt);
+                   my.spkInpho_metEB->Fill(met);
+         	 } 
      
-           my.pho_timeVsEtaEB->Fill(g1P4.Eta(), seedTime[kmax]);
-           my.pho_timeVsPhiEB->Fill(g1P4.Phi(), seedTime[kmax]);
-           my.pho_sminorEB->Fill(sMinPho[kmax]);
-           my.pho_smajorEB->Fill(sMajPho[kmax]);
-           my.pho_sigmaEtaEB->Fill(sigmaEta[kmax]);
-           my.pho_timeEB->Fill(seedTime[kmax]);
-           my.pho_num_phoEB->Fill(n_pho);
-           my.pho_num_jetEB->Fill(n_jets);
-           my.pho_SSXEB->Fill(seedSwissX[kmax]);
-           my.phonXtalEB->Fill(nXtals[kmax]);
-           my.pho_sigmaIeta->Fill(sigmaIeta[kmax]);
+           	   my.pho_timeVsEtaEB->Fill(g1P4.Eta(), seedTime[kmax]);
+                   my.pho_timeVsPhiEB->Fill(g1P4.Phi(), seedTime[kmax]);
+          	   my.pho_sminorEB->Fill(sMinPho[kmax]);
+          	   my.pho_smajorEB->Fill(sMajPho[kmax]);
+         	   my.pho_sigmaEtaEB->Fill(sigmaEta[kmax]);
+           	   my.pho_timeEB->Fill(seedTime[kmax]);
+          	   my.pho_num_phoEB->Fill(n_pho);
+         	   my.pho_num_jetEB->Fill(n_jets);
+          	   my.pho_SSXEB->Fill(seedSwissX[kmax]);
+           	   my.phonXtalEB->Fill(nXtals[kmax]);
+         	   my.pho_sigmaIeta->Fill(sigmaIeta[kmax]);
 
 
 //  Bkg Esti  in EB //
