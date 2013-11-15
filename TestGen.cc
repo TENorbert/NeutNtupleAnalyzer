@@ -504,7 +504,7 @@ my.JseedBCtime = new TH1D("my.JseedBCtime", "Error W. Ave.Time Seed BC", 200, -5
 my.JWaveBCtime = new TH1D("my.JWaveBCtime", "Error W. Ave.Time Seed BC I", 200, -50.0, 50.0);
 my.JnCrys = new TH1D("my.JnCrys", "NCrys in Seed BC", 50, 0.0, 50.0);
 my.Jnspike = new TH1D("my.Jnspike", "NCrys with SwissX > 0.98", 50, 0.0, 50.0);
-my.JseedtimeVsEnergy= new TH2D("my.JseedtimeVsEnergy", "Seed Time Vs Energy", 200, -50.0, 50.0, 200, 0.0, 1000.0);
+my.JseedtimeVsEnergy= new TH2D("my.JseedtimeVsEnergy", "Seed Time Vs Energy", 200, 0.0, 500.0, 200, -50.0, 50.0);
 
 my.JseedOOtChi2= new TH1D("my.JseedOOChi2", "Seed Out-Of time Chi2", 200, -50.0, 50.0);
 my.JseedtimeChi2= new TH1D("my.JseedtimeChi2", "Seed time Chi2", 200, -50.0, 50.0);
@@ -1613,8 +1613,8 @@ my.Jseedtime2VsPhi->GetYaxis()->SetTitle("Time(ns)");
 my.Jseedtime2VsPhi->Draw();
 my.Jseedtime2VsPhi->Write();
 
-my.JseedtimeVsEnergy->GetYaxis()->SetTitle("Seed Energy(GeV)");
-my.JseedtimeVsEnergy->GetXaxis()->SetTitle("Seed Time(ns)");
+my.JseedtimeVsEnergy->GetXaxis()->SetTitle("Seed Energy(GeV)");
+my.JseedtimeVsEnergy->GetYaxis()->SetTitle("Seed Time(ns)");
 my.JseedtimeVsEnergy->Draw();
 my.JseedtimeVsEnergy->Write();
 
@@ -2998,7 +2998,7 @@ for ( int i=0; i< totalN ; i++ ) {
 		my.JEcalEmEr->Fill(jgammaE[jmax]) ;
 		my.Jseedtime2VsEta->Fill(j1p4.Eta() , jseedtime2[jmax]) ;
 		my.Jseedtime2VsPhi->Fill(j1p4.Phi() , jseedtime2[jmax]) ;
-		my.JseedtimeVsEnergy->Fill( jseedtime2[jmax],jseedE[jmax] ) ;                my.JseedtimeChi2->Fill( jseedChi2[jmax] ) ;
+		my.JseedtimeVsEnergy->Fill( jseedE[jmax], jseedtime2[jmax] ) ;                my.JseedtimeChi2->Fill( jseedChi2[jmax] ) ;
                 my.JseedOOtChi2->Fill ( jseedOOtChi2[jmax] ) ;
 
 
