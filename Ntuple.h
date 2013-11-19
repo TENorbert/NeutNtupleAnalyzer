@@ -70,6 +70,9 @@ struct Ntuple
   int jnBC[MAXJET];
   int jnseedXtals[MAXJET];
   int jnspikes[MAXJET];
+  int jseedBCEnergy[MAXJET];
+  int jseedBCEt[MAXJET];
+  int jseedBCPt[MAXJET];
  // float jCandVx[MAXJET];
  // float jCandVy[MAXJET];
  // float jCandVz[MAXJET];
@@ -78,6 +81,7 @@ struct Ntuple
   float jCandHoE[MAXJET];
   float jgammaE[MAXJET];
   float jdR[MAXJET];
+  float jnUnMatched[MAXJET];
   
 
   float metPx;

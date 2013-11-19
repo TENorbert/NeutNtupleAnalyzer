@@ -112,6 +112,10 @@ void setBranchAddresses(TTree* chain, Ntuple& treeVars)
   chain -> SetBranchAddress("jCandHoE",        treeVars.jCandHoE  );
   chain -> SetBranchAddress("jgammaE",         treeVars.jgammaE  );
   chain -> SetBranchAddress("jdR",             treeVars.jdR  );
+  chain -> SetBranchAddress("jnUnMatched",     treeVars.jnUnMatched  );
+  chain -> SetBranchAddress("jseedBCEnergy",   treeVars.jseedBCEnergy );
+  chain -> SetBranchAddress("jseedBCEt",       treeVars.jseedBCEt );
+  chain -> SetBranchAddress("jseedBCPt",       treeVars.jseedBCPt );
   
   chain -> SetBranchAddress("phoPx",        treeVars.phoPx     );
   chain -> SetBranchAddress("phoPy",        treeVars.phoPy     );
@@ -258,7 +262,10 @@ void setBranches(TTree* chain, Ntuple& treeVars)
   chain -> Branch("jnXtals",         treeVars.jnXtals,               "jnXtals[nJets]/I" );
   chain -> Branch("jnBC",            treeVars.jnBC,               "jnBC[nJets]/I" );
   chain -> Branch("jnseedXtals",      treeVars.jnseedXtals,               "jnseedXtals[nJets]/I" );
-  chain -> Branch("jnspikes",       treeVars.jnspikes,               "jnspikes[nJets]/I" );
+  chain -> Branch("jnspikes",        treeVars.jnspikes,               "jnspikes[nJets]/I" );
+  chain -> Branch("jseedBCEnergy",   treeVars.jseedBCEnergy,           "jseedBCEnergy[nJets]/F" );
+  chain -> Branch("jseedBCEt",       treeVars.jseedBCEt,              "jseedBCEt[nJets]/F" );
+  chain -> Branch("jseedBCPt",       treeVars.jseedBCPt,              "jseedBCPt[nJets]/F" );
 //  chain -> Branch("jCandVx",          treeVars.jCandVx,               "jCandVx[nJets]/F" );
 //  chain -> Branch("jCandVy",          treeVars.jCandVy,               "jCandVy[nJets]/F" );
 //  chain -> Branch("jCandVz",          treeVars.jCandVz,               "jCandVz[nJets]/F" );
@@ -267,6 +274,7 @@ void setBranches(TTree* chain, Ntuple& treeVars)
   chain -> Branch("jCandHoE",        treeVars.jCandHoE,               "jCandHoE[nJets]/F" );
   chain -> Branch("jgammaE",         treeVars.jgammaE,               "jgammaE[nJets]/F" );
   chain -> Branch("jdR",             treeVars.jdR,                   "jdR[nJets]/F" );
+  chain -> Branch("jnUnMatched",     treeVars.jnUnMatched,            "jnUnMatched[nJets]/F" );
   
   chain -> Branch("phoPx",        treeVars.phoPx,                 "phoPx[nPhotons]/F");
   chain -> Branch("phoPy",        treeVars.phoPy,                 "phoPy[nPhotons]/F");
@@ -403,6 +411,10 @@ void initializeBranches(TTree* chain, Ntuple& treeVars)
       treeVars.jnBC[i] = 999999 ;
       treeVars.jnseedXtals[i] = 99999 ;
       treeVars.jnspikes[i] = 99.00 ;
+      
+      treeVars.jseedBCEnergy[i] = -999999.0 ;
+      treeVars.jseedBCEt[i] = -999999.0 ;
+      treeVars.jseedBCPt[i] = -999999.0 ;
   //    treeVars.jCandVx[i] = 0 ;
   //    treeVars.jCandVy[i] = 0 ;
   //    treeVars.jCandVz[i] = 0 ;
@@ -411,6 +423,7 @@ void initializeBranches(TTree* chain, Ntuple& treeVars)
       treeVars.jCandHoE[i] = 999999.0 ;
       treeVars.jgammaE[i] = 99999.00 ;
       treeVars.jdR[i] = 999999.0 ;
+      treeVars.jnUnMatched[i] = 999999.0 ;
   }
 
   for ( int i=0; i< MAXELE; i++) {
