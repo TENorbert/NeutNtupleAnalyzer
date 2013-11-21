@@ -198,7 +198,7 @@ TH1* Jseedtime1, *Jseedtime2, *JseedE, *JEcalEmEr, *JSClusdR, *JseedBCtime, *JWa
 
 TH2D* Jseedtime2VsEta, *Jseedtime2VsPhi, *JseedtimeVsEnergy, *Jseedtime2VsBCEnergy, *Jseedtime2VsBCEt, *Jseedtime2VsBCPt, *JwavetimeVsBCEnergy, *JseedEVsEta,*JseedBCEVsEta, *JseedBCEVsPhi;
 
-TH1D *JseedOOtChi2, *JseedtimeChi2;
+TH1D *JseedOOtChi2, *JseedtimeChi2, *Jseedtime2EB, *Jseedtime2EE;
 
 
 
@@ -279,8 +279,7 @@ private:
    float  jseedBCEnergy[MAXJET], jseedBCEt[MAXJET],jseedBCPt[MAXJET];
 
 // HE Tagging stuff
-   float HERho[MAXPHO], HETime[MAXPHO],HEGPhi[MAXPHO],HERadius[MAXPHO],HEEnergy[MAXPHO],HEdphi[MAXPHO];
-     
+   float HERho[MAXPHO], HETime[MAXPHO],HEGPhi[MAXPHO],HERadius[MAXPHO],HEEnergy[MAXPHO],HEdphi[MAXPHO]; 
 
 // Halo infos
     float cscTime[MAXPHO]; 

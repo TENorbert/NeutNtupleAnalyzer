@@ -513,12 +513,14 @@ my.Jseedtime2VsBCEt = new TH2D("my.Jseedtime2VsBCEt", "Seed Time Vs Seed BC Et",
 my.Jseedtime2VsBCPt = new TH2D("my.Jseedtime2VsBCPt", "Seed Time Vs Seed BC Pt", 200, 0.0, 500.0, 200, -50.0, 50.0);
 
 my.JwavetimeVsBCEnergy= new TH2D("my.JwavetimeVsBCEnergy", "W.Ave Time Vs Seed BC Energy", 200, 0.0, 500.0, 200, -50.0, 50.0);
-my.JseedEVsEta = new TH2D("my.JseedEVsEta", "Seed Crys Energy Vs Eta ", 200, 0.0, 500.0, 100, -3.5, 3.5);
-my.JseedBCEVsEta = new TH2D("my.JseedBCEVsEta", "Seed BC Energy Vs Eta ", 200, 0.0, 500.0, 100, -3.5, 3.5);
-my.JseedBCEVsPhi = new TH2D("my.JseedBCEVsPhi", "Seed BC Energy Vs Phi", 200, 0.0, 500.0, 100, -3.5, 3.5);
+my.JseedEVsEta = new TH2D("my.JseedEVsEta", "Seed Crys Energy Vs Eta ", 100, -3.5, 3.5, 200, 0.0, 500.0);
+my.JseedBCEVsEta = new TH2D("my.JseedBCEVsEta", "Seed BC Energy Vs Eta ", 100, -3.5, 3.5, 200, 0.0, 500);
+my.JseedBCEVsPhi = new TH2D("my.JseedBCEVsPhi", "Seed BC Energy Vs Phi", 100, -3.5, 3.5, 200, 0.0, 500);
 
 my.JnUMjets = new TH1D("my.JnUMjets", "Num of Unmatched Jets", 50, 0.0, 50.0) ;
 
+my.Jseedtime2EB= new TH1D("my.Jseedtime2EB", "Jet SeedTime Extract, EB", 200, -50.0, 50.0);
+my.Jseedtime2EE= new TH1D("my.Jseedtime2EE", "Jet SeedTime Extract, EE", 200, -50.0, 50.0);
 
 } // End of Init Hist fuction
 
@@ -1679,6 +1681,18 @@ my.JnUMjets->GetXaxis()->SetTitle("Num UnMatched Jets");
 my.JnUMjets->GetYaxis()->SetTitle("Event Number");
 my.JnUMjets->Draw();
 my.JnUMjets->Write();
+
+
+my.Jseedtime2EB->GetXaxis()->SetTitle("Time(ns)");
+my.Jseedtime2EB->GetYaxis()->SetTitle("Event Number");
+my.Jseedtime2EB->Draw();
+my.Jseedtime2EB->Write();
+
+my.Jseedtime2EE->GetXaxis()->SetTitle("Time(ns)");
+my.Jseedtime2EE->GetYaxis()->SetTitle("Event Number");
+my.Jseedtime2EE->Draw();
+my.Jseedtime2EE->Write();
+
 
 Dphoton = f->mkdir("BkgEst");
 Dphoton->cd();
@@ -3040,8 +3054,11 @@ for ( int i=0; i< totalN ; i++ ) {
 		my.pho_CSCdphi->Fill(cscdPhi[kmax]);
 		my.phonBC->Fill(nBC[kmax]);
 
-
-
+             
+		if (j1p4.Eta() < 1.479 ) { my.Jseedtime2EB->Fill(jseedtime2[jmax]) ;
+ 		}else{ my.Jseedtime2EE->Fill(jseedtime2[jmax]) ; }
+     //Cut on Matched SuperCluster Pt
+      if ( jseedBCEt[jmax] > jetCuts[3] ) {
 		// Jet timing
 		my.Jseedtime1->Fill(jseedtime1[jmax]) ;
 		my.Jseedtime2->Fill(jseedtime2[jmax]) ;
@@ -3066,7 +3083,7 @@ for ( int i=0; i< totalN ; i++ ) {
                 my.JseedEVsEta->Fill( j1p4.Eta(), jseedE[jmax] ) ; 
                 my.JseedBCEVsEta->Fill( j1p4.Eta(), jseedBCEnergy[jmax] ) ; 
                 my.JseedBCEVsPhi->Fill( j1p4.Phi(), jseedBCEnergy[jmax] ) ; 
-
+      }
 		// 2D Maps
 		//EB and EE plots
 		if( fabs(g1P4.Eta()) < 1.479 ) {
