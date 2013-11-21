@@ -506,8 +506,20 @@ my.JnCrys = new TH1D("my.JnCrys", "NCrys in Seed BC", 50, 0.0, 50.0);
 my.Jnspike = new TH1D("my.Jnspike", "NCrys with SwissX > 0.98", 50, 0.0, 50.0);
 my.JseedtimeVsEnergy= new TH2D("my.JseedtimeVsEnergy", "Seed Time Vs Energy", 200, 0.0, 500.0, 200, -50.0, 50.0);
 
-my.JseedOOtChi2= new TH1D("my.JseedOOChi2", "Seed Out-Of time Chi2", 200, -50.0, 50.0);
-my.JseedtimeChi2= new TH1D("my.JseedtimeChi2", "Seed time Chi2", 200, -50.0, 50.0);
+my.JseedOOtChi2 = new TH1D("my.JseedOOtChi2", "Seed Out-Of time Chi2", 200, -100.0, 100.0);
+my.JseedtimeChi2 = new TH1D("my.JseedtimeChi2", "Seed time Chi2", 200, -100.0, 100.0);
+my.Jseedtime2VsBCEnergy= new TH2D("my.Jseedtime2VsBCEnergy", "Seed Time Vs Seed BC Energy", 200, 0.0, 500.0, 200, -50.0, 50.0);
+my.Jseedtime2VsBCEt = new TH2D("my.Jseedtime2VsBCEt", "Seed Time Vs Seed BC Et", 200, 0.0, 500.0, 200, -50.0, 50.0);
+my.Jseedtime2VsBCPt = new TH2D("my.Jseedtime2VsBCPt", "Seed Time Vs Seed BC Pt", 200, 0.0, 500.0, 200, -50.0, 50.0);
+
+my.JwavetimeVsBCEnergy= new TH2D("my.JwavetimeVsBCEnergy", "W.Ave Time Vs Seed BC Energy", 200, 0.0, 500.0, 200, -50.0, 50.0);
+my.JseedEVsEta = new TH2D("my.JseedEVsEta", "Seed Crys Energy Vs Eta ", 200, 0.0, 500.0, 100, -3.5, 3.5);
+my.JseedBCEVsEta = new TH2D("my.JseedBCEVsEta", "Seed BC Energy Vs Eta ", 200, 0.0, 500.0, 100, -3.5, 3.5);
+my.JseedBCEVsPhi = new TH2D("my.JseedBCEVsPhi", "Seed BC Energy Vs Phi", 200, 0.0, 500.0, 100, -3.5, 3.5);
+
+my.JnUMjets = new TH1D("my.JnUMjets", "Num of Unmatched Jets", 50, 0.0, 50.0) ;
+
+
 } // End of Init Hist fuction
 
 
@@ -1614,7 +1626,7 @@ my.Jseedtime2VsPhi->Draw();
 my.Jseedtime2VsPhi->Write();
 
 my.JseedtimeVsEnergy->GetXaxis()->SetTitle("Seed Energy(GeV)");
-my.JseedtimeVsEnergy->GetYaxis()->SetTitle("Seed Time(ns)");
+my.JseedtimeVsEnergy->GetYaxis()->SetTitle("Seed  Crys Time(ns)");
 my.JseedtimeVsEnergy->Draw();
 my.JseedtimeVsEnergy->Write();
 
@@ -1627,6 +1639,46 @@ my.JseedOOtChi2->GetXaxis()->SetTitle("Seed OO Time {#chi}^{2}");
 my.JseedOOtChi2->GetYaxis()->SetTitle("Event Number");
 my.JseedOOtChi2->Draw();
 my.JseedOOtChi2->Write();
+
+my.Jseedtime2VsBCEnergy->GetXaxis()->SetTitle("Seed BC Energy(GeV)");
+my.Jseedtime2VsBCEnergy->GetYaxis()->SetTitle("Seed Crys Time(ns)");
+my.Jseedtime2VsBCEnergy->Draw();
+my.Jseedtime2VsBCEnergy->Write();
+
+my.Jseedtime2VsBCEt->GetXaxis()->SetTitle("Seed BC Et(GeV)");
+my.Jseedtime2VsBCEt->GetYaxis()->SetTitle("Seed Crys Time(ns)");
+my.Jseedtime2VsBCEt->Draw();
+my.Jseedtime2VsBCEt->Write();
+
+my.Jseedtime2VsBCPt->GetXaxis()->SetTitle("Seed BC Pt(GeV)");
+my.Jseedtime2VsBCPt->GetYaxis()->SetTitle("Seed Crys Time(ns)");
+my.Jseedtime2VsBCPt->Draw();
+my.Jseedtime2VsBCPt->Write();
+
+my.JwavetimeVsBCEnergy->GetXaxis()->SetTitle("Seed BC Energy(GeV)");
+my.JwavetimeVsBCEnergy->GetYaxis()->SetTitle("W.Ave Time(ns)");
+my.JwavetimeVsBCEnergy->Draw();
+my.JwavetimeVsBCEnergy->Write();
+
+my.JseedEVsEta->GetXaxis()->SetTitle("#eta_{PFJ}");
+my.JseedEVsEta->GetYaxis()->SetTitle("Seed Crys Energy(GeV)");
+my.JseedEVsEta->Draw();
+my.JseedEVsEta->Write();
+
+my.JseedBCEVsEta->GetXaxis()->SetTitle("#eta_{PFJ}");
+my.JseedBCEVsEta->GetYaxis()->SetTitle("Seed BC Energy(GeV)");
+my.JseedBCEVsEta->Draw();
+my.JseedBCEVsEta->Write();
+
+my.JseedBCEVsPhi->GetXaxis()->SetTitle("#phi_{PFJ}");
+my.JseedBCEVsPhi->GetYaxis()->SetTitle("Seed BC Energy(GeV)");
+my.JseedBCEVsPhi->Draw();
+my.JseedBCEVsPhi->Write();
+
+my.JnUMjets->GetXaxis()->SetTitle("Num UnMatched Jets");
+my.JnUMjets->GetYaxis()->SetTitle("Event Number");
+my.JnUMjets->Draw();
+my.JnUMjets->Write();
 
 Dphoton = f->mkdir("BkgEst");
 Dphoton->cd();
@@ -2808,6 +2860,10 @@ void TestGen::ReadTree( string dataName ) {
    tr->SetBranchAddress("jWavetime",        jWavetime);
    tr->SetBranchAddress("jnXtals",        jnXtals);
    tr->SetBranchAddress("jnspikes",        jnspikes);
+   tr->SetBranchAddress("jseedBCEnergy",   jseedBCEnergy);
+   tr->SetBranchAddress("jseedBCEt",       jseedBCEt);
+   tr->SetBranchAddress("jseedBCPt",       jseedBCPt);
+   tr->SetBranchAddress("jnUnMatched",     jnUnMatched);
 
    tr->SetBranchAddress("haloPhi",     &haloPhi);
    tr->SetBranchAddress("haloRho",     &haloRho );
@@ -2994,13 +3050,22 @@ for ( int i=0; i< totalN ; i++ ) {
 		my.JseedBCtime->Fill(jseedBCtime[jmax]) ;
 		my.JWaveBCtime->Fill(jWavetime[jmax]) ;
 		my.JnCrys->Fill(jnXtals[jmax]) ;
+		my.JnUMjets->Fill(jnUnMatched[jmax]) ;
 		my.Jnspike->Fill(jnspikes[jmax]) ;
 		my.JEcalEmEr->Fill(jgammaE[jmax]) ;
 		my.Jseedtime2VsEta->Fill(j1p4.Eta() , jseedtime2[jmax]) ;
 		my.Jseedtime2VsPhi->Fill(j1p4.Phi() , jseedtime2[jmax]) ;
-		my.JseedtimeVsEnergy->Fill( jseedE[jmax], jseedtime2[jmax] ) ;                my.JseedtimeChi2->Fill( jseedChi2[jmax] ) ;
+		my.JseedtimeVsEnergy->Fill( jseedE[jmax], jseedtime2[jmax]) ;              
+                my.JseedtimeChi2->Fill( jseedChi2[jmax] ) ;
                 my.JseedOOtChi2->Fill ( jseedOOtChi2[jmax] ) ;
-
+              
+                my.Jseedtime2VsBCEnergy->Fill( jseedBCEnergy[jmax], jseedtime2[jmax] ) ; 
+                my.Jseedtime2VsBCEt->Fill( jseedBCEt[jmax], jseedtime2[jmax] ) ; 
+                my.Jseedtime2VsBCPt->Fill( jseedBCPt[jmax], jseedtime2[jmax] ) ; 
+                my.JwavetimeVsBCEnergy->Fill( jseedBCEnergy[jmax], jseedBCtime[jmax] ) ; 
+                my.JseedEVsEta->Fill( j1p4.Eta(), jseedE[jmax] ) ; 
+                my.JseedBCEVsEta->Fill( j1p4.Eta(), jseedBCEnergy[jmax] ) ; 
+                my.JseedBCEVsPhi->Fill( j1p4.Phi(), jseedBCEnergy[jmax] ) ; 
 
 		// 2D Maps
 		//EB and EE plots
