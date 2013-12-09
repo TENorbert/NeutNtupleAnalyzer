@@ -337,16 +337,19 @@ my.eb_met1 = new TH1D("my.eb_met1", "MET of 1-Jet Events", 4000, 0 , 4000);
 my.eb_met2 = new TH1D("my.eb_met2", "MET of 2-Jet Events", 4000, 0 , 4000);
 my.eb_met3 = new TH1D("my.eb_met3", "MET of >=3-Jet Events", 4000, 0 , 4000);
 
-my.eb_time0 = new TH1D("my.eb_time0", "Time of 0-Jet Events", 500, -50.0 ,50.0);
-my.eb_time1 = new TH1D("my.eb_time1", "Time of 1-Jet Events", 500, -50.0 , 50.0);
-my.eb_time2 = new TH1D("my.eb_time2", "Time of 2-Jet Events", 500, -50.0 , 50.0);
-my.eb_time3 = new TH1D("my.eb_time3", "Time of >= 3-Jet Events", 500,-50.0, 50.0);
+my.eb_time0 = new TH1D("my.eb_time0", "Time of 0-Jet Events", 200, -50.0 ,50.0);
+my.eb_time1 = new TH1D("my.eb_time1", "Time of 1-Jet Events", 200, -50.0 , 50.0);
+my.eb_time2 = new TH1D("my.eb_time2", "Time of 2-Jet Events", 200, -50.0 , 50.0);
+my.eb_time3 = new TH1D("my.eb_time3", "Time of >= 3-Jet Events", 200,-50.0, 50.0);
 
-my.eb_reg = new TH2D("eb_reg", "MET  Vs Photon Time", 4000, 0 , 4000, 1000, -50.0, 50.0);
-my.eb_regA = new TH2D("eb_regA", "MET  Vs Photon Time RegA", 4000, 0 , 4000, 1000, -50.0, 50.0);
-my.eb_regB = new TH2D("eb_regB", "MET  Vs Photon Time RegB", 4000, 0 , 4000, 1000, -50.0, 50.0);
-my.eb_regC = new TH2D("eb_regC", "MET  Vs Photon Time RegC", 4000, 0 , 4000, 1000, -50.0, 50.0);
-my.eb_regD = new TH2D("eb_regD", "MET  Vs Photon Time RegD", 4000, 0 , 4000, 1000, -50.0, 50.0);
+my.eb_reg = new TH2D("eb_reg", "MET  Vs Photon Time", 20, 0 , 2000, 120, -30.0, 30.0);
+my.eb_regA = new TH2D("eb_regA", "MET  Vs Photon Time RegA", 20, 0 , 2000, 120, -30.0, 30.0);
+my.eb_regB = new TH2D("eb_regB", "MET  Vs Photon Time RegB", 20, 0 , 2000, 120, -30.0, 30.0);
+my.eb_regC = new TH2D("eb_regC", "MET  Vs Photon Time RegC", 20, 0 , 2000, 120, -30.0, 30.0);
+my.eb_regD = new TH2D("eb_regD", "MET  Vs Photon Time RegD", 20, 0 , 2000, 120, -30.0, 30.0);
+
+my.eb_regAprime = new TH2D("eb_regAprime", "MET  Vs Photon Time Reg A'", 20, 0 , 2000, 120, -30.0, 30.0);
+my.eb_regBprime = new TH2D("eb_regBprime", "MET  Vs Photon Time Reg B'", 20, 0 , 2000, 120, -30.0, 30.0);
 
 my.eb_pPt = new TH1D("my.eb_pPt", "Pt_{#gamma} of 0-Jet Events", 4000, 0 , 4000);
 my.eb_hpPt = new TH1D("my.eb_hpPt", "Pt_{Halo #gamma} of 0-Jet Events", 4000, 0 , 4000);
@@ -362,7 +365,7 @@ my.eb_pNjets = new TH1D("my.eb_pNjets", "No. 0f Jets", 20, 0, 20);
 my.eb_hpNjets = new TH1D("my.eb_hpNjets", "No. 0f Jets Halo #gamma Event", 20, 0, 20);
 my.eb_spike_pNjets = new TH1D("my.eb_spike_pNjets", "No. 0f Jets in Spike #gamma Event", 20, 0, 20);
 my.eb_qcd_pNjets = new TH1D("my.eb_qcd_hpNjets", "No. 0f Jets QCD #gamma Event", 20, 0, 20);
-my.eb_qcd_pNjets = new TH1D("my.eb_qcd_hpNjets", "No. 0f Jets QCD #gamma Event", 20, 0, 20);
+my.eb_qcd_pNjets = new TH1D("my.eb_qcd_pNjets", "No. 0f Jets QCD #gamma Event", 20, 0, 20);
 
 //Spike & Halo reg
 my.eta_gVstimeEB = new TH2D("my.eta_gVstimeEB","#eta_{#gamma} Vs Time EB",100, -3.0, 3.0, 500, -50.0, 50.0) ;
@@ -497,8 +500,8 @@ my.Jseedtime2= new TH1D("my.Jseedtime2", "Jet SeedTime Extract", 200, -50.0, 50.
 my.JseedE= new TH1D("my.JseedE", "Jet Seed Xtal in ECAL Energy", 200, -0.0, 500.0);
 my.JEcalEmEr= new TH1D("my.JEcalEmEr", "Jet Em Eenrgy", 200, -0.0, 500.0);
 
-my.Jseedtime2VsPhi = new TH2D("my.seedtime2VsPhi", "#phi_{PFJet} Vs Time(ns)",100, -3.5, 3.5, 500, -50.0, 50.0);
-my.Jseedtime2VsEta = new TH2D("my.seedtime2VsEta", "#eta_{PFJet} Vs Time(ns)",100, -3.5, 3.5, 500, -50.0, 50.0);
+my.Jseedtime2VsPhi = new TH2D("my.seedtime2VsPhi", "#phi_{PFJet} Vs Time(ns)",100, -3.5, 3.5, 200, -50.0, 50.0);
+my.Jseedtime2VsEta = new TH2D("my.seedtime2VsEta", "#eta_{PFJet} Vs Time(ns)",100, -3.5, 3.5, 200, -50.0, 50.0);
 my.JSClusdR= new TH1D("my.JSClusdR", "JetSClus Matching #delta R", 200, 0.0, 10.0);
 my.JseedBCtime = new TH1D("my.JseedBCtime", "Error W. Ave.Time Seed BC", 200, -50.0, 50.0);
 my.JWaveBCtime = new TH1D("my.JWaveBCtime", "Error W. Ave.Time Seed BC I", 200, -50.0, 50.0);
@@ -521,6 +524,10 @@ my.JnUMjets = new TH1D("my.JnUMjets", "Num of Unmatched Jets", 50, 0.0, 50.0) ;
 
 my.Jseedtime2EB= new TH1D("my.Jseedtime2EB", "Jet SeedTime Extract, EB", 200, -50.0, 50.0);
 my.Jseedtime2EE= new TH1D("my.Jseedtime2EE", "Jet SeedTime Extract, EE", 200, -50.0, 50.0);
+
+
+my.Jseedtime2VsPseedtime = new TH2D("my.Jseedtime2VsPseedtime", "Jet seed Crys time Vs Photon seed Crys time", 400, -50.0, 50.0, 400, -50.0, 50.0);
+my.Jseedtime2MPseedtime = new TH1D("my.Jseedtime2MPseedtime", "Diff(Jet seed Crys time Photon seed Crys time)", 400, -50.0, 50.0);
 
 } // End of Init Hist fuction
 
@@ -1694,6 +1701,17 @@ my.Jseedtime2EE->Draw();
 my.Jseedtime2EE->Write();
 
 
+my.Jseedtime2VsPseedtime->GetXaxis()->SetTitle("Jet seed Crys Time[ns]");
+my.Jseedtime2VsPseedtime->GetYaxis()->SetTitle("Photon seed Crys Time(ns)");
+my.Jseedtime2VsPseedtime->Draw();
+my.Jseedtime2VsPseedtime->Write();
+
+my.Jseedtime2MPseedtime->GetXaxis()->SetTitle("Time_{jseed crys} - Time_{Pseed crys}");
+my.Jseedtime2MPseedtime->GetYaxis()->SetTitle("Events");
+my.Jseedtime2MPseedtime->Draw();
+my.Jseedtime2MPseedtime->Write();
+
+
 Dphoton = f->mkdir("BkgEst");
 Dphoton->cd();
 
@@ -2229,6 +2247,16 @@ my.eb_regA->GetYaxis()->SetTitle("ECAL Time{#gamma}");
 my.eb_regA->GetXaxis()->SetTitle("MET(GeV)");
 my.eb_regA->Draw();
 my.eb_regA->Write();
+
+my.eb_regAprime->GetYaxis()->SetTitle("ECAL Time{#gamma}");
+my.eb_regAprime->GetXaxis()->SetTitle("MET(GeV)");
+my.eb_regAprime->Draw();
+my.eb_regAprime->Write();
+
+my.eb_regBprime->GetYaxis()->SetTitle("ECAL Time{#gamma}");
+my.eb_regBprime->GetXaxis()->SetTitle("MET(GeV)");
+my.eb_regBprime->Draw();
+my.eb_regBprime->Write();
 
 my.eb_regB->GetYaxis()->SetTitle("ECAL Time{#gamma}");
 my.eb_regB->GetXaxis()->SetTitle("MET(GeV)");
@@ -2903,9 +2931,10 @@ void TestGen::ReadTree( string dataName ) {
      	InitHist();
 
     	// Get Events
-  	 int totalN = tr->GetEntries();
+  	int totalN = tr->GetEntries();
    	cout<<" from  "<< dataName <<" total entries = "<< totalN <<" Process "<< ProcessEvents <<endl;
-
+        // Number of Events in diff regions of cut
+        int nEregA = 0, nEregB = 0, nEregC = 0, nEregD = 0, nEregAp = 0, nEregBp = 0, nEreg = 0;
    	int nEvt = 0 ;
   	 cout << "Event processing Starts" << endl;
 // Loop  over events
@@ -2944,7 +2973,8 @@ for ( int i=0; i< totalN ; i++ ) {
            	    // Get Leading Jet Kinematics 
         	    double max_jPt = 0;
                     int    n_jets = 0 ;
-   
+                    
+ 
   	 // Loop and select Max Pt Photon
    	for ( int k=0; k< nPhotons; k++) {
      	TLorentzVector gP4_ = TLorentzVector( phoPx[k], phoPy[k], phoPz[k], phoE[k] ) ;
@@ -3054,11 +3084,20 @@ for ( int i=0; i< totalN ; i++ ) {
 		my.pho_CSCdphi->Fill(cscdPhi[kmax]);
 		my.phonBC->Fill(nBC[kmax]);
 
-             
-		if (j1p4.Eta() < 1.479 ) { my.Jseedtime2EB->Fill(jseedtime2[jmax]) ;
- 		}else{ my.Jseedtime2EE->Fill(jseedtime2[jmax]) ; }
-     //Cut on Matched SuperCluster Pt
-      if ( jseedBCEt[jmax] > jetCuts[3] ) {
+            
+               // Jet timing info
+		//Cut on Matched SuperCluster Pt
+     if ( jseedBCEt[jmax] > jetCuts[3] ) {
+      	   
+          if( n_jets > jetCuts[1] ) { 
+
+                 //cout << "le 0-Jets Events a de Photon variables " << g1P4.Pt() << " Eta " << g1P4.Eta() 
+
+             if (fabs(j1p4.Eta()) < 1.479 ) {
+                
+                my.Jseedtime2EB->Fill(jseedtime2[jmax]) ;
+                my.Jseedtime2VsPseedtime->Fill(jseedtime2[jmax],seedTime[kmax] ) ;  
+                my.Jseedtime2MPseedtime->Fill( fabs(jseedtime2[jmax]) - fabs(seedTime[kmax]) ) ;  
 		// Jet timing
 		my.Jseedtime1->Fill(jseedtime1[jmax]) ;
 		my.Jseedtime2->Fill(jseedtime2[jmax]) ;
@@ -3083,27 +3122,34 @@ for ( int i=0; i< totalN ; i++ ) {
                 my.JseedEVsEta->Fill( j1p4.Eta(), jseedE[jmax] ) ; 
                 my.JseedBCEVsEta->Fill( j1p4.Eta(), jseedBCEnergy[jmax] ) ; 
                 my.JseedBCEVsPhi->Fill( j1p4.Phi(), jseedBCEnergy[jmax] ) ; 
-      }
-		// 2D Maps
-		//EB and EE plots
-		if( fabs(g1P4.Eta()) < 1.479 ) {
+        	
+              }else{ my.Jseedtime2EE->Fill(jseedtime2[jmax]) ; }
 
-		//Check different Phi windows For any Phi Assym
-		if( fabs(g1P4.Phi()) < 0.5 ) {
-		my.phoTimePhi_ZeroWinEB->Fill(seedTime[kmax]); }
-
-		if( (g1P4.Phi() < -2.0 ) && (g1P4.Phi() > -3.0) ) {
-		my.phoTimeNegPhi_3WinEB->Fill(seedTime[kmax]); }
-
-		if( (g1P4.Phi() > 2.0 ) && (g1P4.Phi() < 3.0) ) {
-		my.phoTimePosPhi_3WinEB->Fill(seedTime[kmax]); }
+ 
+           } 
+       } // end of Et cut
 
 
-		//if( fabs(g1P4.Eta()) < 3.0 ) {
+  // 2D Maps
+  //EB and EE plots
+  if( fabs(g1P4.Eta()) < 1.479 ) {
 
-		//Slice in Time study////
+        //Check different Phi windows For any Phi Assym
+	if( fabs(g1P4.Phi()) < 0.5 ) {
+	     my.phoTimePhi_ZeroWinEB->Fill(seedTime[kmax]); }
 
-	for( int ii=0; ii<32; ii++) {
+	if( (g1P4.Phi() < -2.0 ) && (g1P4.Phi() > -3.0) ) {
+	     my.phoTimeNegPhi_3WinEB->Fill(seedTime[kmax]); }
+
+	if( (g1P4.Phi() > 2.0 ) && (g1P4.Phi() < 3.0) ) {
+	     my.phoTimePosPhi_3WinEB->Fill(seedTime[kmax]); }
+
+
+	//if( fabs(g1P4.Eta()) < 3.0 ) {
+
+	//Slice in Time study////
+
+	  	for( int ii=0; ii<32; ii++) {
 
   		 if((seedTime[kmax] >= Time_Array[ii]) && (seedTime[kmax] < Time_Array[ii+1]) ){ 
     		 my.cscdphiInTimeSlice[ii]->Fill(cscdPhi[kmax]);
@@ -3112,7 +3158,7 @@ for ( int i=0; i< totalN ; i++ ) {
      		cout <<"Time slice\t" << Time_Array[ii] << "  has CSCdPhi \t" << cscdPhi[kmax] << "  and NCrys\t" << nXtals[kmax] << endl;
            }   
      	
-    		if ( n_jets >= jetCuts[1] ){ // Temporal remove n number of jet events
+    	if ( n_jets >= jetCuts[1] ){ // Temporal remove n number of jet events
          	my.pho_timeVsCSCdphi->Fill(cscdPhi[kmax], seedTime[kmax]);
          	my.phoEtaVsCSCdphi->Fill(cscdPhi[kmax], g1P4.Eta());
          	my.phoPhiVsCSCdphi->Fill(cscdPhi[kmax], g1P4.Phi());
@@ -3199,86 +3245,101 @@ for ( int i=0; i< totalN ; i++ ) {
          	   my.pho_sigmaIeta->Fill(sigmaIeta[kmax]);
 
 
-//  Bkg Esti  in EB //
-std::cout << "La regione de ABCD" << std::endl;
-std::cout <<"Lead Photon has Position=: " << kmax <<"\n" << " Njets =: " << n_jets << "\n" <<" has Eta =:"
-<< g1P4.Eta() <<"\t" <<" and Phi=: " << g1P4.Phi() << std::endl;
+	          //  Bkg Esti  in EB //
+	          std::cout <<"Lead Photon has Position=: " << kmax <<"\n" << 			" Njets =: " << n_jets << "\n" <<" has Eta =:"<< g1P4.Eta() <<"\t" <<" and Phi=: " << g1P4.Phi() << std::endl;
 
-if(n_jets == 0 ){ my.eb_met0->Fill(met);my.eb_time0->Fill(seedTime[kmax]);}
-if(n_jets == 1 ){ my.eb_met1->Fill(met);my.eb_time1->Fill(seedTime[kmax]);}
-if(n_jets == 2 ){ my.eb_met2->Fill(met);my.eb_time2->Fill(seedTime[kmax]);}
-if(n_jets >= 3 ){ my.eb_met3->Fill(met);my.eb_time3->Fill(seedTime[kmax]);}
+	          if(n_jets == 0 ){ my.eb_met0->Fill(met);my.eb_time0->Fill(seedTime[kmax]);}
+		  if(n_jets == 1 ){ my.eb_met1->Fill(met);my.eb_time1->Fill(seedTime[kmax]);}
+		  if(n_jets == 2 ){ my.eb_met2->Fill(met);my.eb_time2->Fill(seedTime[kmax]);}
+		  if(n_jets >= 3 ){ my.eb_met3->Fill(met);my.eb_time3->Fill(seedTime[kmax]);}
 
-// #jets Eff Hist
+		  // #jets Eff Hist
 
-if(seedTime[kmax] < photonCuts[7]) {
+		  if(seedTime[kmax] < photonCuts[7]) {
 my.eb_pNjets->Fill(n_jets);
-if(cscdPhi[kmax] < HaloCuts[1] ){ my.eb_hpNjets->Fill(n_jets);}else if ((seedSwissX[kmax] > SX_min) || (nXtals[kmax] < Nxtal_min)){my.eb_spike_pNjets->Fill(n_jets);
+		  if(cscdPhi[kmax] < HaloCuts[1] ){ my.eb_hpNjets->Fill(n_jets);}else if ((seedSwissX[kmax] > SX_min) || (nXtals[kmax] < Nxtal_min)){my.eb_spike_pNjets->Fill(n_jets);
 }else{my.eb_qcd_pNjets->Fill(n_jets);}
 }
-//if( Njet_max < n_jets < Njet_min ){
-//if ( n_jets == jetCuts[1] ){
-if ( ( n_jets == jetCuts[1]) && (seedTime[kmax] < photonCuts[7])){
-   my.eb_ptime->Fill(seedTime[kmax]);
-   my.eb_pSWX->Fill(seedSwissX[kmax]);
-   my.eb_pnXtal->Fill(nXtals[kmax]);
-   my.eb_pcscdPhi->Fill(cscdPhi[kmax]);
-   my.eb_pPt->Fill( max_gPt );
-   my.eb_pMET->Fill(met);
-   if(met < MET_min){my.eb_low_metTime->Fill(seedTime[kmax]);} else{my.eb_high_metTime->Fill(seedTime[kmax]); }
-   //if ( cscdPhi[kmax] < csc_dphi_min) continue;
-   if(cscdPhi[kmax] < HaloCuts[1] ){ std::cout << "j'ai vu en Halo passe ici" << std::endl;
-                                       my.eb_hptime ->Fill(seedTime[kmax]);
-                                       my.eb_hpSWX->Fill(seedSwissX[kmax]);
-                                       my.eb_hpnXtal->Fill(nXtals[kmax]);
-                                       my.eb_hpcscdPhi->Fill(cscdPhi[kmax]);
-                                       my.eb_hpPt->Fill( max_gPt );
-                                       my.eb_hpMET->Fill(met);
-   }else if ((seedSwissX[kmax] > SX_min) || (nXtals[kmax] < Nxtal_min)){
-                                       std::cout <<"C'est pas un Halo mais un Spike" << std::endl;
-                                         my.eb_spike_ptime->Fill(seedTime[kmax]);
-                                         my.eb_spike_pSWX->Fill(seedSwissX[kmax]);
-                                         my.eb_spike_pnXtal->Fill(nXtals[kmax]);
-                                         my.eb_spike_pcscdPhi->Fill(cscdPhi[kmax]);
-                                         my.eb_spike_pPt->Fill( max_gPt );
-                                         my.eb_spike_pMET->Fill(met);
-   }else { std::cout << "C'est pas un Halo ou un Spike! alors ce..." << std::endl;
-          my.eb_qcd_ptime->Fill(seedTime[kmax]);
-          my.eb_qcd_pSWX->Fill(seedSwissX[kmax]);
-          my.eb_qcd_pnXtal->Fill(nXtals[kmax]);
-          my.eb_qcd_pcscdPhi->Fill(cscdPhi[kmax]);
-          my.eb_qcd_pPt->Fill( max_gPt );
-          my.eb_qcd_pMET->Fill(met);
-         }
+		  //if( Njet_max < n_jets < Njet_min ){
+		  //if ( n_jets == jetCuts[1] ){
+	if ( ( n_jets == jetCuts[1]) && (seedTime[kmax] < photonCuts[7])){
+		   my.eb_ptime->Fill(seedTime[kmax]);
+		   my.eb_pSWX->Fill(seedSwissX[kmax]);
+		   my.eb_pnXtal->Fill(nXtals[kmax]);
+		   my.eb_pcscdPhi->Fill(cscdPhi[kmax]);
+		   my.eb_pPt->Fill( max_gPt );
+		   my.eb_pMET->Fill(met);
+		
+               if(met < MET_min){my.eb_low_metTime->Fill(seedTime[kmax]);} else{my.eb_high_metTime->Fill(seedTime[kmax]); }
+		   //if ( cscdPhi[kmax] < csc_dphi_min) continue;
+	       if(cscdPhi[kmax] < HaloCuts[1] ){ std::cout << "j'ai vu en Halo passe ici" << std::endl;
+                     my.eb_hptime ->Fill(seedTime[kmax]);
+                     my.eb_hpSWX->Fill(seedSwissX[kmax]);
+                     my.eb_hpnXtal->Fill(nXtals[kmax]);
+                     my.eb_hpcscdPhi->Fill(cscdPhi[kmax]);
+                     my.eb_hpPt->Fill( max_gPt );
+                     my.eb_hpMET->Fill(met);
+               }else 
+               if ((seedSwissX[kmax] > SX_min) || (nXtals[kmax] < Nxtal_min)){
+                         std::cout <<"C'est pas un Halo mais un Spike" << std::endl;
+                         my.eb_spike_ptime->Fill(seedTime[kmax]);
+                         my.eb_spike_pSWX->Fill(seedSwissX[kmax]);
+                         my.eb_spike_pnXtal->Fill(nXtals[kmax]);
+                         my.eb_spike_pcscdPhi->Fill(cscdPhi[kmax]);
+                         my.eb_spike_pPt->Fill( max_gPt );
+                         my.eb_spike_pMET->Fill(met);
+   	       }else { std::cout << "C'est pas un Halo ou un Spike! alors ce..." << std::endl;
+		          my.eb_qcd_ptime->Fill(seedTime[kmax]);
+		          my.eb_qcd_pSWX->Fill(seedSwissX[kmax]);
+		          my.eb_qcd_pnXtal->Fill(nXtals[kmax]);
+		          my.eb_qcd_pcscdPhi->Fill(cscdPhi[kmax]);
+		          my.eb_qcd_pPt->Fill( max_gPt );
+		          my.eb_qcd_pMET->Fill(met);
+         		}
 	 
-}
-else if(( n_jets >= 3) && (seedTime[kmax] > 0)){
+     		}
 
-// Define ABCD region
-      my.eb_reg->Fill(met, seedTime[kmax]);
-      if((seedTime[kmax] <= t_th) && (met <= MET_min)){ my.eb_regA->Fill( met, seedTime[kmax]);}
-      if((seedTime[kmax] <= t_th) && (met > MET_min)){my.eb_regB->Fill( met, seedTime[kmax]);}
-      if((seedTime[kmax] > t_th) && (met <= MET_min)){my.eb_regC->Fill( met, seedTime[kmax]);}
-      if((seedTime[kmax] > t_th) && (met > MET_min)){my.eb_regD->Fill( met, seedTime[kmax]);}
-      }
  
-std::cout <<"J'ai finis" << std::endl;
+          std::cout << "La regione de ABCD" << std::endl;
+	 // Defined Regions for Bkg Estimation
+    	if ( n_jets > jetCuts[1] ){ 
+
+     		//if( fabs(g1P4.Eta()) > eb_cut )  continue ; 
+ 
+  		   if ( cscdPhi[kmax] < HaloCuts[1] ) continue ;     
+
+     		   if ((seedSwissX[kmax] > SX_min) || (nXtals[kmax] < Nxtal_min)) continue ;
+ 
+   		  // Define ABCD region
+   		     my.eb_reg->Fill(met, seedTime[kmax]); nEreg++;
+   	             if ((fabs(seedTime[kmax]) < t_thR) && (met <= MET_min)){ my.eb_regA->Fill( met, seedTime[kmax]); nEregA++;}
+   		     if ((fabs(seedTime[kmax]) < t_thR) && (met > MET_min)){my.eb_regB->Fill( met, seedTime[kmax]);nEregB++;}
+   	             if((seedTime[kmax] > t_thR) && (met <= MET_min)){my.eb_regC->Fill( met, seedTime[kmax]);nEregC++;}
+   
+ 		     if((seedTime[kmax] > t_thR) && (met > MET_min)){my.eb_regD->Fill( met, seedTime[kmax]);nEregD++;}
+   		     if((seedTime[kmax] < t_thL) && (met <= MET_min)){my.eb_regAprime->Fill( met, seedTime[kmax]);nEregAp++;}
+                     if((seedTime[kmax] < t_thL) && (met > MET_min)){my.eb_regBprime->Fill( met, seedTime[kmax]);nEregBp++;}
+
+          }  
+ 
+      
+  
+              std::cout <<"J'ai finis" << std::endl;
 
 
-///@@@@@ Done with Bkg Esti @@@@@@////
+		///@@@@@ Done with Bkg Esti @@@@@@////
 
-
-/****** HE stuff ****/
-my.HEhalo_timeVsHEdphiEB->Fill(HEGPhi[kmax], seedTime[kmax]);
-my.HEdphiEB->Fill(HEGPhi[kmax]);
-// Treating - & + time Seperately)
-if( seedTime[kmax] < photonCuts[7] ) {
-my.pho_LN2timeEB->Fill(seedTime[kmax]);
-}else if( (seedTime[kmax] > photonCuts[7] ) && (seedTime[kmax] < photonCuts[8]) ) {
-my.pho_LN2GP2timeEB->Fill(seedTime[kmax]);
-}else {
-my.pho_GP2timeEB->Fill(seedTime[kmax]);
-}
+		/****** HE stuff ****/
+		my.HEhalo_timeVsHEdphiEB->Fill(HEGPhi[kmax], seedTime[kmax]);
+		my.HEdphiEB->Fill(HEGPhi[kmax]);
+		// Treating - & + time Seperately)
+		if( seedTime[kmax] < photonCuts[7] ) {
+			my.pho_LN2timeEB->Fill(seedTime[kmax]);
+ 		}else if( (seedTime[kmax] > photonCuts[7] ) && (seedTime[kmax] < photonCuts[8]) ) {
+			my.pho_LN2GP2timeEB->Fill(seedTime[kmax]);
+			}else {
+				my.pho_GP2timeEB->Fill(seedTime[kmax]);
+				}
 // Ouside 2ns Events
          if(fabs(seedTime[kmax]) > photonCuts[8] ) { 
             my.pho_ATG2_sigmaEtaEB->Fill(sigmaEta[kmax]);
@@ -3287,60 +3348,60 @@ my.pho_GP2timeEB->Fill(seedTime[kmax]);
            }
 
 
- }else{ // endcap
+   }else{ // endcap
    
-       my.pho_timeVsEtaEE->Fill(g1P4.Eta(), seedTime[kmax]);
-       my.pho_timeVsPhiEE->Fill(g1P4.Phi(), seedTime[kmax]);
-       my.pho_sminorEE->Fill(sMinPho[kmax]);
-       my.pho_smajorEE->Fill(sMajPho[kmax]);
-       my.pho_sigmaEtaEE->Fill(sigmaEta[kmax]);
-       my.pho_timeEE->Fill(seedTime[kmax]);
-       my.pho_num_phoEE->Fill(n_pho);
-       my.pho_num_jetEE->Fill(n_jets); 
+      		my.pho_timeVsEtaEE->Fill(g1P4.Eta(), seedTime[kmax]);
+       		my.pho_timeVsPhiEE->Fill(g1P4.Phi(), seedTime[kmax]);
+       		my.pho_sminorEE->Fill(sMinPho[kmax]);
+       		my.pho_smajorEE->Fill(sMajPho[kmax]);
+       		my.pho_sigmaEtaEE->Fill(sigmaEta[kmax]);
+       		my.pho_timeEE->Fill(seedTime[kmax]);
+       		my.pho_num_phoEE->Fill(n_pho);
+       		my.pho_num_jetEE->Fill(n_jets); 
 
-// if(n_jets == jetCuts[1]) {
-       //-EE
-       if(g1P4.Eta() < 0.0)
-         {
-         /* check Gud Photon in EE */
-	if(  (fabs(g1P4.Phi()) <= TMath::Pi() && fabs(g1P4.Phi()) >= 2.51 ) || (fabs(g1P4.Phi()) <= 0.6 ) ){  
+		// if(n_jets == jetCuts[1]) {
+       		//-EE
+       		if(g1P4.Eta() < 0.0)
+         	     {
+      			   /* check Gud Photon in EE */
+			if(  (fabs(g1P4.Phi()) <= TMath::Pi() && fabs(g1P4.Phi()) >= 2.51 ) || (fabs(g1P4.Phi()) <= 0.6 ) ){  
 	
-	  my.EEM_pho_time_In_Halo_Win->Fill(seedTime[kmax]);
-	  my.EEM_pho_eta_In_Halo_Win->Fill(g1P4.Eta());
-	  my.EEM_pho_pt_In_Halo_Win->Fill(max_gPt);
-	  my.EEM_pho_ncrys_In_Halo_Win->Fill(nXtals[kmax]);
-	  }else{
-	  my.EEM_pho_time_NIn_Halo_Win->Fill(seedTime[kmax]);
-	  my.EEM_pho_eta_NIn_Halo_Win->Fill(g1P4.Eta());
-	  my.EEM_pho_pt_NIn_Halo_Win->Fill(max_gPt);
-	  my.EEM_pho_ncrys_NIn_Halo_Win->Fill(nXtals[kmax]);
+			  my.EEM_pho_time_In_Halo_Win->Fill(seedTime[kmax]);
+	  		  my.EEM_pho_eta_In_Halo_Win->Fill(g1P4.Eta());
+			  my.EEM_pho_pt_In_Halo_Win->Fill(max_gPt);
+			  my.EEM_pho_ncrys_In_Halo_Win->Fill(nXtals[kmax]);
+	 		 }else{
+				  my.EEM_pho_time_NIn_Halo_Win->Fill(seedTime[kmax]);
+				  my.EEM_pho_eta_NIn_Halo_Win->Fill(g1P4.Eta());
+				  my.EEM_pho_pt_NIn_Halo_Win->Fill(max_gPt);
+				  my.EEM_pho_ncrys_NIn_Halo_Win->Fill(nXtals[kmax]);
 
 
-	  }
+	 			 }
 
-	 // Check Untaggable Halo Photons in EE
+				 // Check Untaggable Halo Photons in EE
 	 
-         if( fabs(g1P4.Eta() ) > 1.95){
+   		         if( fabs(g1P4.Eta() ) > 1.95){
 
-	  my.EEM_Untag_Halo_pho_time->Fill(seedTime[kmax]);
-	  my.EEM_Untag_Halo_pho_eta->Fill(g1P4.Eta());
-	  my.EEM_Untag_Halo_pho_phi->Fill(g1P4.Phi());
-          my.EEM_Untag_Halo_pho_cscdphi->Fill(cscdPhi[kmax]);
-          my.EEM_Untag_Halo_pho_ncrys->Fill(nXtals[kmax]);
-          my.EEM_Untag_Halo_pho_pt->Fill(max_gPt);
-          my.EEM_Untag_Halo_pho_met->Fill(met);
-          my.EEM_Untag_Halo_pho_metVstime->Fill(met, seedTime[kmax]);
-	 }
-
-
+				  my.EEM_Untag_Halo_pho_time->Fill(seedTime[kmax]);
+				  my.EEM_Untag_Halo_pho_eta->Fill(g1P4.Eta());
+				  my.EEM_Untag_Halo_pho_phi->Fill(g1P4.Phi());
+ 			          my.EEM_Untag_Halo_pho_cscdphi->Fill(cscdPhi[kmax]);
+ 			          my.EEM_Untag_Halo_pho_ncrys->Fill(nXtals[kmax]);
+			          my.EEM_Untag_Halo_pho_pt->Fill(max_gPt);
+			          my.EEM_Untag_Halo_pho_met->Fill(met);
+			          my.EEM_Untag_Halo_pho_metVstime->Fill(met, seedTime[kmax]);
+				 }
 
 
-       
-        if( fabs(seedTime[kmax]) <= 1.0){
-	  my.EEM_CSC_dphi_In_1ns->Fill(cscdPhi[kmax]);
-	  }else{
-	  my.EEM_CSC_dphi_NIn_1ns->Fill(cscdPhi[kmax]);
-	  }
+
+
+    
+    		       if( fabs(seedTime[kmax]) <= 1.0){
+			  my.EEM_CSC_dphi_In_1ns->Fill(cscdPhi[kmax]);
+			  }else{
+				  my.EEM_CSC_dphi_NIn_1ns->Fill(cscdPhi[kmax]);
+	  			}
 
 	   my.EEM_phoTimeVsRho->Fill(dRhopV, seedTime[kmax]);
 	   my.EEM_phoTimeVsPhi->Fill(g1P4.Phi(), seedTime[kmax]);
@@ -3421,7 +3482,7 @@ my.pho_GP2timeEB->Fill(seedTime[kmax]);
 	             my.EEP_pho_eta->Fill(g1P4.Eta());
                	} 
 
-	  }
+      }
 
  // }
 
@@ -3701,7 +3762,14 @@ printf("\n Entry Now is Entry :  %d \n", Entry );
 
 } // end of event looping
 
-  //Don't make plots now!
+// Now print event numbers out
+
+std::cout << "Ratio in ABCD & A'B'CD \t" << cout << "Total Number Events = \t"<< nEreg << cout <<"\n" << std::setw(8) << cout << "A'/B' " << std::setfill('=') << std::setw(2)  << nEregAp << std::setfill('/') << nEregBp << setfill('=') <<std::setw(2) << nEregAp/nEregBp  <<"\n" << std::setfill('-') <<std::setw(10) <<std::endl;
+
+std::cout << "\t\t"<< std::setw(8) << "A/B " << std::setfill('=') << std::setw(2)  << nEregA << std::setfill('/') << nEregB << setfill('=') <<std::setw(2) << nEregA/nEregB  <<"\n" << std::setfill('-') <<std::setw(10) <<std::endl;
+
+std::cout << "\t\t"<< std::setw(8) << "C/D "<< std::setfill('=') << std::setw(2)  << nEregC << std::setfill('/') << nEregC << setfill('=') <<std::setw(2) << nEregC/nEregD  <<"\n"  << std::setfill('-') <<std::setw(10) <<std::endl;
+//Don't make plots now!
 //Make_Plots();
 
 Writehists();

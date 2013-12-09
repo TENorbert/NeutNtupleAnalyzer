@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
+#include <iomanip>
 #include <string>
 #include <sstream>
 #include <TMath.h>
@@ -44,11 +45,12 @@
 #define  t_cut  -4.0
 #define  eb_cut  1.479
 #define  csc_dphi_min 0.072  // ~ 4.125 deg
-#define  Nxtal_min   5.0
+#define  Nxtal_min   7.0
 #define  SX_min  0.95     // max Swiss x value
 #define  Njet_min 1
 #define  MET_min  60.0    // MET threshold
-#define  t_th    3.0     // Min time to define signal region
+#define  t_thR    3.0     // Min time to define signal region
+#define  t_thL    -3.0     // Min time to define signal region
 class TestGen : public TObject {
 
 public:
@@ -162,7 +164,9 @@ TH2D *HEtimeVsPhophi,*HEtimeVsPhoeta;
 TH2D *HEhalo_timeVsHEdphiEB,*HEhalo_timeVsHEdphiEE;
 
 TH1D*eb_ptime,*eb_hptime, *eb_spike_ptime,*eb_qcd_ptime,*eb_low_metTime,*eb_high_metTime,*eb_pSWX, *eb_hpSWX, *eb_spike_pSWX,*eb_qcd_pSWX, *eb_pnXtal,*eb_hpnXtal, *eb_spike_pnXtal, *eb_qcd_pnXtal, *eb_pcscdPhi, *eb_hpcscdPhi, *eb_spike_pcscdPhi, *eb_qcd_pcscdPhi , *eb_met0, *eb_met1, *eb_met2, *eb_met3, *eb_time0 , *eb_time1, *eb_time2, *eb_time3;
-TH2D* eb_reg, *eb_regA, *eb_regB, *eb_regC, *eb_regD;
+
+//region counting test
+TH2D* eb_reg, *eb_regA, *eb_regB, *eb_regC, *eb_regD,*eb_regAprime,*eb_regBprime;
 
 TH1D*eb_pPt,*eb_hpPt, *eb_spike_pPt, *eb_qcd_pPt,*eb_pMET,*eb_hpMET, *eb_spike_pMET, *eb_qcd_pMET;
 
@@ -200,6 +204,8 @@ TH2D* Jseedtime2VsEta, *Jseedtime2VsPhi, *JseedtimeVsEnergy, *Jseedtime2VsBCEner
 
 TH1D *JseedOOtChi2, *JseedtimeChi2, *Jseedtime2EB, *Jseedtime2EE;
 
+TH2D* Jseedtime2VsPseedtime;
+TH1D* Jseedtime2MPseedtime;
 
 
 };
