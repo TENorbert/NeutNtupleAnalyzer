@@ -3764,11 +3764,29 @@ printf("\n Entry Now is Entry :  %d \n", Entry );
 
 // Now print event numbers out
 
-std::cout << "Ratio in ABCD & A'B'CD \t" << cout << "Total Number Events = \t"<< nEreg << cout <<"\n" << std::setw(8) << cout << "A'/B' " << std::setfill('=') << std::setw(2)  << nEregAp << std::setfill('/') << nEregBp << setfill('=') <<std::setw(2) << nEregAp/nEregBp  <<"\n" << std::setfill('-') <<std::setw(10) <<std::endl;
+if( nEregBp != 0){
+cout << "Ratio in ABCD & A'B'CD Total Number Events == \t" << nEreg << endl;
+cout << setw(8) << cout << "A'/B' " << setfill('=') << setw(4)  << nEregAp << cout << "  /  "<< nEregBp << setfill('=') << setw(4) << nEregAp/nEregBp  <<"\n" <<  setfill('-') << setw(5) << endl;
+}else{ cout <<" N Events in Reg B' = 0 " << endl; }
 
-std::cout << "\t\t"<< std::setw(8) << "A/B " << std::setfill('=') << std::setw(2)  << nEregA << std::setfill('/') << nEregB << setfill('=') <<std::setw(2) << nEregA/nEregB  <<"\n" << std::setfill('-') <<std::setw(10) <<std::endl;
+if( nEregB != 0){
+cout << "\t"<< setw(8) << cout << "A/B " << setfill('=') << setw(2)  << nEregA << cout << " /" << nEregB << setfill('=') << setw(2) << nEregA/nEregB  <<"\n" << setfill('-') << setw(5) << endl;
+}else{ cout <<" N Events in Reg B = 0 " << endl; }
 
-std::cout << "\t\t"<< std::setw(8) << "C/D "<< std::setfill('=') << std::setw(2)  << nEregC << std::setfill('/') << nEregC << setfill('=') <<std::setw(2) << nEregC/nEregD  <<"\n"  << std::setfill('-') <<std::setw(10) <<std::endl;
+if( nEregC != 0){
+cout << "\t"<< setw(8) << cout << "C/D "<< setfill('=') << setw(2)  << nEregC << cout <<" / " << nEregC << setfill('=') << setw(2) << nEregC/nEregD  <<"\n"  <<  setfill('-') << setw(5) << endl;
+}else{ cout <<" N Events in Reg D = 0 " << endl; }
+
+cout <<"Total Number of Events =\t" << nEreg << "\n";
+cout <<" Ratio A'/B' =\t" << nEregAp/nEregBp << "\n";
+cout <<" Ratio A/B =\t" << nEregA/nEregB << "\n";
+cout <<" Ratio C/D =\t" << nEregC/nEregD << "\n";
+
+
+
+
+
+
 //Don't make plots now!
 //Make_Plots();
 
