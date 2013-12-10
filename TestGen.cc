@@ -12,7 +12,6 @@ string name1 = "CSCdphiInTimeSliceEB_";
 string name2 = "NCrysInTimeSliceEB_";
 std::string hname1[32];
 std::string hname2[32];
-//TFile *f = new TFile("TodayPhoton_Eta_Studies_DP_Trig_NoJetID.root","recreate");
 //TFile *f = new TFile("gmsb_180_DP_gammaTriggger.root","recreate");
 TFile *f = new TFile("JetTiming_DPTrigger_Displaced_Photon_outputfile.root","recreate");
 
@@ -342,14 +341,14 @@ my.eb_time1 = new TH1D("my.eb_time1", "Time of 1-Jet Events", 200, -50.0 , 50.0)
 my.eb_time2 = new TH1D("my.eb_time2", "Time of 2-Jet Events", 200, -50.0 , 50.0);
 my.eb_time3 = new TH1D("my.eb_time3", "Time of >= 3-Jet Events", 200,-50.0, 50.0);
 
-my.eb_reg = new TH2D("eb_reg", "MET  Vs Photon Time", 20, 0 , 2000, 120, -30.0, 30.0);
-my.eb_regA = new TH2D("eb_regA", "MET  Vs Photon Time RegA", 20, 0 , 2000, 120, -30.0, 30.0);
-my.eb_regB = new TH2D("eb_regB", "MET  Vs Photon Time RegB", 20, 0 , 2000, 120, -30.0, 30.0);
-my.eb_regC = new TH2D("eb_regC", "MET  Vs Photon Time RegC", 20, 0 , 2000, 120, -30.0, 30.0);
-my.eb_regD = new TH2D("eb_regD", "MET  Vs Photon Time RegD", 20, 0 , 2000, 120, -30.0, 30.0);
+my.eb_reg = new TH2D("my.eb_reg", "MET  Vs Photon Time", 20, 0 , 800, 120, -30.0, 30.0);
+my.eb_regA = new TH2D("my.eb_regA", "MET  Vs Photon Time RegA", 20, 0 , 800, 120, -30.0, 30.0);
+my.eb_regB = new TH2D("my.eb_regB", "MET  Vs Photon Time RegB", 20, 0 , 800, 120, -30.0, 30.0);
+my.eb_regC = new TH2D("my.eb_regC", "MET  Vs Photon Time RegC", 20, 0 , 800, 120, -30.0, 30.0);
+my.eb_regD = new TH2D("my.eb_regD", "MET  Vs Photon Time RegD", 20, 0 , 800, 120, -30.0, 30.0);
 
-my.eb_regAprime = new TH2D("eb_regAprime", "MET  Vs Photon Time Reg A'", 20, 0 , 2000, 120, -30.0, 30.0);
-my.eb_regBprime = new TH2D("eb_regBprime", "MET  Vs Photon Time Reg B'", 20, 0 , 2000, 120, -30.0, 30.0);
+my.eb_regAprime = new TH2D("my.eb_regAprime", "MET  Vs Photon Time Reg A'", 20, 0 , 800, 120, -30.0, 30.0);
+my.eb_regBprime = new TH2D("my.eb_regBprime", "MET  Vs Photon Time Reg B'", 20, 0 , 800, 120, -30.0, 30.0);
 
 my.eb_pPt = new TH1D("my.eb_pPt", "Pt_{#gamma} of 0-Jet Events", 4000, 0 , 4000);
 my.eb_hpPt = new TH1D("my.eb_hpPt", "Pt_{Halo #gamma} of 0-Jet Events", 4000, 0 , 4000);
@@ -494,6 +493,14 @@ my.EEM_Untag_Halo_pho_metVstime = new TH2D("my.EEM_Untag_Halo_pho_metVstime","ME
 my.EEP_Untag_Halo_pho_metVstime = new TH2D("my.EEP_Untag_Halo_pho_metVstime","MET Vs Time, EE+, Untagable Halo",100, 0.0, 700, 500, -25.0, 50.0);
 
 
+my.ebMetVsTime = new TH2D("my.ebMetVsTime","EB MET Vs Time",20, 0.0, 800,120, -30.0, 30.0);
+my.eeMetVsTime = new TH2D("my.eeMetVsTime","EE MET Vs Time",20, 0.0, 800,120, -30.0, 30.0);
+my.ebMetVsEta = new TH2D("my.ebMetVsEta","EB MET Vs Eta",20, 0.0, 800,170, -3.2, 3.2);
+my.eeMetVsEta = new TH2D("my.eeMetVsEta","EE MET Vs Eta",20, 0.0, 800,170, -3.2, 3.2);
+my.ebMetVsPhi = new TH2D("my.ebMetVsPhi","EB MET Vs Phi",20, 0.0, 800,360, -3.2, 3.2);
+my.eeMetVsPhi = new TH2D("my.eeMetVsPhi","EE MET Vs Phi",20, 0.0, 800,360, -3.2, 3.2);
+my.ebMet = new TH1D("my.ebMet","EB MET", 20, 0, 800);
+my.eeMet = new TH1D("my.eeMet","EE MET", 20, 0, 800);
 //Jet Timing
 my.Jseedtime1= new TH1D("my.Jseedtime1", "Jet SeedTime Cleaned", 200, -50.0, 50.0);
 my.Jseedtime2= new TH1D("my.Jseedtime2", "Jet SeedTime Extract", 200, -50.0, 50.0);
@@ -2237,43 +2244,82 @@ my.spkInpho_metEB->Write();
 BkgEst1 = f->mkdir("BackGndEst1");
 BkgEst1->cd();
 
+my.ebMetVsTime->GetYaxis()->SetTitle("ECAL Time^{#gamma}");
+my.ebMetVsTime->GetXaxis()->SetTitle("MET(GeV)");
+my.ebMetVsTime->Draw();
+my.ebMetVsTime->Write();
 
-my.eb_reg->GetYaxis()->SetTitle("ECAL Time{#gamma}");
+my.eeMetVsTime->GetYaxis()->SetTitle("ECAL Time^{#gamma}");
+my.eeMetVsTime->GetXaxis()->SetTitle("MET(GeV)");
+my.eeMetVsTime->Draw();
+my.eeMetVsTime->Write();
+
+my.ebMetVsEta->GetYaxis()->SetTitle("{#eta}_{#gamma}");
+my.ebMetVsEta->GetXaxis()->SetTitle("MET(GeV)");
+my.ebMetVsEta->Draw();
+my.ebMetVsEta->Write();
+
+my.eeMetVsEta->GetYaxis()->SetTitle("{#eta}_{#gamma}");
+my.eeMetVsEta->GetXaxis()->SetTitle("MET(GeV)");
+my.eeMetVsEta->Draw();
+my.eeMetVsEta->Write();
+
+my.ebMetVsPhi->GetYaxis()->SetTitle("{#phi}_{#gamma}");
+my.ebMetVsPhi->GetXaxis()->SetTitle("MET(GeV)");
+my.ebMetVsPhi->Draw();
+my.ebMetVsPhi->Write();
+
+my.eeMetVsPhi->GetYaxis()->SetTitle("{#phi}_{#gamma}");
+my.eeMetVsPhi->GetXaxis()->SetTitle("MET(GeV)");
+my.eeMetVsPhi->Draw();
+my.eeMetVsPhi->Write();
+
+my.ebMet->GetYaxis()->SetTitle("Events/40GeV");
+my.ebMet->GetXaxis()->SetTitle("MET(GeV)");
+my.ebMet->Draw();
+my.ebMet->Write();
+
+my.eeMet->GetYaxis()->SetTitle("Events/40GeV");
+my.eeMet->GetXaxis()->SetTitle("MET(GeV)");
+my.eeMet->Draw();
+my.eeMet->Write();
+
+my.eb_reg->GetYaxis()->SetTitle("ECAL Time^{#gamma}");
 my.eb_reg->GetXaxis()->SetTitle("MET(GeV)");
 my.eb_reg->Draw();
 my.eb_reg->Write();
 
-my.eb_regA->GetYaxis()->SetTitle("ECAL Time{#gamma}");
+my.eb_regA->GetYaxis()->SetTitle("ECAL Time^{#gamma}");
 my.eb_regA->GetXaxis()->SetTitle("MET(GeV)");
 my.eb_regA->Draw();
 my.eb_regA->Write();
 
-my.eb_regAprime->GetYaxis()->SetTitle("ECAL Time{#gamma}");
+my.eb_regAprime->GetYaxis()->SetTitle("ECAL Time^{#gamma}");
 my.eb_regAprime->GetXaxis()->SetTitle("MET(GeV)");
 my.eb_regAprime->Draw();
 my.eb_regAprime->Write();
 
-my.eb_regBprime->GetYaxis()->SetTitle("ECAL Time{#gamma}");
+my.eb_regBprime->GetYaxis()->SetTitle("ECAL Time^{#gamma}");
 my.eb_regBprime->GetXaxis()->SetTitle("MET(GeV)");
 my.eb_regBprime->Draw();
 my.eb_regBprime->Write();
 
-my.eb_regB->GetYaxis()->SetTitle("ECAL Time{#gamma}");
+my.eb_regB->GetYaxis()->SetTitle("ECAL Time^{#gamma}");
 my.eb_regB->GetXaxis()->SetTitle("MET(GeV)");
 my.eb_regB->Draw();
 my.eb_regB->Write();
 
-my.eb_regC->GetYaxis()->SetTitle("ECAL Time{#gamma}");
+my.eb_regC->GetYaxis()->SetTitle("ECAL Time^{#gamma}");
 my.eb_regC->GetXaxis()->SetTitle("MET(GeV)");
 my.eb_regC->Draw();
 my.eb_regC->Write();
 
-my.eb_regD->GetYaxis()->SetTitle("ECAL Time{#gamma}");
+my.eb_regD->GetYaxis()->SetTitle("ECAL Time^{#gamma}");
 my.eb_regD->GetXaxis()->SetTitle("MET(GeV)");
 my.eb_regD->Draw();
 my.eb_regD->Write();
 
-my.eb_ptime->GetXaxis()->SetTitle("Ecal Time_{#gamma}");
+my.eb_ptime->GetXaxis()->SetTitle("Ecal Time^{#gamma}");
 my.eb_ptime->GetYaxis()->SetTitle("No. Events");
 my.eb_ptime->Draw();
 my.eb_ptime->Write();
@@ -2934,7 +2980,13 @@ void TestGen::ReadTree( string dataName ) {
   	int totalN = tr->GetEntries();
    	cout<<" from  "<< dataName <<" total entries = "<< totalN <<" Process "<< ProcessEvents <<endl;
         // Number of Events in diff regions of cut
-        int nEregA = 0, nEregB = 0, nEregC = 0, nEregD = 0, nEregAp = 0, nEregBp = 0, nEreg = 0;
+        int nEregA = 0;
+        int nEregB = 0;
+        int nEregC = 0;
+        int nEregD = 0;
+        int nEregAp = 0;
+        int nEregBp = 0;
+        int nEreg = 0;
    	int nEvt = 0 ;
   	 cout << "Event processing Starts" << endl;
 // Loop  over events
@@ -3134,6 +3186,11 @@ for ( int i=0; i< totalN ; i++ ) {
   //EB and EE plots
   if( fabs(g1P4.Eta()) < 1.479 ) {
 
+         my.ebMet->Fill(met);
+         my.ebMetVsTime->Fill( met, seedTime[kmax]);
+         my.ebMetVsEta->Fill(met, g1P4.Eta());
+         my.ebMetVsPhi->Fill(met, g1P4.Phi());
+        
         //Check different Phi windows For any Phi Assym
 	if( fabs(g1P4.Phi()) < 0.5 ) {
 	     my.phoTimePhi_ZeroWinEB->Fill(seedTime[kmax]); }
@@ -3158,7 +3215,7 @@ for ( int i=0; i< totalN ; i++ ) {
      		cout <<"Time slice\t" << Time_Array[ii] << "  has CSCdPhi \t" << cscdPhi[kmax] << "  and NCrys\t" << nXtals[kmax] << endl;
            }   
      	
-    	if ( n_jets >= jetCuts[1] ){ // Temporal remove n number of jet events
+    	if ( n_jets > jetCuts[1] ){ // Temporal remove n number of jet events
          	my.pho_timeVsCSCdphi->Fill(cscdPhi[kmax], seedTime[kmax]);
          	my.phoEtaVsCSCdphi->Fill(cscdPhi[kmax], g1P4.Eta());
          	my.phoPhiVsCSCdphi->Fill(cscdPhi[kmax], g1P4.Phi());
@@ -3304,28 +3361,28 @@ my.eb_pNjets->Fill(n_jets);
 	 // Defined Regions for Bkg Estimation
     	if ( n_jets > jetCuts[1] ){ 
 
+                   
+  
      		//if( fabs(g1P4.Eta()) > eb_cut )  continue ; 
  
   		   if ( cscdPhi[kmax] < HaloCuts[1] ) continue ;     
 
-     		   if ((seedSwissX[kmax] > SX_min) || (nXtals[kmax] < Nxtal_min)) continue ;
+     		   if ((seedSwissX[kmax] > 0.98) || (nXtals[kmax] < 7.0)) continue ;
  
    		  // Define ABCD region
-   		     my.eb_reg->Fill(met, seedTime[kmax]); nEreg++;
-   	             if ((fabs(seedTime[kmax]) < t_thR) && (met <= MET_min)){ my.eb_regA->Fill( met, seedTime[kmax]); nEregA++;}
-   		     if ((fabs(seedTime[kmax]) < t_thR) && (met > MET_min)){my.eb_regB->Fill( met, seedTime[kmax]);nEregB++;}
-   	             if((seedTime[kmax] > t_thR) && (met <= MET_min)){my.eb_regC->Fill( met, seedTime[kmax]);nEregC++;}
-   
- 		     if((seedTime[kmax] > t_thR) && (met > MET_min)){my.eb_regD->Fill( met, seedTime[kmax]);nEregD++;}
-   		     if((seedTime[kmax] < t_thL) && (met <= MET_min)){my.eb_regAprime->Fill( met, seedTime[kmax]);nEregAp++;}
-                     if((seedTime[kmax] < t_thL) && (met > MET_min)){my.eb_regBprime->Fill( met, seedTime[kmax]);nEregBp++;}
+   		      my.eb_reg->Fill(met, seedTime[kmax]); nEreg++;
+   	             
+                     if ( ( (fabs(seedTime[kmax]) < photonCuts[8]) && ( met < metCut[1] ) )){ my.eb_regA->Fill( met, seedTime[kmax]); nEregA++;}
+   		     if (((fabs(seedTime[kmax]) < photonCuts[8]) && ( met > metCut[1] ))){ my.eb_regB->Fill( met, seedTime[kmax]); nEregB++;}
+   	             if (((seedTime[kmax] > photonCuts[7]) && ( met < metCut[1] ))){my.eb_regC->Fill( met, seedTime[kmax]); nEregC++;}
+ 		     if (((seedTime[kmax] > photonCuts[8] ) && ( met > metCut[1] ))){ my.eb_regD->Fill( met, seedTime[kmax]); nEregD++;}
+   		     if (((seedTime[kmax] < photonCuts[7]) && ( met < metCut[1] ))){ my.eb_regAprime->Fill( met, seedTime[kmax]); nEregAp++;}
+                     if (((seedTime[kmax] < photonCuts[7]) && ( met > metCut[1] ))){ my.eb_regBprime->Fill( met, seedTime[kmax]); nEregBp++;}
 
           }  
  
       
   
-              std::cout <<"J'ai finis" << std::endl;
-
 
 		///@@@@@ Done with Bkg Esti @@@@@@////
 
@@ -3349,6 +3406,12 @@ my.eb_pNjets->Fill(n_jets);
 
 
    }else{ // endcap
+
+               
+         	my.eeMet->Fill(met);
+         	my.eeMetVsTime->Fill( met, seedTime[kmax]);
+         	my.eeMetVsEta->Fill(met, g1P4.Eta());
+      	        my.eeMetVsPhi->Fill(met, g1P4.Phi());
    
       		my.pho_timeVsEtaEE->Fill(g1P4.Eta(), seedTime[kmax]);
        		my.pho_timeVsPhiEE->Fill(g1P4.Phi(), seedTime[kmax]);
@@ -3763,9 +3826,10 @@ printf("\n Entry Now is Entry :  %d \n", Entry );
 } // end of event looping
 
 // Now print event numbers out
-
+/*
 if( nEregBp != 0){
 cout << "Ratio in ABCD & A'B'CD Total Number Events == \t" << nEreg << endl;
+
 cout << setw(8) << cout << "A'/B' " << setfill('=') << setw(4)  << nEregAp << cout << "  /  "<< nEregBp << setfill('=') << setw(4) << nEregAp/nEregBp  <<"\n" <<  setfill('-') << setw(5) << endl;
 }else{ cout <<" N Events in Reg B' = 0 " << endl; }
 
@@ -3776,11 +3840,14 @@ cout << "\t"<< setw(8) << cout << "A/B " << setfill('=') << setw(2)  << nEregA <
 if( nEregC != 0){
 cout << "\t"<< setw(8) << cout << "C/D "<< setfill('=') << setw(2)  << nEregC << cout <<" / " << nEregC << setfill('=') << setw(2) << nEregC/nEregD  <<"\n"  <<  setfill('-') << setw(5) << endl;
 }else{ cout <<" N Events in Reg D = 0 " << endl; }
+*/
 
-cout <<"Total Number of Events =\t" << nEreg << "\n";
-cout <<" Ratio A'/B' =\t" << nEregAp/nEregBp << "\n";
-cout <<" Ratio A/B =\t" << nEregA/nEregB << "\n";
-cout <<" Ratio C/D =\t" << nEregC/nEregD << "\n";
+cout <<"Total Number of Events =\t" << int(nEreg) << "\n";
+cout << "Events in RegA' = " << int(nEregAp) << cout << "\t Events in RegB' = " << int(nEregBp) << cout <<"\t Ratio A'/B' ==" << float(nEregAp/nEregBp) << "\n";
+cout << "Events in RegA = " << int(nEregA) << cout << "\t Events in RegB = " << int(nEregB) << cout <<"\t Ratio A/B ==" << float(nEregA/nEregB) << "\n";
+cout << "Events in RegC = " << int(nEregC) << cout << "\t Events in RegD = " << int(nEregC) << cout <<"\t Ratio C/D ==" << float(nEregC/nEregD) << "\n";
+
+
 
 
 

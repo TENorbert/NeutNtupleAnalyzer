@@ -168,6 +168,8 @@ TH1D*eb_ptime,*eb_hptime, *eb_spike_ptime,*eb_qcd_ptime,*eb_low_metTime,*eb_high
 //region counting test
 TH2D* eb_reg, *eb_regA, *eb_regB, *eb_regC, *eb_regD,*eb_regAprime,*eb_regBprime;
 
+TH2D* ebMetVsTime, *ebMetVsEta, *ebMetVsPhi, *eeMetVsTime, *eeMetVsEta, *eeMetVsPhi;
+TH1D* ebMet, *eeMet;
 TH1D*eb_pPt,*eb_hpPt, *eb_spike_pPt, *eb_qcd_pPt,*eb_pMET,*eb_hpMET, *eb_spike_pMET, *eb_qcd_pMET;
 
 TH1D*eb_pNjets,*eb_hpNjets, *eb_spike_pNjets, *eb_qcd_pNjets;
