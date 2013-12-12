@@ -12,6 +12,8 @@ string name1 = "CSCdphiInTimeSliceEB_";
 string name2 = "NCrysInTimeSliceEB_";
 std::string hname1[32];
 std::string hname2[32];
+
+int nEregA = 0, nEregB = 0, nEregC = 0, nEregD = 0, nEregAp = 0, nEregBp = 0, nEreg = 0;
 //TFile *f = new TFile("gmsb_180_DP_gammaTriggger.root","recreate");
 TFile *f = new TFile("JetTiming_DPTrigger_Displaced_Photon_outputfile.root","recreate");
 
@@ -128,6 +130,12 @@ for( int ii = 0; ii < 32; ii++){
    my.pho_HcalIso = new TH1D("my.pho_HcalIso", "Photon HcalIso", 100, 0.0, 10.0);
 //   my.hcal_Iso    = new TH1D("my.hcal_Iso", "2012 Photon HcalIso", 100, 0.0, 10.0);
    my.pho_TrkIso  = new TH1D("my.pho_TrkIso","Photon Track Iso", 100, 0.0, 10.0);
+
+my.evtMetVsTime = new TH2D("my.evtMetVsTime", "MET Vs Time'", 200, 0 , 1000, 120, -30.0, 30.0);
+my.evtMetVsEta = new TH2D("my.evtMetVsEta", "MET Vs #eta_{#gamma}'", 200, 0 , 1000, 170, -3.2, 3.2);
+my.evtMetVsPhi = new TH2D("my.evtMetVsPhi", "MET Vs #phi_{#gamma}'", 200, 0 , 1000, 360, -3.2, 3.2);
+my.evtMetVsPt = new TH2D("my.evtMetVsPt", "MET Vs Pt_{#gamma}'", 200, 0 , 1000, 100, 0.0, 1000.0);
+
 
 // Photon 1D plots   
     my.phoCSCtime = new TH1D("my.phoCSCtime","Time of CSC #gamma", 1000, -100.0, 100.0); 
@@ -341,14 +349,17 @@ my.eb_time1 = new TH1D("my.eb_time1", "Time of 1-Jet Events", 200, -50.0 , 50.0)
 my.eb_time2 = new TH1D("my.eb_time2", "Time of 2-Jet Events", 200, -50.0 , 50.0);
 my.eb_time3 = new TH1D("my.eb_time3", "Time of >= 3-Jet Events", 200,-50.0, 50.0);
 
-my.eb_reg = new TH2D("my.eb_reg", "MET  Vs Photon Time", 20, 0 , 800, 120, -30.0, 30.0);
-my.eb_regA = new TH2D("my.eb_regA", "MET  Vs Photon Time RegA", 20, 0 , 800, 120, -30.0, 30.0);
-my.eb_regB = new TH2D("my.eb_regB", "MET  Vs Photon Time RegB", 20, 0 , 800, 120, -30.0, 30.0);
-my.eb_regC = new TH2D("my.eb_regC", "MET  Vs Photon Time RegC", 20, 0 , 800, 120, -30.0, 30.0);
-my.eb_regD = new TH2D("my.eb_regD", "MET  Vs Photon Time RegD", 20, 0 , 800, 120, -30.0, 30.0);
+my.eb_reg = new TH2D("my.eb_reg", "MET  Vs Photon Time", 100, 0 , 1000, 120, -30.0, 30.0);
+my.eb_regA = new TH2D("my.eb_regA", "MET  Vs Photon Time RegA", 100, 0 , 1000, 120, -30.0, 30.0);
+my.eb_regB = new TH2D("my.eb_regB", "MET  Vs Photon Time RegB", 100, 0 , 1000, 120, -30.0, 30.0);
+my.eb_regC = new TH2D("my.eb_regC", "MET  Vs Photon Time RegC", 100, 0 , 1000, 120, -30.0, 30.0);
+my.eb_regD = new TH2D("my.eb_regD", "MET  Vs Photon Time RegD", 100, 0 , 1000, 120, -30.0, 30.0);
 
-my.eb_regAprime = new TH2D("my.eb_regAprime", "MET  Vs Photon Time Reg A'", 20, 0 , 800, 120, -30.0, 30.0);
-my.eb_regBprime = new TH2D("my.eb_regBprime", "MET  Vs Photon Time Reg B'", 20, 0 , 800, 120, -30.0, 30.0);
+my.eb_regAprime = new TH2D("my.eb_regAprime", "MET  Vs Photon Time Reg A'", 100, 0 , 1000, 120, -30.0, 30.0);
+my.eb_regBprime = new TH2D("my.eb_regBprime", "MET  Vs Photon Time Reg B'", 100, 0 , 1000, 120, -30.0, 30.0);
+
+
+
 
 my.eb_pPt = new TH1D("my.eb_pPt", "Pt_{#gamma} of 0-Jet Events", 4000, 0 , 4000);
 my.eb_hpPt = new TH1D("my.eb_hpPt", "Pt_{Halo #gamma} of 0-Jet Events", 4000, 0 , 4000);
@@ -483,24 +494,24 @@ my.EEP_Untag_Halo_pho_phi = new TH1D("my.EEP_Untag_halo_pho_phi", "#phi_{#gamma}
 my.EEP_Untag_Halo_pho_cscdphi = new TH1D("my.EEP_Untag_Halo_pho_cscdphi", "#delta #phi(CSCSeg, #gamma),EE+, Untagable Halo", 100, 0, 3.5);
 my.EEM_Untag_Halo_pho_cscdphi = new TH1D("my.EEM_Untag_Halo_pho_cscdphi", "#delta #phi(CSCSeg, #gamma),EE-, Untagable Halo", 100, 0, 3.5);
 
-my.EEP_Untag_Halo_pho_met = new TH1D("my.EEP_Untag_Halo_pho_met", "MET,EE+, Untagable Halo", 50, 0, 700);
+my.EEP_Untag_Halo_pho_met = new TH1D("my.EEP_Untag_Halo_pho_met", "MET,EE+, Untagable Halo", 100, 0, 1000);
 my.EEM_Untag_Halo_pho_met = new TH1D("my.EEM_Untag_Halo_pho_met", "MET,EE-, Untagable Halo", 50, 0, 700);
 
 my.EEP_Untag_Halo_pho_ncrys = new TH1D("my.EEP_Untag_Halo_pho_ncrys", "NCrys,EE+, Untagable Halo", 100, 0, 50);
 my.EEM_Untag_Halo_pho_ncrys = new TH1D("my.EEM_Untag_Halo_pho_ncrys", "NCrys,EE-, Untagable Halo", 100, 0, 50);
 
-my.EEM_Untag_Halo_pho_metVstime = new TH2D("my.EEM_Untag_Halo_pho_metVstime","MET Vs Time, EE-, Untagable Halo",100, 0.0, 700, 500, -25.0, 50.0);
-my.EEP_Untag_Halo_pho_metVstime = new TH2D("my.EEP_Untag_Halo_pho_metVstime","MET Vs Time, EE+, Untagable Halo",100, 0.0, 700, 500, -25.0, 50.0);
+my.EEM_Untag_Halo_pho_metVstime = new TH2D("my.EEM_Untag_Halo_pho_metVstime","MET Vs Time, EE-, Untagable Halo",100, 0.0, 1000, 120, -30.0, 30.0);
+my.EEP_Untag_Halo_pho_metVstime = new TH2D("my.EEP_Untag_Halo_pho_metVstime","MET Vs Time, EE+, Untagable Halo",100, 0.0, 1000, 120, -30.0, 30.0);
 
 
-my.ebMetVsTime = new TH2D("my.ebMetVsTime","EB MET Vs Time",20, 0.0, 800,120, -30.0, 30.0);
-my.eeMetVsTime = new TH2D("my.eeMetVsTime","EE MET Vs Time",20, 0.0, 800,120, -30.0, 30.0);
-my.ebMetVsEta = new TH2D("my.ebMetVsEta","EB MET Vs Eta",20, 0.0, 800,170, -3.2, 3.2);
-my.eeMetVsEta = new TH2D("my.eeMetVsEta","EE MET Vs Eta",20, 0.0, 800,170, -3.2, 3.2);
-my.ebMetVsPhi = new TH2D("my.ebMetVsPhi","EB MET Vs Phi",20, 0.0, 800,360, -3.2, 3.2);
-my.eeMetVsPhi = new TH2D("my.eeMetVsPhi","EE MET Vs Phi",20, 0.0, 800,360, -3.2, 3.2);
-my.ebMet = new TH1D("my.ebMet","EB MET", 20, 0, 800);
-my.eeMet = new TH1D("my.eeMet","EE MET", 20, 0, 800);
+my.ebMetVsTime = new TH2D("my.ebMetVsTime","EB MET Vs Time",100, 0.0, 1000,120, -30.0, 30.0);
+my.eeMetVsTime = new TH2D("my.eeMetVsTime","EE MET Vs Time",100, 0.0, 1000,120, -30.0, 30.0);
+my.ebMetVsEta = new TH2D("my.ebMetVsEta","EB MET Vs Eta",100, 0.0, 1000,170, -3.2, 3.2);
+my.eeMetVsEta = new TH2D("my.eeMetVsEta","EE MET Vs Eta",100, 0.0, 1000,170, -3.2, 3.2);
+my.ebMetVsPhi = new TH2D("my.ebMetVsPhi","EB MET Vs Phi",100, 0.0, 1000,360, -3.2, 3.2);
+my.eeMetVsPhi = new TH2D("my.eeMetVsPhi","EE MET Vs Phi",100, 0.0, 1000,360, -3.2, 3.2);
+my.ebMet = new TH1D("my.ebMet","EB MET", 100, 0, 1000);
+my.eeMet = new TH1D("my.eeMet","EE MET", 100, 0, 1000);
 //Jet Timing
 my.Jseedtime1= new TH1D("my.Jseedtime1", "Jet SeedTime Cleaned", 200, -50.0, 50.0);
 my.Jseedtime2= new TH1D("my.Jseedtime2", "Jet SeedTime Extract", 200, -50.0, 50.0);
@@ -567,8 +578,28 @@ my.AveSCphotime->GetYaxis()->SetTitle("Event Number");
 my.AveSCphotime->Draw();
 my.AveSCphotime->Write();
 
+my.evtMetVsTime->GetXaxis()->SetTitle("MET(GeV)");
+my.evtMetVsTime->GetYaxis()->SetTitle("Time(ns)");
+my.evtMetVsTime->Draw();
+my.evtMetVsTime->Write();
 
-my.evt_met->GetXaxis()->SetTitle("Event MET(GeV)");
+my.evtMetVsEta->GetXaxis()->SetTitle("MET(GeV)");
+my.evtMetVsEta->GetYaxis()->SetTitle("#eta_{#gamma}");
+my.evtMetVsEta->Draw();
+my.evtMetVsEta->Write();
+
+my.evtMetVsPhi->GetXaxis()->SetTitle("MET(GeV)");
+my.evtMetVsPhi->GetYaxis()->SetTitle("#phi_{#gamma}");
+my.evtMetVsPhi->Draw();
+my.evtMetVsPhi->Write();
+
+my.evtMetVsPt->GetXaxis()->SetTitle("MET(GeV)");
+my.evtMetVsPt->GetYaxis()->SetTitle("Pt_{#gamma}");
+my.evtMetVsPt->Draw();
+my.evtMetVsPt->Write();
+
+
+my.evt_met->GetXaxis()->SetTitle("MET(GeV)");
 my.evt_met->GetYaxis()->SetTitle("Event Number");
 my.evt_met->Draw();
 my.evt_met->Write();
@@ -2254,32 +2285,32 @@ my.eeMetVsTime->GetXaxis()->SetTitle("MET(GeV)");
 my.eeMetVsTime->Draw();
 my.eeMetVsTime->Write();
 
-my.ebMetVsEta->GetYaxis()->SetTitle("{#eta}_{#gamma}");
+my.ebMetVsEta->GetYaxis()->SetTitle("#eta_{#gamma}");
 my.ebMetVsEta->GetXaxis()->SetTitle("MET(GeV)");
 my.ebMetVsEta->Draw();
 my.ebMetVsEta->Write();
 
-my.eeMetVsEta->GetYaxis()->SetTitle("{#eta}_{#gamma}");
+my.eeMetVsEta->GetYaxis()->SetTitle("#eta_{#gamma}");
 my.eeMetVsEta->GetXaxis()->SetTitle("MET(GeV)");
 my.eeMetVsEta->Draw();
 my.eeMetVsEta->Write();
 
-my.ebMetVsPhi->GetYaxis()->SetTitle("{#phi}_{#gamma}");
+my.ebMetVsPhi->GetYaxis()->SetTitle("#phi_{#gamma}");
 my.ebMetVsPhi->GetXaxis()->SetTitle("MET(GeV)");
 my.ebMetVsPhi->Draw();
 my.ebMetVsPhi->Write();
 
-my.eeMetVsPhi->GetYaxis()->SetTitle("{#phi}_{#gamma}");
+my.eeMetVsPhi->GetYaxis()->SetTitle("#phi_{#gamma}");
 my.eeMetVsPhi->GetXaxis()->SetTitle("MET(GeV)");
 my.eeMetVsPhi->Draw();
 my.eeMetVsPhi->Write();
 
-my.ebMet->GetYaxis()->SetTitle("Events/40GeV");
+my.ebMet->GetYaxis()->SetTitle("Events/10GeV");
 my.ebMet->GetXaxis()->SetTitle("MET(GeV)");
 my.ebMet->Draw();
 my.ebMet->Write();
 
-my.eeMet->GetYaxis()->SetTitle("Events/40GeV");
+my.eeMet->GetYaxis()->SetTitle("Events/10GeV");
 my.eeMet->GetXaxis()->SetTitle("MET(GeV)");
 my.eeMet->Draw();
 my.eeMet->Write();
@@ -2980,13 +3011,6 @@ void TestGen::ReadTree( string dataName ) {
   	int totalN = tr->GetEntries();
    	cout<<" from  "<< dataName <<" total entries = "<< totalN <<" Process "<< ProcessEvents <<endl;
         // Number of Events in diff regions of cut
-        int nEregA = 0;
-        int nEregB = 0;
-        int nEregC = 0;
-        int nEregD = 0;
-        int nEregAp = 0;
-        int nEregBp = 0;
-        int nEreg = 0;
    	int nEvt = 0 ;
   	 cout << "Event processing Starts" << endl;
 // Loop  over events
@@ -3094,6 +3118,13 @@ for ( int i=0; i< totalN ; i++ ) {
 		//if( (nXtals[kmax] < 6) || (nXtals[kmax] > 22) ) continue ;
 		//if ( seedSwissX[kmax] > photonCuts[9] ) continue ;   // Apply SwissX cuts
 		//Begin Filling hists
+		//
+        if( fabs(g1P4.Eta()) < 1.479){
+	        my.evtMetVsTime->Fill(met, seedTime[kmax]);
+		my.evtMetVsEta->Fill(met, g1P4.Eta());
+		my.evtMetVsPhi->Fill(met, g1P4.Phi());
+		my.evtMetVsPt->Fill(met, max_gPt);
+		}
 		my.photimeVsPU->Fill(totalNVtx,seedTime[kmax]);
 		my.h_Time->Fill( seedTime[kmax] );
 		my.WAveSeedBCphotime->Fill( aveTime1[kmax] );
@@ -3357,13 +3388,11 @@ my.eb_pNjets->Fill(n_jets);
      		}
 
  
-          std::cout << "La regione de ABCD" << std::endl;
+    //      std::cout << "La regione de ABCD" << std::endl;
 	 // Defined Regions for Bkg Estimation
     	if ( n_jets > jetCuts[1] ){ 
 
-                   
-  
-     		//if( fabs(g1P4.Eta()) > eb_cut )  continue ; 
+          	//if( fabs(g1P4.Eta()) > eb_cut )  continue ; 
  
   		   if ( cscdPhi[kmax] < HaloCuts[1] ) continue ;     
 
@@ -3692,29 +3721,29 @@ Hg.halo_LN2GP2timeEE->Fill(seedTime[kmax]);
 }else {
 Hg.halo_GP2timeEE->Fill(seedTime[kmax]);
 }
-// Ouside 2ns Events
-if(fabs(seedTime[kmax]) > photonCuts[8] ) { 
-Hg.halo_ATG2_sigmaEtaEE->Fill(sigmaEta[kmax]);
-Hg.halo_ATG2_sminorEE->Fill(sMinPho[kmax]);
-Hg.halo_ATG2_smajorEE->Fill(sMajPho[kmax]);
- }
+	// Ouside 2ns Events
+	if(fabs(seedTime[kmax]) > photonCuts[8] ) { 
+		Hg.halo_ATG2_sigmaEtaEE->Fill(sigmaEta[kmax]);
+		Hg.halo_ATG2_sminorEE->Fill(sMinPho[kmax]);
+		Hg.halo_ATG2_smajorEE->Fill(sMajPho[kmax]);
+		 }
 
-}
+		}
 
 
- } // End of halo tagging
-
-//if(nhaloBC   !=0)
-//Hg.halo_phonBCratio->Fill( nhaloBC/nBC[kmax] );
-//if(nhaloXtal !=0) 
-//Hg.halo_phonXtalratio->Fill( nhaloXtal/nXtals[kmax] );
+ 	} // End of halo tagging
+/*
+if(nhaloBC   !=0)
+Hg.halo_phonBCratio->Fill( nhaloBC/nBC[kmax] );
+if(nhaloXtal !=0) 
+Hg.halo_phonXtalratio->Fill( nhaloXtal/nXtals[kmax] );
 
 // Halo Tracks and segments
 
-//Hg.halo_TrksSbeta->Fill(nTrksSmallBeta);
-//Hg.halo_nhalosegs->Fill(nHaloSegs);
-//Hg.halo_nhalotrk->Fill(nHaloTracks);
-//Hg.halo_nOThits->Fill(nOutTimeHits);
+Hg.halo_TrksSbeta->Fill(nTrksSmallBeta);
+Hg.halo_nhalosegs->Fill(nHaloSegs);
+Hg.halo_nhalotrk->Fill(nHaloTracks);
+Hg.halo_nOThits->Fill(nOutTimeHits);
 
 
 
@@ -3726,10 +3755,10 @@ if( totalNVtx > 21 && totalNVtx <= 28) my.tV4->Fill(seedTime[kmax]);
 if( totalNVtx > 28 && totalNVtx <= 35) my.tV5->Fill(seedTime[kmax]);
 if( totalNVtx > 35 && totalNVtx <= 42) my.tV6->Fill(seedTime[kmax]);
 if( totalNVtx > 42 && totalNVtx <= 49) my.tV7->Fill(seedTime[kmax]);
-//if( totalNVtx > 35 && totalNVtx <= 40) my.tV8->Fill(seedTime[kmax]);
-//if( totalNVtx > 40 && totalNVtx <= 45) my.tV9->Fill(seedTime[kmax]);
-//if( totalNVtx > 45 && totalNVtx <= 50) my.tV10->Fill(seedTime[kmax]);
-//if( totalNVtx > 50 && totalNVtx <= 55) my.tV11->Fill(seedTime[kmax]);
+if( totalNVtx > 35 && totalNVtx <= 40) my.tV8->Fill(seedTime[kmax]);
+if( totalNVtx > 40 && totalNVtx <= 45) my.tV9->Fill(seedTime[kmax]);
+if( totalNVtx > 45 && totalNVtx <= 50) my.tV10->Fill(seedTime[kmax]);
+if( totalNVtx > 50 && totalNVtx <= 55) my.tV11->Fill(seedTime[kmax]);
 //Ave SC Time Vs PU
 if( totalNVtx >= 0 && totalNVtx <= 7) my.tV12->Fill(aveTime[kmax]);
 if( totalNVtx >  7 && totalNVtx <= 14) my.tV13->Fill(aveTime[kmax]);
@@ -3738,12 +3767,10 @@ if( totalNVtx > 21 && totalNVtx <= 28) my.tV15->Fill(aveTime[kmax]);
 if( totalNVtx > 28 && totalNVtx <= 35) my.tV16->Fill(aveTime[kmax]);
 if( totalNVtx > 35 && totalNVtx <= 42) my.tV17->Fill(aveTime[kmax]);
 if( totalNVtx > 42 && totalNVtx <= 49) my.tV18->Fill(aveTime[kmax]);
-
-//if( totalNVtx > 35 && totalNVtx <= 40) my.tV19->Fill(aveTime[kmax]);
-//if( totalNVtx > 40 && totalNVtx <= 45) my.tV20->Fill(aveTime[kmax]);
-//if( totalNVtx > 45 && totalNVtx <= 50) my.tV21->Fill(aveTime[kmax]);
-//if( totalNVtx > 50 && totalNVtx <= 55) my.tV22->Fill(aveTime[kmax]);
-
+if( totalNVtx > 35 && totalNVtx <= 40) my.tV19->Fill(aveTime[kmax]);
+if( totalNVtx > 40 && totalNVtx <= 45) my.tV20->Fill(aveTime[kmax]);
+if( totalNVtx > 45 && totalNVtx <= 50) my.tV21->Fill(aveTime[kmax]);
+if( totalNVtx > 50 && totalNVtx <= 55) my.tV22->Fill(aveTime[kmax]);
 // Timing  Ave Seed BC Time PU Dependence
 if( totalNVtx >= 0  &&  totalNVtx <= 6 ) my.py19->Fill(aveTime1[kmax]);
 if( totalNVtx >  6  &&  totalNVtx <= 12) my.py18->Fill(aveTime1[kmax]);
@@ -3757,73 +3784,71 @@ if( totalNVtx > 45  &&  totalNVtx <= 55) my.py13->Fill(aveTime1[kmax]);
 
           
 // Check weird Photon Time
-// if(seedTime[kmax] >= 10){ hasweirdtime = true;};
-//if( (seedTime[kmax] < -5.0) || (seedTime[kmax] > 10.0)   ){
+if(seedTime[kmax] >= 10){ hasweirdtime = true;};
+if( (seedTime[kmax] < -5.0) || (seedTime[kmax] > 10.0)   ){
+          Lt.ltnjets->Fill(nJets);
+          Lt.ltnpho->Fill(nPhotons);  // The Number of Photons in Event with Large Leading Photon weird time
+          Lt.ltEvtpt->Fill(max_gPt);
+          Lt.ltEvtmet->Fill(met);
+         Lt.lteta->Fill(g1P4.Eta());
+          Lt.ltphoE->Fill(g1P4.E());
+          Lt.ltphi->Fill(g1P4.Phi());
+          Lt.ltnvtx->Fill(totalNVtx);
 
+          cout << "Has NJets= " << nJets  << "\t" << " Has NPhotons= " << nPhotons << "\n";
+                          cout << "Photon Has Pt=  " << max_gPt << " GeV/c" << "\t"  << "Missing Energy= " << met << " GeV \n";
+                          cout << "Number of vertices= " << totalNVtx << endl;
 
-//          Lt.ltnjets->Fill(nJets);
-//          Lt.ltnpho->Fill(nPhotons);  // The Number of Photons in Event with Large Leading Photon weird time
-//          Lt.ltEvtpt->Fill(max_gPt);
-//          Lt.ltEvtmet->Fill(met);
-//          Lt.lteta->Fill(g1P4.Eta());
-//          Lt.ltphoE->Fill(g1P4.E());
-//          Lt.ltphi->Fill(g1P4.Phi());
-//          Lt.ltnvtx->Fill(totalNVtx);
-
-//          cout << "Has NJets= " << nJets  << "\t" << " Has NPhotons= " << nPhotons << "\n";
-//                          cout << "Photon Has Pt=  " << max_gPt << " GeV/c" << "\t"  << "Missing Energy= " << met << " GeV \n";
-//                          cout << "Number of vertices= " << totalNVtx << endl;
-
-// // Loop over its number of vertices and print out Vertext position
-// for(int nv =0; nv <  totalNVtx; nv++) {
-//                                          Lt.ltvtxX->Fill(vtxX[nv]);
-//                                          Lt.ltvtxY->Fill(vtxY[nv]);
-//                                          Lt.ltvtxZ->Fill(vtxZ[nv]);
-//                                          cout << "Strange Ev't with PV from Origin : (X, Y, Z)= \t" << "(" << vtxX[nv] <<", " <<
-//                                          vtxY[nv] << ", " << vtxZ[nv]  << ")" <<  endl;
-//                                        }
-// }  
+// Loop over its number of vertices and print out Vertext position
+ for(int nv =0; nv <  totalNVtx; nv++) {
+                                          Lt.ltvtxX->Fill(vtxX[nv]);
+                                          Lt.ltvtxY->Fill(vtxY[nv]);
+                                          Lt.ltvtxZ->Fill(vtxZ[nv]);
+                                          cout << "Strange Ev't with PV from Origin : (X, Y, Z)= \t" << "(" << vtxX[nv] <<", " <<
+                                          vtxY[nv] << ", " << vtxZ[nv]  << ")" <<  endl;
+                                        }
+}  
 
 
 // check for 1 Vertex events
-//TLorentzVector p1P4(0,0,0,0); //,j1p4(0,0,0,0)  ; // If I need Leading JetPt too!
-//double max_pPt  = 0 ; // Max Photon Pt
+TLorentzVector p1P4(0,0,0,0); //,j1p4(0,0,0,0)  ; // If I need Leading JetPt too!
+double max_pPt  = 0 ; // Max Photon Pt
 
 // single vertex events
-//if (totalNVtx == 1){
+if (totalNVtx == 1){
 
-//Sv.svtxnjets->Fill(nJets);
-//Sv.svtxEvtmet->Fill(met); 
-//Sv.svtxnpho->Fill(nPhotons);
+Sv.svtxnjets->Fill(nJets);
+Sv.svtxEvtmet->Fill(met); 
+Sv.svtxnpho->Fill(nPhotons);
 // Loop over all the Photons in 1 vertex Event and Get Leading Pt Photon
-//for ( int k=0; k< nPhotons; k++) {
-//TLorentzVector pP4_ = TLorentzVector( phoPx[k], phoPy[k], phoPz[k], phoE[k] ) ;
-//if ( nPhotons > 0 ) cout<<" photon"<<k <<" pt:"<<gP4_.Pt() <<endl;
-// if ( pP4_.Pt() > max_pPt ) {
-//      max_pPt = pP4_.Pt() ;
-//      p1P4 = pP4_ ;
-//      }  
-//Sv.svtxEvtpt->Fill(max_pPt);
-// Sv.svtxeta->Fill(p1P4.Eta());
-// Sv.svtxphi->Fill(p1P4.Phi());
-// Sv.svtxnvtx->Fill(totalNVtx); // Making sure NVertices is 1 --debug
-// Sv.svtxX->Fill(vtxX[0]);     // Single vertex is 1st elem of Array?                                 
-// Sv.svtxY->Fill(vtxY[0]);                           
-// Sv.svtxZ->Fill(vtxZ[0]);
-// cout <<"1 Vtx Event Has\n" << " Number of Jets=: " 
-// << nJets << " ," << " With Number of Photons:= " << nPhotons  << "\t" << " Missing Energy:= " << met << endl;
-// cout << "single vertex position at : (X, Y, Z) =  " << "(" << vtxX[0] <<", " << vtxZ[0] << ", " << vtxZ[0] << ")"<<  endl;
- //   }
+for ( int k=0; k< nPhotons; k++) {
+TLorentzVector pP4_ = TLorentzVector( phoPx[k], phoPy[k], phoPz[k], phoE[k] ) ;
+if ( nPhotons > 0 ) cout<<" photon"<<k <<" pt:"<<gP4_.Pt() <<endl;
+ if ( pP4_.Pt() > max_pPt ) {
+      max_pPt = pP4_.Pt() ;
+      p1P4 = pP4_ ;
+      }  
+Sv.svtxEvtpt->Fill(max_pPt);
+ Sv.svtxeta->Fill(p1P4.Eta());
+ Sv.svtxphi->Fill(p1P4.Phi());
+ Sv.svtxnvtx->Fill(totalNVtx); // Making sure NVertices is 1 --debug
+ Sv.svtxX->Fill(vtxX[0]);     // Single vertex is 1st elem of Array?                                 
+ Sv.svtxY->Fill(vtxY[0]);                           
+ Sv.svtxZ->Fill(vtxZ[0]);
+ cout <<"1 Vtx Event Has\n" << " Number of Jets=: " 
+ << nJets << " ," << " With Number of Photons:= " << nPhotons  << "\t" << " Missing Energy:= " << met << endl;
+ cout << "single vertex position at : (X, Y, Z) =  " << "(" << vtxX[0] <<", " << vtxZ[0] << ", " << vtxZ[0] << ")"<<  endl;
+    }
 
-//  } // End of Loop over Nvtx = 1 Events 
+  } // End of Loop over Nvtx = 1 Events 
+*/
 
 int evtId = eventId ; 
 int Entry  = i ;          
 printf("\nEvent Now has Event ID: %d \n",  evtId);
 printf("\n Entry Now is Entry :  %d \n", Entry );
-
-
 } // end of event looping
+
 
 // Now print event numbers out
 /*
@@ -3841,19 +3866,12 @@ if( nEregC != 0){
 cout << "\t"<< setw(8) << cout << "C/D "<< setfill('=') << setw(2)  << nEregC << cout <<" / " << nEregC << setfill('=') << setw(2) << nEregC/nEregD  <<"\n"  <<  setfill('-') << setw(5) << endl;
 }else{ cout <<" N Events in Reg D = 0 " << endl; }
 */
-
+/*
 cout <<"Total Number of Events =\t" << int(nEreg) << "\n";
 cout << "Events in RegA' = " << int(nEregAp) << cout << "\t Events in RegB' = " << int(nEregBp) << cout <<"\t Ratio A'/B' ==" << float(nEregAp/nEregBp) << "\n";
-cout << "Events in RegA = " << int(nEregA) << cout << "\t Events in RegB = " << int(nEregB) << cout <<"\t Ratio A/B ==" << float(nEregA/nEregB) << "\n";
-cout << "Events in RegC = " << int(nEregC) << cout << "\t Events in RegD = " << int(nEregC) << cout <<"\t Ratio C/D ==" << float(nEregC/nEregD) << "\n";
-
-
-
-
-
-
-
-
+cout << "Events in RegA = " << int(nEregA) << cout << " Events in RegB = " << int(nEregB) << cout <<"  Ratio A/B ==" << float(nEregA/nEregB) << cout << "\n";
+cout << "Events in RegC = " << int(nEregC) << cout << "  Events in RegD = " << int(nEregC) << cout <<"  Ratio C/D ==" << float(nEregC/nEregD) << std::endl;
+*/
 //Don't make plots now!
 //Make_Plots();
 

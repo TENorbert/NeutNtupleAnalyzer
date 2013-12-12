@@ -134,7 +134,9 @@ public:
    //EB and EE
    TH1D *pho_sigmaEtaEB, *pho_sigmaEtaEE, *pho_sminorEB, *pho_sminorEE, *pho_smajorEB, *pho_smajorEE;
    TH2D *pho_timeVsEtaEB,*pho_timeVsEtaEE, *pho_timeVsPhiEB, *pho_timeVsPhiEE; TH1D *pho_timeEB, *pho_timeEE;
-   
+ 
+ TH2D * evtMetVsTime, *evtMetVsEta, *evtMetVsPhi, *evtMetVsPt; 
+
    TH1D* phoTimeNegPhi_3WinEB, *phoTimePosPhi_3WinEB, *phoTimePhi_ZeroWinEB;
    
    TH1D *pho_ATG2_smajorEB, *pho_ATG2_smajorEE, *pho_ATG2_sminorEB, *pho_ATG2_sminorEE, *pho_ATG2sminorEB, *pho_ATG2_sigmaEtaEB, *pho_ATG2_sigmaEtaEE;
