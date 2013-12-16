@@ -68,129 +68,129 @@ for( int ii = 0; ii < 32; ii++){
 }
 
 
-   my.phoTimeVsNCrys = new TH2D("my.phoTimeVsNCrys","Photon Time Vs NCrys",50, 0.0, 50.0, 500, -50.0, 50.0);
-    my.phoTimeVsPt = new TH2D("my.phoTimeVsPt","Time^{#gamma} Vs P_{T}^{#gamma}",200, 0.0, 3500.0, 500, -50.0, 50.0);
+    my.phoTimeVsNCrys = new TH2D("my.phoTimeVsNCrys","Photon Time Vs NCrys",50, 0.0, 50.0, 50, -25.0, 25.0);
+    my.phoTimeVsPt = new TH2D("my.phoTimeVsPt","Time^{#gamma} Vs P_{T}^{#gamma}",200, 0.0, 2000.0, 100, -25.0, 25.0);
     
-    my.phoTimeVsMet = new TH2D("my.phoTimeVsMet","Time^{#gamma} Vs E_{T}^{Miss}",100, 25.0, 1500.0, 40, -5.0, 35.0);
+    my.phoTimeVsMet = new TH2D("my.phoTimeVsMet","Time^{#gamma} Vs E_{T}^{Miss}",100, 0.0, 1500.0, 100, -25.0, 25.0);
     
     my.NCrysVsCSCdphi = new TH2D("my.NcrysVsCSCdphi","NCrys Vs #delta #phi{CSCSeg,#gamma}",100, 0.0, 3.5, 50, 0.0, 50.0);
     
-    my.phoPtVsMet = new TH2D("my.phoPtVsMet"," P_{T}^{#gamma} Vs E_{T}^{Miss}",100, 0.0, 3500.0, 100, 0.0, 3500.0);
+    my.phoPtVsMet = new TH2D("my.phoPtVsMet"," P_{T}^{#gamma} Vs E_{T}^{Miss}",100, 0.0, 2000.0, 100, 0.0, 2000.0);
 
-    my.phoEtaVsNCrys = new TH2D("my.phoEtaVsNCrys","#eta_{#gamma} Vs NCrys",50, 0.0, 50.0, 100, -3.0, 3.0);
-    my.phoPhiVsNCrys = new TH2D("my.phoPhiVsNCrys","#phi_{#gamma} Vs NCrys",50, 0.0, 50.0, 100, -3.0, 3.0);
+    my.phoEtaVsNCrys = new TH2D("my.phoEtaVsNCrys","#eta_{#gamma} Vs NCrys",50, 0.0, 50.0, 100, -3.2, 3.2);
+    my.phoPhiVsNCrys = new TH2D("my.phoPhiVsNCrys","#phi_{#gamma} Vs NCrys",50, 0.0, 50.0, 100, -3.2, 3.2);
     
-    my.phoPtVsNCrys = new TH2D("my.phoPtVsNCrys","P_{T}^{#gamma} Vs NCrys",50, 0.0, 50.0, 200, 0.0, 3500.0);
+    my.phoPtVsNCrys = new TH2D("my.phoPtVsNCrys","P_{T}^{#gamma} Vs NCrys",50, 0.0, 50.0, 200, 0.0, 2000.0);
     
-    my.MetVsNCrys = new TH2D("my.MetVsNCrys","E_{T}^{Miss} Vs NCrys",50, 0.0, 50.0, 200, 0.0, 3500.0);
+    my.MetVsNCrys = new TH2D("my.MetVsNCrys","E_{T}^{Miss} Vs NCrys",50, 0.0, 50.0, 200, 0.0, 2000.0);
 
-    my.phoEtaVsCSCdphi = new TH2D("my.phoEtaVsCSCdphi","#eta_{#gamma} Vs #delta #phi(CSC Seg, #gamma)",100, 0.0, 3.5, 100, -3.0, 3.0);
-    my.phoPhiVsCSCdphi = new TH2D("my.phoPhiVsCSCdphi","#phi_{#gamma} Vs #delta #phi(CSC Seg, #gamma)",100, 0.0, 3.5, 100, -3.0, 3.0);
-    my.MetVsCSCdphi = new TH2D("my.MetVsCSCdphi","E_{T}^{Miss} Vs #delta #phi(CSC Seg, #gamma)",100, 0.0, 3.5, 200, 0.0, 3500.0);
-    my.phoPtVsCSCdphi = new TH2D("my.phoPtVsCSCdphi","P_{T}^{#gamma} Vs #delta #phi(CSC Seg, #gamma)",100, 0.0, 3.5, 200, 0.0, 3500.0);
+    my.phoEtaVsCSCdphi = new TH2D("my.phoEtaVsCSCdphi","#eta_{#gamma} Vs #delta #phi(CSC Seg, #gamma)",100, 0.0, 3.2, 100, -3.2, 3.2);
+    my.phoPhiVsCSCdphi = new TH2D("my.phoPhiVsCSCdphi","#phi_{#gamma} Vs #delta #phi(CSC Seg, #gamma)",100, 0.0, 3.2, 100, -3.2, 3.2);
+    my.MetVsCSCdphi = new TH2D("my.MetVsCSCdphi","E_{T}^{Miss} Vs #delta #phi(CSC Seg, #gamma)",100, 0.0, 3.2, 200, 0.0, 2000.0);
+    my.phoPtVsCSCdphi = new TH2D("my.phoPtVsCSCdphi","P_{T}^{#gamma} Vs #delta #phi(CSC Seg, #gamma)",100, 0.0, 3.2, 200, 0.0, 2000.0);
 
 
-    my.h_Time  = new TH1D("my.h_Time", "Photon Time(ns)", 500,  -50.0, 50.0);
+    my.h_Time  = new TH1D("my.h_Time", "Photon Time(ns)", 100,  -25.0, 25.0);
     my.h_g1Pt  = new TH1D("my.h_g1Pt", "Leading Photon Pt(GeV) ", 200,  0, 4000);
-    my.WAveSeedBCphotime  = new TH1D("my.WAveSeedBCphotime", "Photon (W Ave Seed BC) Time(ns)", 500,  -50.0, 50.0);
-    my.AveSCphotime  = new TH1D("my.AveSCphotime", "Photon (W Ave SC) Time(ns)", 500,  -50.0, 50.0);
+    my.WAveSeedBCphotime  = new TH1D("my.WAveSeedBCphotime", "Photon (W Ave Seed BC) Time(ns)", 100,  -25.0, 25.0);
+    my.AveSCphotime  = new TH1D("my.AveSCphotime", "Photon (W Ave SC) Time(ns)", 100,  -25.0, 25.0);
     my.evt_met = new TH1D("my.evt_met", "Missing Energy(GeV)", 200, 0, 4000);
-    my.ph_smin = new TH1D("my.ph_smin", "Shower Width in dxn of Minor Axis of Ecl Cluster", 100, 0,5);
-    my.ph_smaj = new TH1D("my.ph_smaj", "Shower Width in dxn of Major Axis of Ecal Cluster", 100,0, 5);
-    my.ph_e = new TH1D("my.ph_e","Leading Photon Energy(GeV)", 200, 0, 4000);
-    my.ph_z = new TH1D("my.ph_z", "Z Vextex Position of Photon(cm)", 4000, -2000.0, 2000.0);
-    my.ph_eta = new TH1D("my.ph_eta","Leading Photon #eta", 100, -3.0, 3.0);
-    my.ph_phi = new TH1D("my.ph_phi", "Leading Photon #phi", 100, -3.142, 3.142);
-    my.jet_eta = new TH1D("my.jet_eta", "Leading Jet #eta", 100, -3.0, 3.0);
-    my.jet_phi = new TH1D("my.jet_phi", "Leading Jet #phi", 100, -3.142, 3.142);
-    my.jp_deta = new TH1D("my.jp_deta", " Leading Jet-Photo #Delta#eta", 100, -3.0, 3.0);
-    my.jp_dphi = new TH1D("my.jp_dphi", "Leading Jet-Photon #Delta#phi", 100, -10, 10);
-    my.njets = new TH1D("my.njets", "Number of Jets in Event", 20, 0, 20);
-    my.npho = new TH1D("my.npho", "Number of #gamma s in Event", 10, 0, 10);
-    my.pu_vtx = new TH1D("my.pu_vtx", "Number of PVs", 1000, 0, 50);
-    my.j_pt = new TH1D("my.j_pt", " Leading Jet Pt(GeV)", 200, 0, 2000);
-    my.ph_HoverE = new TH1D("my.ph_HoverE", "Photon Hadronic Energy Over EM Energy Ratio", 20, -5.0, 5.0);
-    my.mettheta  =  new TH1D("my.mettheta", "Gravitino #theta", 200, -10.0, 10.0);
-    my.phomet_thetadiff = new TH1D("my.phomet_thetadiff", "Photon-Met Angular Distrubution", 200, -10.0, 10.0);
-    my.MassNt  = new TH1D("my.MassNt", "Neutralino Transverse Mass Distribution(GeV)", 250, 0.0, 2500.0);
-    my.pho_angle = new TH1D("my.pho_angle","Photon Angular Distribution(Radians)", 200, -10.0, 10.0);
-    my.metVsPU = new TH2D("my.metVsPU","Effect of PU on MET",100, 0, 40, 200, 0,2500);
-    my.photimeVsPU = new TH2D("my.photimeVsPU","No. PV Vs Photon Time",100, 0, 400, 500, -50.0, 50.0);
+    my.ph_smin = new TH1D("my.ph_smin", "Shower Width Along Cluster Minor Axis", 100,0,5);
+    my.ph_smaj = new TH1D("my.ph_smaj", "Shower Width Along Cluster Major Axis", 100,0,5);
+    my.ph_e = new TH1D("my.ph_e","#gamma^{1}Energy(GeV)", 200, 0, 4000);
+    my.ph_z = new TH1D("my.ph_z", "Z Vextex Position of Photon(cm)", 4000, -50.0, 50.0);
+    my.ph_eta = new TH1D("my.ph_eta","#eta^{#gamma^{1}}", 100, -3.2, 3.2);
+    my.ph_phi = new TH1D("my.ph_phi", "#phi^{#gamma^{1}}", 100, -3.2, 3.2);
+    my.jet_eta = new TH1D("my.jet_eta", "#eta^{Jet^{1}}", 100, -3.2, 3.2);
+    my.jet_phi = new TH1D("my.jet_phi", "#phi^{Jet^{1}}", 100, -3.2, 3.2);
+    my.jp_deta = new TH1D("my.jp_deta", "Jet^{1}-#gamma^{1} #delta#eta", 100, -3.2, 3.2);
+    my.jp_dphi = new TH1D("my.jp_dphi", "Jet^{1}-#gamma^{1} #delta#phi", 100, -10, 10);
+    my.njets = new TH1D("my.njets", "Jet Multiplicity", 20, 0, 20);
+    my.npho = new TH1D("my.npho", "#gamma Multiplicity in Event", 10, 0, 10);
+    my.pu_vtx = new TH1D("my.pu_vtx", "PVs Multiplicity", 1000, 0, 50);
+    my.j_pt = new TH1D("my.j_pt", "Jet^{1} Pt(GeV)", 200, 0, 2000);
+    my.ph_HoverE = new TH1D("my.ph_HoverE", "#gamma H/E", 20, -5.0, 5.0);
+    my.mettheta  =  new TH1D("my.mettheta", "#theta^{gravitino}", 100, -10.0, 10.0);
+    my.phomet_thetadiff = new TH1D("my.phomet_thetadiff", "#delta #theta(#gamma , Met)", 100, -10.0, 10.0);
+    my.MassNt  = new TH1D("my.MassNt", "Mass_{T}(GeV)", 100, 0.0, 2500.0);
+    my.pho_angle = new TH1D("my.pho_angle","#theta_{#gamma}(Radians)", 200, -10.0, 10.0);
+    my.metVsPU = new TH2D("my.metVsPU","MET Vs PU",100, 0, 40, 200, 0,2500);
+    my.photimeVsPU = new TH2D("my.photimeVsPU","PV Vs Time",100, 0, 400, 500, -25.0, 25.0);
     my.pho_Ecal_IsoVsPU = new TH2D("my.phoEcal_IsoVsPU","EcalIso Vs PU", 100, 0.0, 40.0, 100, 0.0, 10.0); 
     my.pho_Trk_IsoVsPU = new TH2D("my.phoTrk_IsoVsPU","TrackIso Vs PU", 100, 0.0, 40.0, 100, 0.0, 10.0); 
     my.pho_Hcal_IsoVsPU = new TH2D("my.phoHcal_IsoVsPU","HcalIso Vs PU", 100, 0.0, 40.0, 100, 0.0, 10.0); 
 //    my.Hcal_IsoVsPU = new TH2D("my.Hcal_IsoVsPU","2012 HcalIso Vs PU", 100, 0.0, 40.0, 100, 0.0, 10.0); 
     my.sMinorVsPU = new TH2D("my.sMinorVsPU","sMinor Vs PU", 100, 0.0, 40.0, 100, 0.0, 1.0); 
 
-    my.phoTimeVsEta = new TH2D("my.phoTimeVsEta","Photon Time Vs Eta",100, -3.0, 3.0, 500, -50.0, 50.0);
-    my.phoTimeVsE = new TH2D("my.phoTimeVsE","Photon Time Vs Energy", 400, 0.0, 4000.0, 500, -50.0, 50.0);
-    my.phoTimeVsPhi = new TH2D("my.phoTimeVsPhi","Photon Time Vs Phi",100, -3.5, 3.5, 500, -50.0, 50.0); 
-// Photon Iso studies    
+    my.phoTimeVsEta = new TH2D("my.phoTimeVsEta","Photon Time Vs Eta",100, -3.0, 3.0, 100, -25.0, 25.0);
+    my.phoTimeVsE = new TH2D("my.phoTimeVsE","Photon Time Vs Energy", 400, 0.0, 4000.0, 100, -25.0, 25.0);
+    my.phoTimeVsPhi = new TH2D("my.phoTimeVsPhi","Photon Time Vs Phi",100, -3.2, 3.2, 100, -25.0, 25.0); 
+    // Photon Iso studies    
    my.pho_EcalIso = new TH1D("my.pho_EcalIso","Photon EcalIso", 100, 0.0, 10.0);
    my.pho_HcalIso = new TH1D("my.pho_HcalIso", "Photon HcalIso", 100, 0.0, 10.0);
-//   my.hcal_Iso    = new TH1D("my.hcal_Iso", "2012 Photon HcalIso", 100, 0.0, 10.0);
+   //  my.hcal_Iso    = new TH1D("my.hcal_Iso", "2012 Photon HcalIso", 100, 0.0, 10.0);
    my.pho_TrkIso  = new TH1D("my.pho_TrkIso","Photon Track Iso", 100, 0.0, 10.0);
 
-my.evtMetVsTime = new TH2D("my.evtMetVsTime", "MET Vs Time'", 200, 0 , 1000, 120, -30.0, 30.0);
-my.evtMetVsEta = new TH2D("my.evtMetVsEta", "MET Vs #eta_{#gamma}'", 200, 0 , 1000, 170, -3.2, 3.2);
-my.evtMetVsPhi = new TH2D("my.evtMetVsPhi", "MET Vs #phi_{#gamma}'", 200, 0 , 1000, 360, -3.2, 3.2);
-my.evtMetVsPt = new TH2D("my.evtMetVsPt", "MET Vs Pt_{#gamma}'", 200, 0 , 1000, 100, 0.0, 1000.0);
+   my.evtMetVsTime = new TH2D("my.evtMetVsTime", "MET Vs Time'", 200, 0, 1000, 100, -25.0, 25.0);
+   my.evtMetVsEta = new TH2D("my.evtMetVsEta", "MET Vs #eta_{#gamma}'", 200, 0, 1500, 170, -3.2, 3.2);
+   my.evtMetVsPhi = new TH2D("my.evtMetVsPhi", "MET Vs #phi_{#gamma}'", 200, 0, 1500, 360, -3.2, 3.2);
+   my.evtMetVsPt = new TH2D("my.evtMetVsPt", "MET Vs Pt_{#gamma}'", 200, 0,1500,  100, 0.0, 1000.0);
 
 
 // Photon 1D plots   
     my.phoCSCtime = new TH1D("my.phoCSCtime","Time of CSC #gamma", 1000, -100.0, 100.0); 
     my.phonBC = new TH1D("my.phonBC","Seed BC in #gamma SC", 100, 0.0, 100.0);
     my.phonXtalEB = new TH1D("my.phonXtalEB","No. Of Crys in #gamma SC ", 100, 0.0, 100.0);
-    my.pho_SSXEB = new TH1D("my.pho_SSXEB","SeedXtal SwissX Of #gamma SC ", 100, -10.0, 10.0);
-    my.pho_sigmaIeta = new TH1D("my.pho_sigmaIeta","#gamma #sigma_{i#eta,i#eta}", 100, 0.0, 10.0);
+    my.pho_SSXEB = new TH1D("my.pho_SSXEB","seed SwissX Of #gamma SC ", 100, -10.0, 10.0);
+    my.pho_sigmaIeta = new TH1D("my.pho_sigmaIeta","#sigma^{#gamma}_{i#eta,i#eta}", 100, 0.0, 10.0);
     my.phoetaVsphi = new TH2D("my.phoetaVsphi","#eta_{#gamma} Vs #phi_{#gamma} ", 100, -3.0, 3.0, 100, -3.50, 3.50);
     
-    my.pho_timeVsEtaEB = new TH2D("my.pho_timeVsEtaEB","Photon Time Vs Eta EB",100, -3.0, 3.0, 500, -50.0, 50.0);
-    my.pho_timeVsEtaEE = new TH2D("my.pho_timeVsEtaEE","Photon Time Vs Eta EE",100, -3.0, 3.0, 500, -50.0, 50.0);  
-    my.pho_timeVsPhiEB = new TH2D("my.pho_timeVsPhiEB","Photon Time Vs Phi EB",100, -3.5, 3.5, 500, -50.0, 50.0); 
-    my.pho_timeVsPhiEE = new TH2D("my.pho_timeVsPhiEE","Photon Time Vs Phi EE",100, -3.5, 3.5, 500, -50.0, 50.0); 
-    my.pho_timeEB  = new TH1D("my.pho_timeEB", "Photon Time(ns) EB", 500,  -50.0, 50.0);
+    my.pho_timeVsEtaEB = new TH2D("my.pho_timeVsEtaEB","ECAL Time^{#gamma} Vs #eta EB",170, -3.2, 3.2, 100, -25.0, 25.0);
+    my.pho_timeVsEtaEE = new TH2D("my.pho_timeVsEtaEE","ECAL Time^{#gamma} Vs #eta EE",170, -3.2, 3.2, 100, -25.0, 25.0);  
+    my.pho_timeVsPhiEB = new TH2D("my.pho_timeVsPhiEB","ECAL Time^{#gamma} Vs #phi EB",360, -3.2, 3.2, 100, -25.0, 25.0); 
+    my.pho_timeVsPhiEE = new TH2D("my.pho_timeVsPhiEE","ECAL Time^{#gamma} Vs #phi EE",360, -3.2, 3.2, 100, -25.0, 25.0); 
+    my.pho_timeEB  = new TH1D("my.pho_timeEB", "ECAL Time^{#gamma}(ns) EB", 100,  -25.0, 25.0);
     
-    my.phoTimeNegPhi_3WinEB  = new TH1D("my.phoTimeNegPhi_3WinEB", "Time #phi in[-3, -2] EB", 500,  -50.0, 50.0);
-    my.phoTimePosPhi_3WinEB  = new TH1D("my.phoTimePosPhi_3WinEB", "Time #phi in[2, 3] EB", 500,  -50.0, 50.0);
-    my.phoTimePhi_ZeroWinEB  = new TH1D("my.phoTimePhi_ZeroWinEB", "Time #phi in[-0.5, 0.5] EB", 500,  -50.0, 50.0);
+    my.phoTimeNegPhi_3WinEB  = new TH1D("my.phoTimeNegPhi_3WinEB", "ECAL Time^{#gamma}, #phi in[-3, -2] EB", 100, -25.0, 25.0);
+    my.phoTimePosPhi_3WinEB  = new TH1D("my.phoTimePosPhi_3WinEB", "ECAL Time^{#gamma}, #phi in[2, 3] EB", 100, -25.0, 25.0);
+    my.phoTimePhi_ZeroWinEB  = new TH1D("my.phoTimePhi_ZeroWinEB", "ECAL Time^{#gamma}, #phi in[-0.5, 0.5] EB",100,  -25.0, 25.0);
 
     
-    my.pho_timeEE  = new TH1D("my.pho_timeEE", "Photon Time(ns) EE", 500,  -50.0, 50.0);
+    my.pho_timeEE  = new TH1D("my.pho_timeEE", "ECAL Time^{#gamma}(ns) EE", 100,  -25.0, 25.0);
     my.pho_sminorEB = new TH1D("my.pho_sminorEB", "SMinor EB", 100, 0,5);
-    my.pho_smajorEB = new TH1D("my.pho_smajorEB", "SMajor EB", 100,0, 5);
-    my.pho_sigmaEtaEB = new TH1D("my.pho_sigmaEtaEB", "Photon #sigma_{#eta,#eta} EB", 20,0, 10);
+    my.pho_smajorEB = new TH1D("my.pho_smajorEB", "SMajor EB", 100, 0,5);
+    my.pho_sigmaEtaEB = new TH1D("my.pho_sigmaEtaEB", "#sigma^{#gamma}_{#eta,#eta} EB", 20,0, 10);
     my.pho_sminorEE = new TH1D("my.pho_sminorEE", "SMinor EE", 20, 0,5);
     my.pho_smajorEE = new TH1D("my.pho_smajorEE", "SMajor EE", 20,0, 5);
-    my.pho_sigmaEtaEE = new TH1D("my.pho_sigmaEtaEE", "Photon #sigma_{#eta,#eta} EE", 20,0, 10);
-    my.pho_timeVsCSCdphi = new TH2D("my.pho_timeVsCSCdphi","#gamma Time Vs CSC |#delta #phi|",200, -3.50, 3.50, 500, -50.0, 50.0); 
-    my.pho_CSCdphi = new TH1D("my.pho_CSCdphi","#gamma,CSCSeg |#delta #phi|",200, -3.50, 3.50);    
-    my.pho_num_jetEB = new TH1D("my.pho_num_jetEB", "No. EB Jets ", 20, 0, 20);
-    my.pho_num_phoEB = new TH1D("my.pho_num_phoEB", "No. of EB #gamma s ", 10, 0, 10);
-    my.pho_num_jetEE = new TH1D("my.pho_num_jetEE", "No. of EE Jets ", 20, 0, 20);
-    my.pho_num_phoEE = new TH1D("my.pho_num_phoEE", "No. of EE #gamma s ", 10, 0, 10);
-    my.pho_LN2timeEB  = new TH1D("my.pho_LN2timeEB", "Photon Time < -2ns EB", 500,  -50.0, 50.0);
-    my.pho_LN2timeEE  = new TH1D("my.pho_LN2timeEE", "Photon Time < -2ns EE", 500,  -50.0, 50.0);
-    my.pho_LN2GP2timeEB  = new TH1D("my.pho_LN2GP2timeEB", "-2ns < Photon Time < 2ns EB", 500,  -50.0, 50.0);
-    my.pho_LN2GP2timeEE  = new TH1D("my.pho_LN2GP2timeEE", "-2ns < Photon Time < 2ns EE", 500,  -50.0, 50.0);
-    my.pho_GP2timeEB  = new TH1D("my.pho_GP2timeEB", "Photon Time > 2ns EB", 500,  -50.0, 50.0);
-    my.pho_GP2timeEE  = new TH1D("my.pho_GP2timeEE", "Photon Time > 2ns EE", 500,  -50.0, 50.0);
-    my.pho_ATG2_smajorEB = new TH1D("my.pho_ATG2_smajorEB", "SMajor EB |Time| > 2ns", 100,0, 5);
-    my.pho_ATG2_smajorEE = new TH1D("my.pho_ATG2_smajorEE", "SMajor EE |Time| > 2ns", 100,0, 5);
-    my.pho_ATG2_sminorEB = new TH1D("my.pho_ATG2_sminorEB", "SMinor EB |Time| > 2ns", 100, 0,5);
-    my.pho_ATG2_sminorEE = new TH1D("my.pho_ATG2_sminorEE", "SMinor EE |Time| > 2ns", 100, 0,5);
+    my.pho_sigmaEtaEE = new TH1D("my.pho_sigmaEtaEE", "#sigma^{#gamma}_{#eta,#eta} EE", 20,0, 10);
+    my.pho_timeVsCSCdphi = new TH2D("my.pho_timeVsCSCdphi","ECAL Time^{#gamma} Vs CSC |#delta #phi|",100, -3.20, 3.20, 100, -25.0, 25.0); 
+    my.pho_CSCdphi = new TH1D("my.pho_CSCdphi","|#delta #phi|(#gmma, CSCSeg)", 100, -3.20, 3.20);    
+    my.pho_num_jetEB = new TH1D("my.pho_num_jetEB", "Jets Multiplicity EB ", 20, 0, 20);
+    my.pho_num_phoEB = new TH1D("my.pho_num_phoEB", "Photon Multiplicity EB  ", 10, 0, 10);
+    my.pho_num_jetEE = new TH1D("my.pho_num_jetEE", "Jet Multiplicity EE ", 20, 0, 20);
+    my.pho_num_phoEE = new TH1D("my.pho_num_phoEE", "Photon Multiplicity EE ", 10, 0, 10);
+    my.pho_LN2timeEB  = new TH1D("my.pho_LN2timeEB", "ECAL Time^{#gamma} < -2ns EB", 100,  -25.0, 25.0);
+    my.pho_LN2timeEE  = new TH1D("my.pho_LN2timeEE", "ECAL Time^{#gamma} < -2ns EE", 100,  -25.0, 25.0);
+    my.pho_LN2GP2timeEB  = new TH1D("my.pho_LN2GP2timeEB", "-2ns < ECAL Time^{#gamma} < 2ns EB", 100,  -25.0, 25.0);
+    my.pho_LN2GP2timeEE  = new TH1D("my.pho_LN2GP2timeEE", "-2ns < ECAL Time^{#gamma} < 2ns EE", 100,  -25.0, 25.0);
+    my.pho_GP2timeEB  = new TH1D("my.pho_GP2timeEB", "ECAL Time^{#gamma} > 2ns EB", 100,  -25.0, 25.0);
+    my.pho_GP2timeEE  = new TH1D("my.pho_GP2timeEE", "ECAL Time^{#gamma} > 2ns EE", 100,  -25.0, 25.0);
+    my.pho_ATG2_smajorEB = new TH1D("my.pho_ATG2_smajorEB", "SMajor EB, |Time| > 2ns", 100,0, 5);
+    my.pho_ATG2_smajorEE = new TH1D("my.pho_ATG2_smajorEE", "SMajor EE, |Time| > 2ns", 100,0, 5);
+    my.pho_ATG2_sminorEB = new TH1D("my.pho_ATG2_sminorEB", "SMinor EB, |Time| > 2ns", 100, 0,5);
+    my.pho_ATG2_sminorEE = new TH1D("my.pho_ATG2_sminorEE", "SMinor EE, |Time| > 2ns", 100, 0,5);
     my.pho_ATG2_sigmaEtaEB = new TH1D("my.pho_ATG2_sigmaEtaEB", "#sigma_{#eta,#eta} EB |Time| > 2ns", 20,0, 10);
     my.pho_ATG2_sigmaEtaEE = new TH1D("my.pho_ATG2_sigmaEtaEE", "#sigma_{#eta,#eta} EE |Time| > 2ns", 20,0, 10);
     
 /*HEHalo stuff */
-    my.HEhalo_timeVsHEdphi = new TH2D("my.HEhalo_timeVsHEdphi","Photon Time Vs HE-Pho #delta #phi",100, -3.50, 3.50, 500, -50.0, 50.0);
-    my.HEhalo_timeVsHEGdphi = new TH2D("my.HEhalo_timeVsHEGdphi","Photon Time Vs HE-Pho #delta #phi Def2",100, -3.50, 3.50, 500, -50.0, 50.0);
-    my.HEhalo_timeVsHEradius = new TH2D("my.HEhalo_timeVsHEradius","Photon Time Vs HE Radius",100, 0.0, 50.0, 500, -50.0, 50.0);
-    my.HEhalo_timeVsHErho = new TH2D("my.HEhalo_timeVsHErho","Photon Time Vs HE #rho",100, -10.0, 10.0, 500, -50.0, 50.0);
-    my.HEtimeVsPhophi = new TH2D("my.HEtimeVsPhophi","HE Time Vs Photon #phi",100, -3.50, 3.50, 500, -100.0, 100.0);
+    my.HEhalo_timeVsHEdphi = new TH2D("my.HEhalo_timeVsHEdphi","Photon Time Vs #delta #phi(HE, #gamma)",100, -3.20, 3.20, 100, -25.0, 25.0);
+    my.HEhalo_timeVsHEGdphi = new TH2D("my.HEhalo_timeVsHEGdphi","Photon Time Vs #delta #phi(HE, #gamma) Def2",100, -3.20, 3.20, 100, -25.0, 25.0);
+    my.HEhalo_timeVsHEradius = new TH2D("my.HEhalo_timeVsHEradius","Photon Time Vs HE Radius",100, 0.0, 50.0, 100, -25.0, 25.0);
+    my.HEhalo_timeVsHErho = new TH2D("my.HEhalo_timeVsHErho","Photon Time Vs HE #rho",100, -10.0, 10.0, 100, -25.0, 25.0);
+    my.HEtimeVsPhophi = new TH2D("my.HEtimeVsPhophi","HE Time Vs Photon #phi",100, -3.50, 3.50, 200, -100.0, 100.0);
     my.HEtimeVsPhoeta = new TH2D("my.HEtimeVsPhoeta","HE Time Vs Photon #eta",100, -3.0, 3.0, 500, -100.0, 100.0);
-   my.HEhalo_timeVsHEdphiEB = new TH2D("my.HEhalo_timeVsHEdphiEB","Photon Time Vs HE-Pho #delta #phi EB",100, -3.50, 3.50, 500, -50.0, 50.0);
-   my.HEhalo_timeVsHEdphiEE = new TH2D("my.HEhalo_timeVsHEdphiEE","Photon Time Vs HE-Pho #delta #phi EE",100, -3.50, 3.50, 500, -50.0, 50.0);
+   my.HEhalo_timeVsHEdphiEB = new TH2D("my.HEhalo_timeVsHEdphiEB","Photon Time Vs HE-Pho #delta #phi EB",100, -3.50, 3.50, 100, -25.0, 25.0);
+   my.HEhalo_timeVsHEdphiEE = new TH2D("my.HEhalo_timeVsHEdphiEE","Photon Time Vs HE-Pho #delta #phi EE",100, -3.50, 3.50, 100, -25.0, 25.0);
    my.HEtime = new TH1D("my.HEtime","HE Time",500, -100.0, 100.0);    
    my.TimeREEHE = new TH1D("my.TimeREEHE","Ratio EE Over HE Time",500, -100.0, 100.0);    
    my.HEradius = new TH1D("my.HEradius","HE Radius",100, 0.0, 50.0);    
@@ -208,12 +208,12 @@ my.evtMetVsPt = new TH2D("my.evtMetVsPt", "MET Vs Pt_{#gamma}'", 200, 0 , 1000, 
     my.pho_halodrho = new TH1D("my.pho_halodrho"," #delta R of CSC Seg & Photon",100, -3.50, 3.50);
 // Halo Plots
     Hg.halo_etaVsphi = new TH2D("Hg.halo_etaVsphi","Halo #gamma  #eta Vs #phi",100, -3.0, 3.0, 100, -3.50, 3.50); 
-    Hg.halo_phiVsStime = new TH2D("Hg.halo_phiVsStime","Halo Photon Seed Xtal Time Vs Phi",100, -3.5, 3.5, 500, -50.0, 50.0);
-    Hg.halo_phiVsBCtime = new TH2D("Hg.halo_phiVsBCtime","Halo Photon W.Ave BC Time Vs Phi",100, -3.5, 3.5, 500, -50.0, 50.0);
-    Hg.halo_phiVsSCtime = new TH2D("Hg.halo_phiVsSCtime","Halo Photon W.Ave SC Time Vs Phi",100, -3.5, 3.5, 500, -50.0, 50.0);
-    Hg.halo_etaVsStime = new TH2D("Hg.halo_etaVsStime","Halo Photon Eta Vs Seed Xtal Time",100, -3.0, 3.0, 500, -50.0, 50.0);
-    Hg.halo_etaVsBCtime = new TH2D("Hg.halo_etaVsBCtime","Halo Photon Eta Vs W.Ave BC Time",100, -3.0, 3.0, 500, -50.0, 50.0);
-    Hg.halo_etaVsSCtime = new TH2D("Hg.halo_etaVsSCtime","Halo Photon Eta Vs W.Ave SC Time",100, -3.0, 3.0, 500, -50.0, 50.0);
+    Hg.halo_phiVsStime = new TH2D("Hg.halo_phiVsStime","Halo Photon Seed Xtal Time Vs Phi",100, -3.5, 3.5, 500, -25.0, 25.0);
+    Hg.halo_phiVsBCtime = new TH2D("Hg.halo_phiVsBCtime","Halo Photon W.Ave BC Time Vs Phi",100, -3.5, 3.5, 250, -25.0, 25.0);
+    Hg.halo_phiVsSCtime = new TH2D("Hg.halo_phiVsSCtime","Halo Photon W.Ave SC Time Vs Phi",100, -3.5, 3.5, 500, -25.0, 25.0);
+    Hg.halo_etaVsStime = new TH2D("Hg.halo_etaVsStime","Halo Photon Eta Vs Seed Xtal Time",100, -3.0, 3.0, 500, -25.0, 25.0);
+    Hg.halo_etaVsBCtime = new TH2D("Hg.halo_etaVsBCtime","Halo Photon Eta Vs W.Ave BC Time",100, -3.0, 3.0, 500, -25.0, 25.0);
+    Hg.halo_etaVsSCtime = new TH2D("Hg.halo_etaVsSCtime","Halo Photon Eta Vs W.Ave SC Time",100, -3.0, 3.0, 500, -25.0, 25.0);
     Hg.halo_rhoVsphi = new TH2D("Hg.halo_rhoVsphi","Halo Photon #rho Vs #phi",100, 0.0, 5.0, 100, -3.5, 3.5);
   // 1 d plots 
   Hg.halo_nBC = new TH1D("Hg.halo_nBC","No Basic Clusters of Halo Photon",100, 0.0, 100.0);
@@ -225,39 +225,39 @@ my.evtMetVsPt = new TH2D("my.evtMetVsPt", "MET Vs Pt_{#gamma}'", 200, 0 , 1000, 
  // Hg.halo_phonBCratio = new TH1D("Hg.halo_phonBCratio","Ratio of No. Halo Photon to Photon Basic Clusters",100, 0.0, 10.0);
 //  Hg.halo_phonXtalEBratio = new TH1D("Hg.halo_phonXtalEBratio","Ratio of Halo Photon to Photon No. Crys",100, 0.0, 10.0);
   
- Hg.halo_seedTime  = new TH1D("Hg.halo_seedTime","Halo #gamma Seed Crys Time",500, -50.0, 50.0);
- Hg.halo_wavBCtime = new TH1D("Hg.halo_wavBCtime","Halo #gamma W.Av BC Time",500, -50.0, 50.0);
- Hg.halo_wavSCtime = new TH1D("Hg.halo_wavSCtime","Halo #gamma W.Av SC Time",500, -50.0, 50.0);    
- Hg.halo_timeVsEtaEB = new TH2D("Hg.halo_timeVsEtaEB","Halo #gamma Time Vs #eta EB",100, -3.0, 3.0, 500, -50.0, 50.0);
- Hg.halo_timeVsEtaEE = new TH2D("Hg.halo_timeVsEtaEE","Halo #gamma Time Vs #eta EE",100, -3.0, 3.0, 500, -50.0, 50.0);  
- Hg.halo_timeVsPhiEB = new TH2D("Hg.halo_timeVsPhiEB","Halo #gamma Time Vs #phi EB",100, -3.5, 3.5, 500, -50.0, 50.0); 
- Hg.halo_timeVsPhiEE = new TH2D("Hg.halo_timeVsPhiEE","Halo #gamma Time Vs #phi EE",100, -3.5, 3.5, 500, -50.0, 50.0); 
- Hg.halo_timeEB  = new TH1D("Hg.halo_timeEB", "Halo #gamma Time(ns) EB", 500,  -50.0, 50.0);
- Hg.halo_timeEE  = new TH1D("Hg.halo_timeEE", "Halo #gamma Time(ns) EE", 500,  -50.0, 50.0);
- Hg.halo_sminorEB = new TH1D("Hg.halo_sminorEB", "Halo #gamma SMinor EB", 100, 0,5);
- Hg.halo_smajorEB = new TH1D("Hg.halo_smajorEB", "Halo #gamma SMajor EB", 100,0, 5);
- Hg.halo_sigmaEtaEB = new TH1D("Hg.halo_sigmaEtaEB", "Halo #gamma #sigma_{#eta,#eta} EB", 20,0, 10);
- Hg.halo_sminorEE = new TH1D("Hg.halo_sminorEE", "Halo #gamma SMinor EE", 20, 0,5);
- Hg.halo_smajorEE = new TH1D("Hg.halo_smajorEE", "Halo #gamma SMajor EE", 20,0, 5);
- Hg.halo_sigmaEtaEE = new TH1D("Hg.halo_sigmaEtaEE", "Halo #gamma #sigma_{#eta,#eta} EB", 20,0, 10);
- Hg.halo_timeVsCSCdphi = new TH2D("Hg.halo_timeVsCSCdphi","Halo #gamma Time Vs CSC |#delta #phi|",100, -3.50, 3.50, 500, -50.0, 50.0); 
- Hg.halo_CSCdphi = new TH1D("Hg.halo_CSCdphi"," Halo #gamma |#delta #phi|",100, -3.50, 3.50);  
- Hg.halo_num_jetEB = new TH1D("Hg.halo_num_jetEB", "Number of EB Jets ", 20, 0, 20);
- Hg.halo_num_phoEB = new TH1D("Hg.halo_num_phoEB", "Number of EB #gamma s ", 10, 0, 10);
- Hg.halo_num_jetEE = new TH1D("Hg.halo_num_jetEE", "Number of EE Jets ", 20, 0, 20);
- Hg.halo_num_phoEE = new TH1D("Hg.halo_num_phoEE", "Number of EE #gamma s ", 10, 0, 10);
- Hg.halo_LN2timeEB  = new TH1D("Hg.halo_LN2timeEB", "Photon Time < -2ns EB", 500,  -50.0, 50.0);
- Hg.halo_LN2timeEE  = new TH1D("Hg.halo_LN2timeEE", "Photon Time < -2ns EE", 500,  -50.0, 50.0);
- Hg.halo_LN2GP2timeEB  = new TH1D("Hg.halo_LN2GP2timeEB", "-2ns < Photon Time < 2ns EB", 500,  -50.0, 50.0);
- Hg.halo_LN2GP2timeEE  = new TH1D("Hg.halo_LN2GP2timeEE", "-2ns < Photon Time < 2ns EE", 500,  -50.0, 50.0);
- Hg.halo_GP2timeEB  = new TH1D("Hg.halo_GP2timeEB", "Photon Time > 2ns EB", 500,  -50.0, 50.0);
- Hg.halo_GP2timeEE  = new TH1D("Hg.halo_GP2timeEE", "Photon Time > 2ns EE", 500,  -50.0, 50.0);
- Hg.halo_ATG2_smajorEB = new TH1D("Hg.halo_ATG2_smajorEB", "SMajor EB |Time| > 2ns", 100,0, 5);
- Hg.halo_ATG2_smajorEE = new TH1D("Hg.halo_ATG2_smajorEE", "SMajor EE |Time| > 2ns", 100,0, 5);
- Hg.halo_ATG2_sminorEB = new TH1D("Hg.halo_ATG2_sminorEB", "SMinor EB |Time| > 2ns", 100, 0,5);
- Hg.halo_ATG2_sminorEE = new TH1D("Hg.halo_ATG2_sminorEE", "SMinor EE |Time| > 2ns", 100, 0,5);
- Hg.halo_ATG2_sigmaEtaEB = new TH1D("Hg.halo_ATG2_sigmaEtaEB", "#sigma_{#eta,#eta} EB |Time| > 2ns", 20,0, 10);
- Hg.halo_ATG2_sigmaEtaEE = new TH1D("Hg.halo_ATG2_sigmaEtaEE", "#sigma_{#eta,#eta} EE |Time| > 2ns", 20,0, 10);
+ Hg.halo_seedTime  = new TH1D("Hg.halo_seedTime","ECAL Time^{Halo #gamma} ",100, -25.0, 25.0);
+ Hg.halo_wavBCtime = new TH1D("Hg.halo_wavBCtime","BC WAve Time^{Halo #gamma}",100, -25.0,25.0);
+ Hg.halo_wavSCtime = new TH1D("Hg.halo_wavSCtime","SC WAve Time^{Halo #gamma}",100, -25.0, 25.0);    
+ Hg.halo_timeVsEtaEB = new TH2D("Hg.halo_timeVsEtaEB","ECAL Time^{Halo #gamma} Vs #eta EB",100, -3.2, 3.2, 100, -25.0, 25.0);
+ Hg.halo_timeVsEtaEE = new TH2D("Hg.halo_timeVsEtaEE","ECAL Time^{Halo #gamma} Vs #eta EE",100, -3.2, 3.2, 100, -25.0, 25.0);  
+ Hg.halo_timeVsPhiEB = new TH2D("Hg.halo_timeVsPhiEB","ECAL Time^{Halo #gamma} Vs #phi EB",100, -3.2, 3.2, 100, -25.0, 25.0); 
+ Hg.halo_timeVsPhiEE = new TH2D("Hg.halo_timeVsPhiEE","ECAL Time^{Halo #gamma}Vs #phi EE",100, -3.2, 3.2, 100, -25.0, 25.0); 
+ Hg.halo_timeEB  = new TH1D("Hg.halo_timeEB", "ECAL Time^{Halo #gamma}(ns) EB", 100,  -25.0, 25.0);
+ Hg.halo_timeEE  = new TH1D("Hg.halo_timeEE", "ECAL Time^{Halo #gamma}(ns) EE", 100,  -25.0, 25.0);
+ Hg.halo_sminorEB = new TH1D("Hg.halo_sminorEB", "SMinor^{Halo #gamma} EB", 100, 0,5);
+ Hg.halo_smajorEB = new TH1D("Hg.halo_smajorEB", "SMajor^{Halo #gamma} EB", 100, 0,5);
+ Hg.halo_sigmaEtaEB = new TH1D("Hg.halo_sigmaEtaEB", "#sigma^{Halo #gamma}_{#eta,#eta} EB", 20,0, 10);
+ Hg.halo_sminorEE = new TH1D("Hg.halo_sminorEE", "SMinor^{Halo #gamma} EE", 20, 0,5);
+ Hg.halo_smajorEE = new TH1D("Hg.halo_smajorEE", "SMajor^{Halo #gamma} EE", 20,0, 5);
+ Hg.halo_sigmaEtaEE = new TH1D("Hg.halo_sigmaEtaEE", "#sigma^{Halo #gamma}_{#eta,#eta} EB", 20,0, 10);
+ Hg.halo_timeVsCSCdphi = new TH2D("Hg.halo_timeVsCSCdphi","ECAL Time^{Halo #gamma} Vs CSCSeg #delta #phi|",100, -3.20, 3.20, 100, -25.0, 25.0); 
+ Hg.halo_CSCdphi = new TH1D("Hg.halo_CSCdphi","|#delta #phi|^{Halo #gamma}",100, -3.20, 3.20);  
+ Hg.halo_num_jetEB = new TH1D("Hg.halo_num_jetEB", "Jets Multiplicity^{Halo #gamma Events} EB", 20, 0, 20);
+ Hg.halo_num_phoEB = new TH1D("Hg.halo_num_phoEB", "Photon Multiplicity^{Halo #gamma Events} EB", 10, 0, 10);
+ Hg.halo_num_jetEE = new TH1D("Hg.halo_num_jetEE", "Jet Multiplicity^{Halo #gamma Events} EE", 20, 0, 20);
+ Hg.halo_num_phoEE = new TH1D("Hg.halo_num_phoEE", "Photon Multiplicity^{Halo #gamma Events}EE", 10, 0, 10);
+ Hg.halo_LN2timeEB  = new TH1D("Hg.halo_LN2timeEB", "ECAL Time^{Halo #gamma} < -2ns EB", 100,  -25.0, 25.0);
+ Hg.halo_LN2timeEE  = new TH1D("Hg.halo_LN2timeEE", "ECAL Time^{Halo #gamma} < -2ns EE", 100,  -25.0, 25.0);
+ Hg.halo_LN2GP2timeEB  = new TH1D("Hg.halo_LN2GP2timeEB", "-2ns < ECAL Time^{Halo #gamma} < 2ns EB", 100,  -25.0, 25.0);
+ Hg.halo_LN2GP2timeEE  = new TH1D("Hg.halo_LN2GP2timeEE", "-2ns < ECAL Time^{Halo #gamma} < 2ns EE", 100,  -25.0, 25.0);
+ Hg.halo_GP2timeEB  = new TH1D("Hg.halo_GP2timeEB", "ECAL Time > 2ns EB", 100,  -25.0, 25.0);
+ Hg.halo_GP2timeEE  = new TH1D("Hg.halo_GP2timeEE", "ECAL Time > 2ns EE", 100,  -25.0, 25.0);
+ Hg.halo_ATG2_smajorEB = new TH1D("Hg.halo_ATG2_smajorEB", "SMajor^{Halo #gamma} EB |Time| > 2ns", 100,0, 5);
+ Hg.halo_ATG2_smajorEE = new TH1D("Hg.halo_ATG2_smajorEE", "SMajor^{Halo #gamma} EE |Time| > 2ns", 100,0, 5);
+ Hg.halo_ATG2_sminorEB = new TH1D("Hg.halo_ATG2_sminorEB", "SMinor^{Halo #gamma} EB |Time| > 2ns", 100, 0,5);
+ Hg.halo_ATG2_sminorEE = new TH1D("Hg.halo_ATG2_sminorEE", "SMinor^{Halo #gamma} EE |Time| > 2ns", 100, 0,5);
+ Hg.halo_ATG2_sigmaEtaEB = new TH1D("Hg.halo_ATG2_sigmaEtaEB", "#sigma^{Halo #gamma}_{#eta,#eta} EB |Time| > 2ns", 20,0, 10);
+ Hg.halo_ATG2_sigmaEtaEE = new TH1D("Hg.halo_ATG2_sigmaEtaEE", "#sigma^{Halo #gamma}_{#eta,#eta} EE |Time| > 2ns", 20,0, 10);
     
  Hg.halo_TrksSbeta = new TH1D("Hg.halo_TrksSbeta","Halo Tracks With Small Beta", 100, 0.0, 100);
  Hg.halo_nhalosegs = new TH1D("Hg.halo_nhalosegs","Number Halo Segments",100, 0.0, 10.0);
@@ -265,23 +265,23 @@ my.evtMetVsPt = new TH2D("my.evtMetVsPt", "MET Vs Pt_{#gamma}'", 200, 0 , 1000, 
  Hg.halo_nhalotrk = new TH1D("Hg.halo_nhalotrk","Number of Halo Track",100, 0.0, 100);
 
 // Define Large Time Events
- Lt.ltvtxX = new TH1D("Lt.ltvtxX","-10.0 < PhotonTime(ns) < 10.0  X Vertex Distribution", 500, -50.0, 50.0);
- Lt.ltvtxY = new TH1D("Lt.ltvtxY","-10.0 < PhotonTime(ns) < 10.0 Y Vertex Distribution", 500, -50.0, 50.0);
- Lt.ltvtxZ = new TH1D("Lt.ltvtxZ","-10.0 < PhotonTime(ns) < 10.0  Z Vertex Distribution", 500, -50.0, 50.0);
+ Lt.ltvtxX = new TH1D("Lt.ltvtxX","-10.0 < PhotonTime(ns) < 10.0  X Vertex Distribution", 100, -25.0, 25.0);
+ Lt.ltvtxY = new TH1D("Lt.ltvtxY","-10.0 < PhotonTime(ns) < 10.0 Y Vertex Distribution", 500, -25.0, 25.0);
+ Lt.ltvtxZ = new TH1D("Lt.ltvtxZ","-10.0 < PhotonTime(ns) < 10.0  Z Vertex Distribution", 500, -25.0, 25.0);
  Lt.ltnjets = new TH1D("Lt.ltnjets","-10.0 < PhotonTime(ns) < 10.0  Number of Jets", 20, 0.0, 20.0);
  Lt.ltnpho = new TH1D("Lt.ltnpho","-10.0 < PhotonTime(ns) < 10.0  Number of #gamma", 10, 0.0, 10.0);
  Lt.ltEvtmet = new TH1D("Lt.ltEvtmet","-10.0 < PhotonTime(ns) < 10.0  MET Distribution", 200, 0.0, 2500.0);
- Lt.ltEvtpt = new TH1D("Lt.ltEvtpt","-10.0 < PhotonTime(ns) < 10.0  Leading #gamma Pt Distribution", 200, 0.0, 2500.0);  
+ Lt.ltEvtpt = new TH1D("Lt.ltEvtpt","-10.0 < PhotonTime(ns) < 10.0  Leading #gamma Pt Distribution", 200, 0.0, 2250.0);  
  Lt.ltphoE = new TH1D("Lt.ltphoE","-10.0 < PhotonTime(ns) < 10.0  Leading #gamma Energy Distribution", 400, 0.0, 4000.0);  
  Lt.lteta = new TH1D("Lt.lteta","-10.0 < PhotonTime(ns) < 10.0 Leading #gamma #eta Distribution", 100, -3.0, 3.0);
  Lt.ltphi = new TH1D("Lt.ltphi","-10.0 < PhotonTime(ns) < 10.0 Leading #gamma #phi Distribution", 100, -4.0, 4.0);
- Lt.ltnvtx = new TH1D("Lt.ltnvtx","-10.0 < PhotonTime(ns) < 10.0  Number of Vertices", 50, 0.0, 50.0);
+ Lt.ltnvtx = new TH1D("Lt.ltnvtx","-10.0 < PhotonTime(ns) < 10.0  Number of Vertices", 25, 0.0, 50.0);
   
         
 // Define Single Vertex Events
- Sv.svtxX = new TH1D("Sv.svtxX","X Single Vertex Distribution", 1000, -50.0, 50.0);
- Sv.svtxY = new TH1D("Sv.svtxY","Y Single Vertex Distribution", 1000, -50.0, 50.0);
- Sv.svtxZ = new TH1D("Sv.svtxZ","Z Single Vertex Distribution", 1000, -50.0, 50.0);
+ Sv.svtxX = new TH1D("Sv.svtxX","X Single Vertex Distribution", 1000, -25.0, 25.0);
+ Sv.svtxY = new TH1D("Sv.svtxY","Y Single Vertex Distribution", 1000, -25.0, 25.0);
+ Sv.svtxZ = new TH1D("Sv.svtxZ","Z Single Vertex Distribution", 1000, -25.0, 25.0);
  Sv.svtxnjets = new TH1D("Sv.svtxnjets","Number of Jets in Single Vertex Events", 20, 0.0, 20.0);
  Sv.svtxnpho = new TH1D("Sv.svtxnpho","Number of #gamma in Single Vertetx Events", 10, 0.0, 10.0);
  Sv.svtxEvtmet = new TH1D("Sv.svtxEvtmet","MET Distribution in Single Vertex Events", 200, 0.0, 2500.0);
@@ -316,13 +316,13 @@ my.evtMetVsPt = new TH2D("my.evtMetVsPt", "MET Vs Pt_{#gamma}'", 200, 0 , 1000, 
 // Background Estimation Photon
 //
 //
-my.eb_ptime = new TH1D("my.eb_ptime", "EB Time", 500, -100.0,  0.0 );
-my.eb_hptime = new TH1D("my.eb_hptime", "EB Halo #gamma Time", 500, -100.0,  0.0 );
-my.eb_spike_ptime = new TH1D("my.eb_spike_ptime", "EB Spike #gamma Time", 500, -100.0,  0.0 );
-my.eb_qcd_ptime = new TH1D("my.eb_qcd_ptime", "EB QCD #gamma Time", 500, -100.0,  0.0 );
+my.eb_ptime = new TH1D("my.eb_ptime", "EB Time", 50, -25.0,  0.0 );
+my.eb_hptime = new TH1D("my.eb_hptime", "EB Halo #gamma Time", 50, -25.0,  0.0 );
+my.eb_spike_ptime = new TH1D("my.eb_spike_ptime", "EB Spike #gamma Time", 50, -25.0,  0.0 );
+my.eb_qcd_ptime = new TH1D("my.eb_qcd_ptime", "EB QCD #gamma Time", 50, -25.0,  0.0 );
 
-my.eb_low_metTime = new TH1D("my.eb_low_metTime", "EB Low MET Photon Time", 500, -100.0, 0.0);
-my.eb_high_metTime = new TH1D("my.eb_high_metTime", "EB High MET Photon Time", 500.0, -100.0, 0.0);
+my.eb_low_metTime = new TH1D("my.eb_low_metTime", "ECAL Time, MET < 60.0 GeV EB", 50, -25.0, 0.0);
+my.eb_high_metTime = new TH1D("my.eb_high_metTime", "ECAL Time MET > 60.0 GeV EB ", 50, -25.0, 0.0);
 
 my.eb_pSWX = new TH1D("my.eb_pSWX", "Seed Xtal SwissCross of #gamma SC", 100, -5.0, 10);
 my.eb_hpSWX = new TH1D("my.eb_hpSWX", "Seed Xtal Swiss X of Halo #gamma SC", 100, -5.0, 10);
@@ -344,19 +344,19 @@ my.eb_met1 = new TH1D("my.eb_met1", "MET of 1-Jet Events", 4000, 0 , 4000);
 my.eb_met2 = new TH1D("my.eb_met2", "MET of 2-Jet Events", 4000, 0 , 4000);
 my.eb_met3 = new TH1D("my.eb_met3", "MET of >=3-Jet Events", 4000, 0 , 4000);
 
-my.eb_time0 = new TH1D("my.eb_time0", "Time of 0-Jet Events", 200, -50.0 ,50.0);
-my.eb_time1 = new TH1D("my.eb_time1", "Time of 1-Jet Events", 200, -50.0 , 50.0);
-my.eb_time2 = new TH1D("my.eb_time2", "Time of 2-Jet Events", 200, -50.0 , 50.0);
-my.eb_time3 = new TH1D("my.eb_time3", "Time of >= 3-Jet Events", 200,-50.0, 50.0);
+my.eb_time0 = new TH1D("my.eb_time0", "Time of 0-Jet Events", 100, -25.0 ,25.0);
+my.eb_time1 = new TH1D("my.eb_time1", "Time of 1-Jet Events", 100, -25.0 ,25.0);
+my.eb_time2 = new TH1D("my.eb_time2", "Time of 2-Jet Events", 100, -25.0 , 25.0);
+my.eb_time3 = new TH1D("my.eb_time3", "Time of >= 3-Jet Events", 100,-25.0, 25.0);
 
-my.eb_reg = new TH2D("my.eb_reg", "MET  Vs Photon Time", 100, 0 , 1000, 120, -30.0, 30.0);
-my.eb_regA = new TH2D("my.eb_regA", "MET  Vs Photon Time RegA", 100, 0 , 1000, 120, -30.0, 30.0);
-my.eb_regB = new TH2D("my.eb_regB", "MET  Vs Photon Time RegB", 100, 0 , 1000, 120, -30.0, 30.0);
-my.eb_regC = new TH2D("my.eb_regC", "MET  Vs Photon Time RegC", 100, 0 , 1000, 120, -30.0, 30.0);
-my.eb_regD = new TH2D("my.eb_regD", "MET  Vs Photon Time RegD", 100, 0 , 1000, 120, -30.0, 30.0);
+my.eb_reg = new TH2D("my.eb_reg", "MET Vs ECAL Time", 100, 0 , 1500, 100, -25.0, 25.0);
+my.eb_regA = new TH2D("my.eb_regA", "MET Vs ECAL Time RegA", 100, 0 , 1500, 100, -25.0, 25.0);
+my.eb_regB = new TH2D("my.eb_regB", "MET Vs ECAL Time RegB", 100, 0 , 1500, 100, -25.0, 25.0);
+my.eb_regC = new TH2D("my.eb_regC", "MET Vs ECAL Time RegC", 100, 0 , 1500, 100, -25.0, 25.0);
+my.eb_regD = new TH2D("my.eb_regD", "MET Vs ECAL Time RegD", 100, 0 , 1500, 100, -25.0, 25.0);
 
-my.eb_regAprime = new TH2D("my.eb_regAprime", "MET  Vs Photon Time Reg A'", 100, 0 , 1000, 120, -30.0, 30.0);
-my.eb_regBprime = new TH2D("my.eb_regBprime", "MET  Vs Photon Time Reg B'", 100, 0 , 1000, 120, -30.0, 30.0);
+my.eb_regAprime = new TH2D("my.eb_regAprime", "MET Vs ECAL Time Reg A'", 100, 0 , 1500, 100, -25.0, 25.0);
+my.eb_regBprime = new TH2D("my.eb_regBprime", "MET Vs ECAL Time Reg B'", 100, 0 , 1500, 100, -25.0, 25.0);
 
 
 
@@ -378,7 +378,7 @@ my.eb_qcd_pNjets = new TH1D("my.eb_qcd_hpNjets", "No. 0f Jets QCD #gamma Event",
 my.eb_qcd_pNjets = new TH1D("my.eb_qcd_pNjets", "No. 0f Jets QCD #gamma Event", 20, 0, 20);
 
 //Spike & Halo reg
-my.eta_gVstimeEB = new TH2D("my.eta_gVstimeEB","#eta_{#gamma} Vs Time EB",100, -3.0, 3.0, 500, -50.0, 50.0) ;
+my.eta_gVstimeEB = new TH2D("my.eta_gVstimeEB","#eta_{#gamma} Vs Time EB",100, -3.2, 3.2, 100, -25.0, 25.0) ;
 my.pho_ptVscscdphiEB = new TH2D("my.pho_ptVscscdphiEB","Pt_{#gamma} Vs #delta #phi(CSCSeg,#gamma) EB",100, 0.0, 3.5, 200, 0.0, 4000.0) ;
 my.n_gEB = new TH1D("my.n_gEB", "No. 0f #gamma EB ", 20, 0, 20);
 my.n_jEB = new TH1D("my.n_jEB", "No. 0f Jets EB ", 20, 0, 20);
@@ -389,52 +389,52 @@ my.g_ptEB = new TH1D("my.g_ptEB", "Pt_{#gamma} EB ", 4000, 0, 4000);
 my.g_metEB = new TH1D("my.g_metEB", "E_{T}^{Miss} EB ", 4000, 0, 4000);
 
 //Halo
-my.eta_hVstimeEB = new TH2D("my.eta_hVstimeEB","#eta_{Halo #gamma} Vs Time EB",100, -3.0, 3.0, 500, -50.0, 50.0);
-my.n_hEB = new TH1D("my.n_hEB", "No. 0f Halo #gamma EB ", 20, 0, 20);
-my.n_jhEB = new TH1D("my.n_jhEB", "No. 0f Jets EB ", 20, 0, 20);
-my.h_nCrysEB = new TH1D("my.h_nCrysEB", "No. 0f Crys EB ",100, 0, 50.0);
+my.eta_hVstimeEB = new TH2D("my.eta_hVstimeEB","#eta_{Halo #gamma} Vs Time EB",100, -3.2, 3.2, 100, -25.0, 25.0);
+my.n_hEB = new TH1D("my.n_hEB", "No. of Halo #gamma EB ", 20, 0, 20);
+my.n_jhEB = new TH1D("my.n_jhEB", "No. of Jets EB ", 20, 0, 20);
+my.h_nCrysEB = new TH1D("my.h_nCrysEB", "No. of Crys EB ",100, 0, 50.0);
 my.h_timeEB = new TH1D("my.h_timeEB", "Time_{Halo #gamma} EB ", 500, -50, 50);
 my.h_cscdphiEB = new TH1D("my.h_cscdphiEB", "#delta #phi(CSCSeg, #gamma) EB", 100, 0, 3.5);
 my.h_ptEB = new TH1D("my.h_ptEB", "Pt_{Halo #gamma} EB ", 4000, 0, 4000);
 my.h_metEB = new TH1D("my.h_metEB", "E_{T}^{Miss} EB ", 4000, 0, 4000);
 
 //Spikes
-my.eta_spkVstimeEB = new TH2D("my.eta_spkVstimeEB","#eta_{Spike #gamma} Vs Time EB",100, -3.0, 3.0, 500, -50.0, 50.0);
+my.eta_spkVstimeEB = new TH2D("my.eta_spkVstimeEB","#eta_{Spike #gamma} Vs Time EB",100, -3.2, 3.2, 100, -25.0, 25.0);
 my.n_spkEB = new TH1D("my.n_spkEB", "No. 0f Spike #gamma EB ", 20, 0, 20);
 my.n_jspkEB = new TH1D("my.n_jspkEB", "No. 0f Jets EB ", 20, 0, 20);
 my.spk_nCrysEB = new TH1D("my.spk_nCrysEB", "No. 0f Crys EB ",100, 0, 50);
-my.spk_timeEB = new TH1D("my.spk_timeEB", "Time_{#gamma} EB ", 500, -50, 50);
+my.spk_timeEB = new TH1D("my.spk_timeEB", "Time_{#gamma} EB ", 100, -15, 15);
 my.spk_cscdphiEB = new TH1D("my.spk_cscdphiEB", "#delta #phi(CSCSeg, #gamma) EB", 100, 0, 3.5);
 my.spk_ptEB = new TH1D("my.spk_ptEB", "Pt_{#gamma} EB ", 4000, 0, 4000);
 my.spk_metEB = new TH1D("my.spk_metEB", "E_{T}^{Miss} EB ", 4000, 0, 4000);
 
 //Spikes in Photon Reg
-my.eta_spkInphoVstimeEB = new TH2D("my.eta_spkInphoVstimeEB","Spike in Photon Region #eta_{Spike} Vs Time EB",100, -3.0, 3.0, 500, -50.0, 50.0);
+my.eta_spkInphoVstimeEB = new TH2D("my.eta_spkInphoVstimeEB","Spike in Photon Region #eta_{Spike} Vs Time EB",100, -3.2, 3.2, 100, -25.0, 25.0);
 my.n_spkInphoEB = new TH1D("my.n_spkInphoEB", "No. 0f Spike  In Photon Reg EB ", 20, 0, 20);
 my.n_jspkInphoEB = new TH1D("my.n_jspkInphoEB", "No. 0f Jets EB ", 20, 0, 20);
 my.spkInpho_nCrysEB = new TH1D("my.spkInpho_nCrysEB", "No. 0f Crys EB ",50, 0, 50);
-my.spkInpho_timeEB = new TH1D("my.spkInpho_timeEB", "Time_{#gamma} EB ", 500, -50, 50);
+my.spkInpho_timeEB = new TH1D("my.spkInpho_timeEB", "Time_{#gamma} EB ", 100, -25, 25);
 my.spkInpho_cscdphiEB = new TH1D("my.spkInpho_cscdphiEB", "#delta #phi(CSCSeg, #gamma) EB", 100, 0, 3.5);
 my.spkInpho_ptEB = new TH1D("my.spkInpho_ptEB", "Pt_{#gamma} EB ", 4000, 0, 4000);
 my.spkInpho_metEB = new TH1D("my.spkInpho_metEB", "E_{T}^{Miss} EB ", 4000, 0, 4000);
 
 
 //EEp & EEm
-my.EEP_phoTimeVsRho = new TH2D("my.EEP_phoTimeVsRho", "#rho_{#gamma} Vs Time(ns) +EE", 100, 0.0, 100.0, 500, -50.0, 50.0);
-my.EEM_phoTimeVsRho = new TH2D("my.EEM_phoTimeVsRho", "#rho_{#gamma} Vs Time(ns) -EE ",100, 0.0, 100.0, 500.0, -50.0, 50.0);
-my.EEP_phoTimeVsR = new TH2D("my.EEP_phoTimeVsR", "Radius From Z_{#gamma} Vs Time(ns) +EE ",100, 0.0, 100.0, 500, -50.0, 50.0);
-my.EEM_phoTimeVsR = new TH2D("my.EEM_phoTimeVsR", "Radius From Z_{#gamma} Vs Time(ns) -EE ",100, 0.0, 100.0, 500, -50.0, 50.0);
+my.EEP_phoTimeVsRho = new TH2D("my.EEP_phoTimeVsRho", "#rho_{#gamma} Vs Time(ns) +EE", 100, 0.0, 100.0, 100, -25.0, 25.0);
+my.EEM_phoTimeVsRho = new TH2D("my.EEM_phoTimeVsRho", "#rho_{#gamma} Vs Time(ns) -EE ",100, 0.0, 100.0, 100, -25.0, 25.0);
+my.EEP_phoTimeVsR = new TH2D("my.EEP_phoTimeVsR", "Radius From Z_{#gamma} Vs Time(ns) +EE ",100, 0.0, 100.0, 100, -25.0, 25.0);
+my.EEM_phoTimeVsR = new TH2D("my.EEM_phoTimeVsR", "Radius From Z_{#gamma} Vs Time(ns) -EE ",100, 0.0, 100.0, 100, -25.0, 25.0);
 
-my.EEP_phoTimeVsPhi = new TH2D("my.EEP_phoTimeVsPhi", "#phi_{#gamma} Vs Time(ns) +EE ",100, -3.5, 3.5, 500, -50.0, 50.0);
-my.EEM_phoTimeVsPhi = new TH2D("my.EEM_phoTimeVsPhi", "#phi_{#gamma} Vs Time(ns) -EE ",100, -3.5, 3.5, 500, -50.0, 50.0);
+my.EEP_phoTimeVsPhi = new TH2D("my.EEP_phoTimeVsPhi", "#phi_{#gamma} Vs Time(ns) +EE ",100, -3.2, 3.2, 100, -25.0, 25.0);
+my.EEM_phoTimeVsPhi = new TH2D("my.EEM_phoTimeVsPhi", "#phi_{#gamma} Vs Time(ns) -EE ",100, -3.2, 3.2, 100, -25.0, 25.0);
    
 my.EEP_phoRho = new TH1D("my.EEP_phoRho", "#rho_{#gamma} +EE ",100, 0.0, 100.0);
 my.EEM_phoRho = new TH1D("my.EEM_phoRho", "#rho_{#gamma} -EE ",100, 0.0, 100.0);
 my.EEP_phoR = new TH1D("my.EEP_phoR", "Radius From Z_{#gamma} +EE ",100, 0.0, 100.0);
 my.EEM_phoR = new TH1D("my.EEM_phoR", "Radius From Z_{#gamma} -EE ",100, 0.0, 100.0);
 
-my.EEP_phoPhi = new TH1D("my.EEP_phoPhi", "#phi_{#gamma} +EE ",100, -3.5, 3.5);
-my.EEM_phoPhi = new TH1D("my.EEM_phoPhi", "#phi_{#gamma} -EE ",100, -3.5, 3.5);
+my.EEP_phoPhi = new TH1D("my.EEP_phoPhi", "#phi_{#gamma} +EE ",100, -3.2, 3.2);
+my.EEM_phoPhi = new TH1D("my.EEM_phoPhi", "#phi_{#gamma} -EE ",100, -3.2, 3.2);
 
 my.EEP_pho_eta = new TH1D("my.EEP_pho_eta", "#eta_{#gamma}+EE Excl #phi=0,#phi Events",300, -3.0, 3.0);
 my.EEM_pho_eta = new TH1D("my.EEM_pho_eta", "#eta_{#gamma}-EE Excl #phi=0,#phi Events",300, -3.0, 3.0);
@@ -504,48 +504,48 @@ my.EEM_Untag_Halo_pho_metVstime = new TH2D("my.EEM_Untag_Halo_pho_metVstime","ME
 my.EEP_Untag_Halo_pho_metVstime = new TH2D("my.EEP_Untag_Halo_pho_metVstime","MET Vs Time, EE+, Untagable Halo",100, 0.0, 1000, 120, -30.0, 30.0);
 
 
-my.ebMetVsTime = new TH2D("my.ebMetVsTime","EB MET Vs Time",100, 0.0, 1000,120, -30.0, 30.0);
-my.eeMetVsTime = new TH2D("my.eeMetVsTime","EE MET Vs Time",100, 0.0, 1000,120, -30.0, 30.0);
-my.ebMetVsEta = new TH2D("my.ebMetVsEta","EB MET Vs Eta",100, 0.0, 1000,170, -3.2, 3.2);
-my.eeMetVsEta = new TH2D("my.eeMetVsEta","EE MET Vs Eta",100, 0.0, 1000,170, -3.2, 3.2);
-my.ebMetVsPhi = new TH2D("my.ebMetVsPhi","EB MET Vs Phi",100, 0.0, 1000,360, -3.2, 3.2);
-my.eeMetVsPhi = new TH2D("my.eeMetVsPhi","EE MET Vs Phi",100, 0.0, 1000,360, -3.2, 3.2);
+my.ebMetVsTime = new TH2D("my.ebMetVsTime","EB MET Vs Time",100, 0.0, 1500,100, -25.0, 25.0);
+my.eeMetVsTime = new TH2D("my.eeMetVsTime","EE MET Vs Time",100, 0.0, 1500,100, -25.0, 25.0);
+my.ebMetVsEta = new TH2D("my.ebMetVsEta","EB MET Vs Eta",100, 0.0, 1500,170, -3.2, 3.2);
+my.eeMetVsEta = new TH2D("my.eeMetVsEta","EE MET Vs Eta",100, 0.0, 1500,170, -3.2, 3.2);
+my.ebMetVsPhi = new TH2D("my.ebMetVsPhi","EB MET Vs Phi",100, 0.0, 1500,360, -3.2, 3.2);
+my.eeMetVsPhi = new TH2D("my.eeMetVsPhi","EE MET Vs Phi",100, 0.0, 1500,360, -3.2, 3.2);
 my.ebMet = new TH1D("my.ebMet","EB MET", 100, 0, 1000);
 my.eeMet = new TH1D("my.eeMet","EE MET", 100, 0, 1000);
 //Jet Timing
-my.Jseedtime1= new TH1D("my.Jseedtime1", "Jet SeedTime Cleaned", 200, -50.0, 50.0);
-my.Jseedtime2= new TH1D("my.Jseedtime2", "Jet SeedTime Extract", 200, -50.0, 50.0);
-my.JseedE= new TH1D("my.JseedE", "Jet Seed Xtal in ECAL Energy", 200, -0.0, 500.0);
-my.JEcalEmEr= new TH1D("my.JEcalEmEr", "Jet Em Eenrgy", 200, -0.0, 500.0);
+my.Jseedtime1= new TH1D("my.Jseedtime1", "Jet SeedTime Cleaned", 100, -25.0, 25.0);
+my.Jseedtime2= new TH1D("my.Jseedtime2", "Jet SeedTime UnCleaned", 100, -25.0, 25.0);
+my.JseedE= new TH1D("my.JseedE", "Jet Seed Energy", 500, -0.0, 500.0);
+my.JEcalEmEr= new TH1D("my.JEcalEmEr", "Jet Em Eenergy",  500, -0.0, 500.0);
 
-my.Jseedtime2VsPhi = new TH2D("my.seedtime2VsPhi", "#phi_{PFJet} Vs Time(ns)",100, -3.5, 3.5, 200, -50.0, 50.0);
-my.Jseedtime2VsEta = new TH2D("my.seedtime2VsEta", "#eta_{PFJet} Vs Time(ns)",100, -3.5, 3.5, 200, -50.0, 50.0);
-my.JSClusdR= new TH1D("my.JSClusdR", "JetSClus Matching #delta R", 200, 0.0, 10.0);
-my.JseedBCtime = new TH1D("my.JseedBCtime", "Error W. Ave.Time Seed BC", 200, -50.0, 50.0);
-my.JWaveBCtime = new TH1D("my.JWaveBCtime", "Error W. Ave.Time Seed BC I", 200, -50.0, 50.0);
-my.JnCrys = new TH1D("my.JnCrys", "NCrys in Seed BC", 50, 0.0, 50.0);
+my.Jseedtime2VsPhi = new TH2D("my.seedtime2VsPhi", "#phi_{PFJet} Vs ECAL Time(ns)",100, -3.2, 3.2, 100, -25.0, 25.0);
+my.Jseedtime2VsEta = new TH2D("my.seedtime2VsEta", "#eta_{PFJet} Vs ECAL Time(ns)",100, -3.5, 3.5, 100, -25.0, 25.0);
+my.JSClusdR= new TH1D("my.JSClusdR", "#delta R(Jet, SC)", 100, 0.0, 10.0);
+my.JseedBCtime = new TH1D("my.JseedBCtime", "Seed BC WAve.Time Uncleaned", 100, -25.0, 25.0);
+my.JWaveBCtime = new TH1D("my.JWaveBCtime", "Seed BC WAve.Time Cleaned", 100, -25.0, 25.0);
+my.JnCrys = new TH1D("my.JnCrys", "Seed BC NCrys", 50, 0.0, 50.0);
 my.Jnspike = new TH1D("my.Jnspike", "NCrys with SwissX > 0.98", 50, 0.0, 50.0);
-my.JseedtimeVsEnergy= new TH2D("my.JseedtimeVsEnergy", "Seed Time Vs Energy", 200, 0.0, 500.0, 200, -50.0, 50.0);
+my.JseedtimeVsEnergy= new TH2D("my.JseedtimeVsEnergy", "Time_{seed} Vs Energy_{seed}", 500, 0.0, 500.0, 100, -25.0, 25.0);
 
-my.JseedOOtChi2 = new TH1D("my.JseedOOtChi2", "Seed Out-Of time Chi2", 200, -100.0, 100.0);
-my.JseedtimeChi2 = new TH1D("my.JseedtimeChi2", "Seed time Chi2", 200, -100.0, 100.0);
-my.Jseedtime2VsBCEnergy= new TH2D("my.Jseedtime2VsBCEnergy", "Seed Time Vs Seed BC Energy", 200, 0.0, 500.0, 200, -50.0, 50.0);
-my.Jseedtime2VsBCEt = new TH2D("my.Jseedtime2VsBCEt", "Seed Time Vs Seed BC Et", 200, 0.0, 500.0, 200, -50.0, 50.0);
-my.Jseedtime2VsBCPt = new TH2D("my.Jseedtime2VsBCPt", "Seed Time Vs Seed BC Pt", 200, 0.0, 500.0, 200, -50.0, 50.0);
+my.JseedOOtChi2 = new TH1D("my.JseedOOtChi2", "OOT Chi2_{seed}", 100, -10.0, 90.0);
+my.JseedtimeChi2 = new TH1D("my.JseedtimeChi2", "Time Chi2_{seed}", 100, -10.0, 90.0);
+my.Jseedtime2VsBCEnergy= new TH2D("my.Jseedtime2VsBCEnergy", "Time_{seed} Vs BC_{seed} Energy", 500, 0.0, 500.0, 100, -25.0, 25.0);
+my.Jseedtime2VsBCEt = new TH2D("my.Jseedtime2VsBCEt", "Time_{seed} Vs BC_{seed} E_{T}", 500, 0.0, 500.0, 100, -25.0, 25.0);
+my.Jseedtime2VsBCPt = new TH2D("my.Jseedtime2VsBCPt", "Time_{seed} Vs BC_{seed} P_{T}", 500, 0.0, 500.0, 100, -25.0, 25.0);
 
-my.JwavetimeVsBCEnergy= new TH2D("my.JwavetimeVsBCEnergy", "W.Ave Time Vs Seed BC Energy", 200, 0.0, 500.0, 200, -50.0, 50.0);
-my.JseedEVsEta = new TH2D("my.JseedEVsEta", "Seed Crys Energy Vs Eta ", 100, -3.5, 3.5, 200, 0.0, 500.0);
-my.JseedBCEVsEta = new TH2D("my.JseedBCEVsEta", "Seed BC Energy Vs Eta ", 100, -3.5, 3.5, 200, 0.0, 500);
-my.JseedBCEVsPhi = new TH2D("my.JseedBCEVsPhi", "Seed BC Energy Vs Phi", 100, -3.5, 3.5, 200, 0.0, 500);
+my.JwavetimeVsBCEnergy= new TH2D("my.JwavetimeVsBCEnergy", "Seed BC WAve.Time Vs BC_{seed} Energy", 500, 0.0, 500.0, 100, -25.0, 25.0);
+my.JseedEVsEta = new TH2D("my.JseedEVsEta", "Energy_{seed} Vs #eta ", 170, -3.2, 3.2, 500, 0.0, 500.0);
+my.JseedBCEVsEta = new TH2D("my.JseedBCEVsEta", "BC_{seed} Energy Vs #eta ", 170, -3.2, 3.2, 500, 0.0, 500);
+my.JseedBCEVsPhi = new TH2D("my.JseedBCEVsPhi", "BC_{seed} Energy Vs #phi",  360, -3.2, 3.2, 500, 0.0, 500);
 
-my.JnUMjets = new TH1D("my.JnUMjets", "Num of Unmatched Jets", 50, 0.0, 50.0) ;
+my.JnUMjets = new TH1D("my.JnUMjets", "Jets(UnMatched)", 50, 0.0, 50.0) ;
 
-my.Jseedtime2EB= new TH1D("my.Jseedtime2EB", "Jet SeedTime Extract, EB", 200, -50.0, 50.0);
-my.Jseedtime2EE= new TH1D("my.Jseedtime2EE", "Jet SeedTime Extract, EE", 200, -50.0, 50.0);
+my.Jseedtime2EB= new TH1D("my.Jseedtime2EB", "Jet ECAL Time_{seed} Uncleaned, EB", 100, -25.0, 25.0);
+my.Jseedtime2EE= new TH1D("my.Jseedtime2EE", "Jet ECAL Time_{seed} Uncleaned, EE", 100, -25.0, 25.0);
 
 
-my.Jseedtime2VsPseedtime = new TH2D("my.Jseedtime2VsPseedtime", "Jet seed Crys time Vs Photon seed Crys time", 400, -50.0, 50.0, 400, -50.0, 50.0);
-my.Jseedtime2MPseedtime = new TH1D("my.Jseedtime2MPseedtime", "Diff(Jet seed Crys time Photon seed Crys time)", 400, -50.0, 50.0);
+my.Jseedtime2VsPseedtime = new TH2D("my.Jseedtime2VsPseedtime", "Jet ECAL Time_{seed} Vs Photon ECAL Time_{seed}", 100, -25.0, 25.0, 100, -25.0, 25.0);
+my.Jseedtime2MPseedtime = new TH1D("my.Jseedtime2MPseedtime", "#delta t(Jet Time_{seed}, Photon Time_{seed})", 100, -25.0, 25.0);
 
 } // End of Init Hist fuction
 
@@ -3402,8 +3402,8 @@ my.eb_pNjets->Fill(n_jets);
    		      my.eb_reg->Fill(met, seedTime[kmax]); nEreg++;
    	             
                      if ( ( (fabs(seedTime[kmax]) < photonCuts[8]) && ( met < metCut[1] ) )){ my.eb_regA->Fill( met, seedTime[kmax]); nEregA++;}
-   		     if (((fabs(seedTime[kmax]) < photonCuts[8]) && ( met > metCut[1] ))){ my.eb_regB->Fill( met, seedTime[kmax]); nEregB++;}
-   	             if (((seedTime[kmax] > photonCuts[7]) && ( met < metCut[1] ))){my.eb_regC->Fill( met, seedTime[kmax]); nEregC++;}
+   		     if (((fabs(seedTime[kmax]) < photonCuts[8]) && ( met >= metCut[1] ))){ my.eb_regB->Fill( met, seedTime[kmax]); nEregB++;}
+   	             if (((seedTime[kmax] > photonCuts[8]) && ( met < metCut[1] ))){my.eb_regC->Fill( met, seedTime[kmax]); nEregC++;}
  		     if (((seedTime[kmax] > photonCuts[8] ) && ( met > metCut[1] ))){ my.eb_regD->Fill( met, seedTime[kmax]); nEregD++;}
    		     if (((seedTime[kmax] < photonCuts[7]) && ( met < metCut[1] ))){ my.eb_regAprime->Fill( met, seedTime[kmax]); nEregAp++;}
                      if (((seedTime[kmax] < photonCuts[7]) && ( met > metCut[1] ))){ my.eb_regBprime->Fill( met, seedTime[kmax]); nEregBp++;}
@@ -3412,7 +3412,7 @@ my.eb_pNjets->Fill(n_jets);
  
       
   
-
+ 
 		///@@@@@ Done with Bkg Esti @@@@@@////
 
 		/****** HE stuff ****/
