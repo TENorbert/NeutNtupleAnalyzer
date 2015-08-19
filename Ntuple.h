@@ -3,9 +3,9 @@
 
 #include "TChain.h" 
 
-#define MAXVTX 10
-#define MAXJET 15
-#define MAXPHO 10
+#define MAXVTX 30
+#define MAXJET 20
+#define MAXPHO 12
 #define MAXMU 5
 #define MAXELE 5
 #define MAXGEN 20
@@ -20,34 +20,23 @@ struct Ntuple
   unsigned int eventId;
   int triggered ;
   int L1a;  
-  bool IscscHaloSeg_Tag;
-  bool IscscHaloTrk_Tag;
-  bool IsBeamHaloIDTightTag;
-  bool IscscHaloTight_Tag;
-  bool IsMyGammaJet_Tag; 
-  bool IsSCGammaJet_Tag;
 
   int nOutTimeHits ;
   int nHaloTrack ;
-  float haloPhi ;
-  float haloRho ;
-  
-  int nTrksSmallBeta ;
-  int nHaloSegs ;
-  
+  //float haloPhi ;
+  //float haloRho ;
 
   // vertex variables
-  int   nVertices;
   int   totalNVtx ;
+  int   nVertices;
   float vtxNTracks[MAXVTX];
   float vtxChi2[MAXVTX];
   float vtxNdof[MAXVTX];
-  float vtxX[MAXVTX];
-  float vtxDx[MAXVTX];
-  float vtxY[MAXVTX];
-  float vtxDy[MAXVTX];
+  float vtxRho[MAXVTX];
   float vtxZ[MAXVTX];
-  float vtxDz[MAXVTX];
+
+  float z0Ratio;
+  //int   nTrkZ0[33];
   
   // reco variables
   int   nJets ;
@@ -61,15 +50,52 @@ struct Ntuple
   float jetCHF[MAXJET];
   float jetNHF[MAXJET];
   float jetNEF[MAXJET];
-  float jetEta[MAXJET];
-  float jetCHEF[MAXJET];
+  float jecUnc[MAXJET];
+  float jerUnc[MAXJET];
+  //float jecUncU[MAXJET];
+  //float jecUncD[MAXJET];
+
+  float jseedtime1[MAXJET];
+  float jseedtime2[MAXJET];
+  float jseedChi2[MAXJET];
+  float jseedE[MAXJET];
+  float jseedOOtChi2[MAXJET];
+  float jseedBCtime[MAXJET];
+  float jseedtimeErr[MAXJET];
+  float jWavetime[MAXJET];
+  float jWavetimeErr[MAXJET];
+  float jfspike[MAXJET];
+  float jtChi2[MAXJET];
+  int jnXtals[MAXJET];
+  int jnBC[MAXJET];
+  int jnseedXtals[MAXJET];
+  int jnspikes[MAXJET];
+  float jseedBCEnergy[MAXJET];
+  float jseedBCEt[MAXJET];
+  float jseedBCPt[MAXJET];
+ // float jCandVx[MAXJET];
+ // float jCandVy[MAXJET];
+ // float jCandVz[MAXJET];
+  float jCandEcalE[MAXJET];
+  float jCandHcalE[MAXJET];
+  float jCandHoE[MAXJET];
+  float jgammaE[MAXJET];
+  float jdR[MAXJET];
+  int jnUnMatched[MAXJET];
   
-  float phi_Gamma_Jet;
-  float dR_Gamma_Jet;
 
   float metPx;
   float metPy;
   float met;
+  float met0Px;
+  float met0Py;
+  float met0;
+  float met_dx1;
+  float met_dy1;
+  float met_dx2;
+  float met_dy2;
+  float met_dx3;
+  float met_dy3;
 
   float t_metPx;
   float t_metPy;
@@ -89,13 +115,17 @@ struct Ntuple
   int   eleNLostHits[MAXELE] ;
   float eleEcalIso[MAXELE];
   float eleHcalIso[MAXELE];
-  float eleTrkIso[MAXELE];
+  float eleTrkIso[MAXELE] ;
+  float e_cHadIso[MAXELE] ;
+  float e_nHadIso[MAXELE] ;
+  float e_photIso[MAXELE] ;
 
   int   nMuons ;
   float muPx[MAXMU];
   float muPy[MAXMU];
   float muPz[MAXMU];
   float muE[MAXMU];
+  float muIso[MAXMU];
 
   int   nPhotons ;
   float phoPx[MAXPHO];
@@ -105,6 +135,9 @@ struct Ntuple
   float phoEcalIso[MAXPHO];
   float phoHcalIso[MAXPHO];
   float phoTrkIso[MAXPHO];
+  float cHadIso[MAXPHO] ;
+  float nHadIso[MAXPHO] ;
+  float photIso[MAXPHO] ;
   float dR_TrkPho[MAXPHO];
   float pt_TrkPho[MAXPHO];
   float phoHoverE[MAXPHO];
@@ -122,22 +155,14 @@ struct Ntuple
   float seedSwissX[MAXPHO] ;
   float sigmaEta[MAXPHO] ;
   float sigmaIeta[MAXPHO] ;
-  float SigmaIetaIeta[MAXPHO]; // SigmaIetaIeta
-  float SigmaEtaEta[MAXPHO]; // SigmaEtaEta
   int   nXtals[MAXPHO] ;
   int   nBC[MAXPHO] ;
-  // csc Halo tag
-  float cscTime[MAXPHO];
+
+  float cscRho[MAXPHO];
   float cscdPhi[MAXPHO];
-  float cscR[MAXPHO];
-  float cscEta[MAXPHO];
-  // HE halo Tag
-  float HERho[MAXPHO];
-  float HETime[MAXPHO];
-  float HEGPhi[MAXPHO];
-  float HERadius[MAXPHO];
-  float HEEnergy[MAXPHO];
-  float HEdphi[MAXPHO];
+  float cscTime[MAXPHO];
+  float dtdEta[MAXPHO];
+  float dtdPhi[MAXPHO];
 
   // Gen Particle information
   int nGen ; 

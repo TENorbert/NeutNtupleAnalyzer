@@ -19,8 +19,7 @@ from array import array
 # ROOT general options
 gROOT.SetBatch(kTRUE)
 gROOT.SetStyle("Plain")
-#gStyle.SetOptStat("emruo")
-ROOT.gStyle.SetOptStat(1111111)
+gStyle.SetOptStat("emruo")
 
 
 # input TFiles to read Histograms From

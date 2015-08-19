@@ -4,7 +4,7 @@
 ## Aurthor Tambe E. Norbert a.k.a TEN (norbert@physics.umn.edu)
 
 #!/usr/bin/env python
-""" OverLay Myhist.png pout mois!"""
+""" OverLay Myhist.png from several  Directories identical structure!"""
 __version__ = "1.0"
 
 
@@ -19,7 +19,7 @@ from array import array
 # ROOT general options
 gROOT.SetBatch(kTRUE)
 gROOT.SetStyle("Plain")
-gStyle.SetOptStat(1111111)
+gStyle.SetOptStat(0)
 
 gStyle.SetCanvasColor(kWhite)  #   // background is no longer mouse-dropping white
 gStyle.SetPalette(1) #           // blue to red false color palette. Use 9 for b/w
@@ -74,6 +74,8 @@ njets3 = f3.Get("NeutKin/my.njets")
 #sA_EE_low5 = f5.Get("single-bias/timeVsAoSigmaHighEElog_2")
 #sA_EE_low6 = f6.Get("single-bias/timeVsAoSigmaHighEElog_2")
 #sA_EE_low7 = f7.Get("single-bias/timeVsAoSigmaHighEElog_2")
+
+
 
 # Choose Line Colors
 ph_time1.SetLineColor(6)
@@ -234,8 +236,6 @@ ph_time3.Draw("sames")
 leg1 = TLegend( 0.14, 0.70, 0.47, 0.90)
 leg1.SetBorderSize(1)
 leg1.SetFillColor(0)
-leg1->SetHeader("#splitline{CMS Preliminary 2011}{#sqrt{s}=7 TeV, L=4.7 fb^{-1}}");
-leg1->SetFillStyle(0);
 leg1.AddEntry(ph_time1,"< 3Jets + VLIso#gamma ","l")
 leg1.AddEntry(ph_time2,">= 3Jets + VLIso#gamma ","l")
 leg1.AddEntry(ph_time3,"GMSB-c#tau=3000mm-#Lambda=140TeV","l")
@@ -265,8 +265,6 @@ evt_met3.Draw("sames")
 leg2 = TLegend( 0.35, 0.55, 0.73, 0.77)
 leg2.SetBorderSize(1)
 leg2.SetFillColor(0)
-leg2->SetHeader("#splitline{CMS Preliminary 2011}{#sqrt{s}=7 TeV, L=4.7 fb^{-1}}")
-leg2->SetFillStyle(0);
 leg2.AddEntry(evt_met1,"< 3Jets + VLIso #gamma ","l")
 leg2.AddEntry(evt_met2,">= 3Jets + VLIso #gamma","l")
 leg2.AddEntry(evt_met3,"GMSB-c#tau=3000mm-#Lambda=140TeV","l")
@@ -296,11 +294,9 @@ nph3.Draw("sames")
 #ph_time3.Draw("sames")
 
 #Add Legend
-leg3 = TLegend( 0.52, 0.45, 0.85, 0.70, NULL, "brNDC")
+leg3 = TLegend( 0.52, 0.45, 0.85, 0.70)
 leg3.SetBorderSize(1)
-leg3->SetHeader("#splitline{CMS Preliminary 2011}{#sqrt{s}=7 TeV, L=4.7 fb^{-1}}");
 leg3.SetFillColor(0)
-leg3->SetFillStyle(0);
 leg3.AddEntry(ph_time1,"< 3Jets + VLIso #gamma ","l")
 leg3.AddEntry(ph_time2,">= 3Jets + VLIso #gamma ","l")
 leg3.AddEntry(ph_time3,"GMSB-c#tau=2000mm-#Lambda=140TeV","l")
@@ -312,6 +308,7 @@ leg3.SetHeader("Samples")
 #leg1.AddEntry(tA_EE_low6,"2.6 <|#eta|<2.8","l")
 #leg1.AddEntry(tA_EE_low7,"2.8 <|#eta|<3.0","l")
 leg3.Draw()
+
 # Number of Jets
 c4 = TCanvas("c4", "Photon Time", 800, 800)
 c4.cd()
