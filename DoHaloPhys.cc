@@ -1,3 +1,9 @@
+/*Oct 31 2013
+  Script for simulating assumption of Halo + Ghost
+  TEN@UMN.EDU
+*/ 
+
+
 #include "TLorentzVector.h"
 #include "TGenPhaseSpace.h"
 #include "TH1.h"
@@ -8,8 +14,6 @@
 
 
 void DoHaloPhys() {
-  // example of use of TGenPhaseSpace  
-  //Author: Valerio Filippini
 
   if (!gROOT->GetClass("TGenPhaseSpace")) gSystem.Load("libPhysics");
 
